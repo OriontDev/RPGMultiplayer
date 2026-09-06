@@ -1,0 +1,25 @@
+{
+	"name": "PlayerUserText",
+	"plugin-id": "Text",
+	"sid": 296097806892104,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "PeerID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 331850703459681
+		},
+		{
+			"name": "NetID",
+			"type": "number",
+			"desc": "\tSynced identity so each label knows which Player it belongs to",
+			"show": true,
+			"sid": 232096143375879
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

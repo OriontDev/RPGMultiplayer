@@ -1,0 +1,9 @@
+{
+	"name": "ChatLog",
+	"plugin-id": "TextBox",
+	"sid": 395455327329516,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": []
+}

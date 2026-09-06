@@ -1,0 +1,10 @@
+{
+	"name": "RoomStatusText",
+	"plugin-id": "Text",
+	"sid": 845813338450703,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

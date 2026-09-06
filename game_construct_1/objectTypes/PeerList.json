@@ -1,0 +1,9 @@
+{
+	"name": "PeerList",
+	"plugin-id": "List",
+	"sid": 317112067285003,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": []
+}

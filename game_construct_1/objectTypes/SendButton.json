@@ -1,0 +1,9 @@
+{
+	"name": "SendButton",
+	"plugin-id": "Button",
+	"sid": 102855605327449,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": []
+}

@@ -1,0 +1,457 @@
+{
+	"name": "Login events",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "These global variables store the username and room name that we enter on the login screen. It's then read from the 'Chat' layout and used when logging in to the signalling server."
+		},
+		{
+			"eventType": "variable",
+			"name": "MyUsername",
+			"type": "string",
+			"initialValue": "",
+			"comment": "Name entered on login screen",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 379141720146746
+		},
+		{
+			"eventType": "variable",
+			"name": "RoomName",
+			"type": "string",
+			"initialValue": "",
+			"comment": "The name of the room to join from the login screen",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 640069546034315
+		},
+		{
+			"eventType": "variable",
+			"name": "RoomType",
+			"type": "string",
+			"initialValue": "",
+			"comment": "The name of the room to join from the login screen",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 617249506839307
+		},
+		{
+			"eventType": "comment",
+			"text": "When clicking 'Join' or pressing enter with a non-empty name, store the entered name in the global variable and go to the Chat layout which will then try to connect."
+		},
+		{
+			"eventType": "comment",
+			"text": "Make the 'Join' button disabled if the entered name is empty or if the room name is under 5 characters, ensuring they enter valid details before joining."
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 956907549622543
+				}
+			],
+			"actions": [
+				{
+					"id": "add-client-input-value",
+					"objectClass": "Multiplayer",
+					"sid": 660253962135037,
+					"parameters": {
+						"tag": "\"dx\"",
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none"
+					}
+				},
+				{
+					"id": "add-client-input-value",
+					"objectClass": "Multiplayer",
+					"sid": 630786522517812,
+					"parameters": {
+						"tag": "\"dy\"",
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none"
+					}
+				},
+				{
+					"id": "connect",
+					"objectClass": "Multiplayer",
+					"sid": 548543066040260,
+					"parameters": {
+						"server": "\"wss://multiplayer.construct.net\""
+					}
+				},
+				{
+					"id": "set-focused",
+					"objectClass": "NameTextBox",
+					"sid": 428958463406792
+				}
+			],
+			"sid": 170996053314423
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-text-changed",
+					"objectClass": "NameTextBox",
+					"sid": 864649358404733
+				},
+				{
+					"id": "on-text-changed",
+					"objectClass": "RoomNameTextBox",
+					"sid": 930118387886406
+				}
+			],
+			"actions": [],
+			"sid": 889485735743091,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-text",
+							"objectClass": "NameTextBox",
+							"sid": 929912617094971,
+							"parameters": {
+								"text": "\"\"",
+								"case": "case-insensitive"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "JoinButton",
+							"sid": 152332024940131,
+							"parameters": {
+								"mode": "disabled"
+							}
+						}
+					],
+					"sid": 427193286913638
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-text",
+							"objectClass": "RoomNameTextBox",
+							"sid": 240551879802860,
+							"parameters": {
+								"text": "\"\"",
+								"case": "case-insensitive"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 314334344603904,
+							"parameters": {
+								"first-value": "len(RoomNameTextBox.Text)",
+								"comparison": 2,
+								"second-value": "5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "JoinButton",
+							"sid": 835225798500062,
+							"parameters": {
+								"mode": "disabled"
+							}
+						}
+					],
+					"sid": 585792753732470
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 798252687191369
+						},
+						{
+							"id": "is-connected",
+							"objectClass": "Multiplayer",
+							"sid": 866956078043074
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "JoinButton",
+							"sid": 940266830129025,
+							"parameters": {
+								"mode": "enabled"
+							}
+						}
+					],
+					"sid": 770902708885421
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-connected",
+					"objectClass": "Multiplayer",
+					"sid": 645055534103099
+				}
+			],
+			"actions": [],
+			"sid": 598044834067133,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-clicked",
+							"objectClass": "JoinButton",
+							"sid": 897127446274936
+						},
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 532321739939835,
+							"parameters": {
+								"key": 13
+							}
+						}
+					],
+					"actions": [],
+					"sid": 143759527495898,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-text",
+									"objectClass": "NameTextBox",
+									"sid": 426449022315974,
+									"parameters": {
+										"text": "\"\"",
+										"case": "case-insensitive"
+									},
+									"isInverted": true
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 307591099763919,
+									"disabled": true,
+									"parameters": {
+										"first-value": "len(RoomNameTextBox.Text)",
+										"comparison": 5,
+										"second-value": "5"
+									}
+								},
+								{
+									"id": "is-enabled",
+									"objectClass": "JoinButton",
+									"sid": 945861518438708
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "JoinButton",
+									"sid": 705321171929843,
+									"parameters": {
+										"mode": "disabled"
+									}
+								},
+								{
+									"id": "log-in",
+									"objectClass": "Multiplayer",
+									"sid": 579090396052943,
+									"parameters": {
+										"alias": "NameTextBox.Text"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 442254031651666,
+									"parameters": {
+										"variable": "MyUsername",
+										"value": "NameTextBox.Text"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 700977653198574,
+									"parameters": {
+										"variable": "RoomName",
+										"value": "RoomNameTextBox.Text"
+									}
+								}
+							],
+							"sid": 935710238713871,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-text",
+											"objectClass": "RoomNameTextBox",
+											"sid": 923984398861842,
+											"parameters": {
+												"text": "\"\"",
+												"case": "case-insensitive"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 887660775885547,
+											"parameters": {
+												"variable": "RoomType",
+												"value": "\"Public\""
+											}
+										}
+									],
+									"sid": 575154239865492
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 397113448322138
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 964453091356752,
+											"parameters": {
+												"variable": "RoomType",
+												"value": "\"Private\""
+											}
+										}
+									],
+									"sid": 422251640794887
+								}
+							]
+						}
+					],
+					"isOrBlock": true
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-logged-in",
+					"objectClass": "Multiplayer",
+					"sid": 243012885965041
+				}
+			],
+			"actions": [
+				{
+					"id": "join-room",
+					"objectClass": "Multiplayer",
+					"sid": 567267701927563,
+					"parameters": {
+						"game": "\"OriontFedora-Ninimamar\"",
+						"instance": "\"default\"",
+						"room": "RoomNameTextBox.Text",
+						"max-peers": "0"
+					}
+				}
+			],
+			"sid": 985585851838977,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 968181562825586,
+							"parameters": {
+								"variable": "RoomName",
+								"comparison": 0,
+								"value": "\"\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "auto-join-room",
+							"objectClass": "Multiplayer",
+							"sid": 145538266739897,
+							"parameters": {
+								"game": "\"OriontFedora-Ninimamar\"",
+								"instance": "\"default\"",
+								"first-room": "\"PublicRoom\"",
+								"max-peers": "10",
+								"locking": "dont-lock"
+							}
+						}
+					],
+					"sid": 939309483438419
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 661471437426305
+						}
+					],
+					"actions": [
+						{
+							"id": "join-room",
+							"objectClass": "Multiplayer",
+							"sid": 998655356408737,
+							"parameters": {
+								"game": "\"OriontFedora-Ninimamar\"",
+								"instance": "\"default\"",
+								"room": "RoomNameTextBox.Text",
+								"max-peers": "0"
+							}
+						}
+					],
+					"sid": 448859241637024
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-joined-room",
+					"objectClass": "Multiplayer",
+					"sid": 779047660027799
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 220370321057569,
+					"parameters": {
+						"layout": "Layout 1"
+					}
+				}
+			],
+			"sid": 476013257836457
+		}
+	],
+	"sid": 518838076776327
+}

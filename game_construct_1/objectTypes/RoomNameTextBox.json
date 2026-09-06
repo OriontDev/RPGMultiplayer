@@ -1,0 +1,9 @@
+{
+	"name": "RoomNameTextBox",
+	"plugin-id": "TextBox",
+	"sid": 272906892152924,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": []
+}
