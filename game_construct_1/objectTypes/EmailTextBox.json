@@ -1,0 +1,9 @@
+{
+	"name": "EmailTextBox",
+	"plugin-id": "TextBox",
+	"sid": 886520835629401,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": []
+}

@@ -277,7 +277,65 @@
 		}
 	],
 	"sid": 485971560474563,
-	"nonworld-instances": [],
+	"nonworld-instances": [
+		{
+			"type": "FirebaseAuthBasic",
+			"properties": {
+				"sdkID": 842978700162849
+			},
+			"uid": 19,
+			"sid": 368614317788718,
+			"tags": "",
+			"instanceVariables": {}
+		},
+		{
+			"type": "FirebaseSDK",
+			"properties": {
+				"debug": false,
+				"sdk-instance": -1,
+				"timeout": 5,
+				"auto-load": true,
+				"firebaseConfig": "{\n  \"apiKey\": \"AIzaSyBA1_zR-SEKLfZQcbAHF2OycKQsx5-GRGE\",\n  \"authDomain\": \"rpgmultiplayer-211ea.firebaseapp.com\",\n  \"databaseURL\": \"https://rpgmultiplayer-211ea-default-rtdb.asia-southeast1.firebasedatabase.app\",\n  \"projectId\": \"rpgmultiplayer-211ea\",\n  \"storageBucket\": \"rpgmultiplayer-211ea.firebasestorage.app\",\n  \"messagingSenderId\": \"682463190155\",\n  \"appId\": \"1:682463190155:web:039689e0cae7d27650488e\",\n  \"measurementId\": \"G-PC7VHS8P25\"\n}",
+				"versionFB": "12.12.1",
+				"isAuthFB": true,
+				"isDbFB": true,
+				"isFirestore": false,
+				"isStorageFB": false,
+				"isAnalytics": false,
+				"isPerformance": false,
+				"isAppCheck": false,
+				"captchaType": "reCapENT",
+				"captchaKey": "",
+				"autoRefCapToken": true,
+				"isRemoteConfig": false,
+				"config-minFetchTime": 43200,
+				"config-default": "{}",
+				"remove_app": "",
+				"remove_auth": "",
+				"remove_database": "",
+				"remove_firestore": "",
+				"remove_storage": "",
+				"remove_analytics": "",
+				"remove_appcheck": "getToken\ngetLimitedUseToken"
+			},
+			"uid": 20,
+			"sid": 774064172692387,
+			"tags": "",
+			"instanceVariables": {}
+		},
+		{
+			"type": "FirebaseRDBasic",
+			"properties": {
+				"sdk-instance": 842978700162849,
+				"user-data": "userAccount",
+				"user-lb": "userLeaderboard"
+			},
+			"uid": 21,
+			"sid": 574391813299700,
+			"tags": "",
+			"instanceVariables": {}
+		}
+	],
 	"effectTypes": [],
 	"width": 1708,
 	"height": 960,

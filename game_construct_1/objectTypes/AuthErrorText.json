@@ -1,0 +1,10 @@
+{
+	"name": "AuthErrorText",
+	"plugin-id": "Text",
+	"sid": 912973626313895,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}
