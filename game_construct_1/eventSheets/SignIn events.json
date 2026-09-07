@@ -354,38 +354,22 @@
 					],
 					"actions": [
 						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 458976513301834,
+							"id": "verify-email",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 203393409237474
+						},
+						{
+							"id": "set-text",
+							"objectClass": "VerifyNoticeText",
+							"sid": 309875627553856,
 							"parameters": {
-								"variable": "MyUserID",
-								"value": "FirebaseAuthBasic.userID"
+								"text": "\"Cek Inbox cogg, trus baru sign in\""
 							}
 						},
 						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 170914402709969,
-							"parameters": {
-								"variable": "BaseUsername",
-								"value": "left(tokenat(EmailTextBox.Text, 0, \"@\"), 12)"
-							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 449889550909768,
-							"parameters": {
-								"variable": "UsernameSuffix",
-								"value": "0"
-							}
-						},
-						{
-							"callFunction": "CheckUsername",
-							"sid": 462585559283117,
-							"parameters": [
-								"BaseUsername"
-							]
+							"id": "sign-out",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 857998824260798
 						}
 					],
 					"sid": 851416878455270
@@ -408,22 +392,63 @@
 								"variable": "MyUserID",
 								"value": "FirebaseAuthBasic.userID"
 							}
-						},
-						{
-							"id": "advanced-read-data",
-							"objectClass": "FirebaseRDBasic",
-							"sid": 443728128731011,
-							"parameters": {
-								"location-link": "\"users/\" & MyUserID & \"/username\"",
-								"id": "\"getusername\"",
-								"sync": false,
-								"read-json": false,
-								"read-array": false,
-								"read-proui": false
-							}
 						}
 					],
-					"sid": 269731748589275
+					"sid": 269731748589275,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-email-verified",
+									"objectClass": "FirebaseAuthBasic",
+									"sid": 415619882424829
+								}
+							],
+							"actions": [
+								{
+									"id": "advanced-read-data",
+									"objectClass": "FirebaseRDBasic",
+									"sid": 185109492068805,
+									"parameters": {
+										"location-link": "\"users/\" & MyUserID & \"/username\"",
+										"id": "\"getusername\"",
+										"sync": false,
+										"read-json": false,
+										"read-array": false,
+										"read-proui": false
+									}
+								}
+							],
+							"sid": 613644536630477
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 807987348976313
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "VerifyNoticeText",
+									"sid": 411611556727286,
+									"parameters": {
+										"text": "\"VERIFIKASI DULUU\""
+									}
+								},
+								{
+									"id": "sign-out",
+									"objectClass": "FirebaseAuthBasic",
+									"sid": 236912725062072
+								}
+							],
+							"sid": 244094973790901
+						}
+					]
 				}
 			]
 		},
@@ -474,6 +499,44 @@
 						}
 					],
 					"sid": 528494950017524
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 289392763881130
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 190670568681649,
+							"parameters": {
+								"variable": "BaseUsername",
+								"value": "left(tokenat(EmailTextBox.Text, 0, \"@\"), 12)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 295893843823380,
+							"parameters": {
+								"variable": "UsernameSuffix",
+								"value": "0"
+							}
+						},
+						{
+							"callFunction": "CheckUsername",
+							"sid": 973391935613394,
+							"parameters": [
+								"BaseUsername"
+							]
+						}
+					],
+					"sid": 125457258498224
 				}
 			]
 		},

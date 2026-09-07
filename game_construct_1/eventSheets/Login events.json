@@ -85,6 +85,14 @@
 					"id": "set-focused",
 					"objectClass": "NameTextBox",
 					"sid": 428958463406792
+				},
+				{
+					"id": "set-text",
+					"objectClass": "NameTextBox",
+					"sid": 846343096223238,
+					"parameters": {
+						"text": "MyUsername"
+					}
 				}
 			],
 			"sid": 170996053314423
@@ -240,17 +248,6 @@
 										"case": "case-insensitive"
 									},
 									"isInverted": true
-								},
-								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 307591099763919,
-									"disabled": true,
-									"parameters": {
-										"first-value": "len(RoomNameTextBox.Text)",
-										"comparison": 5,
-										"second-value": "5"
-									}
 								},
 								{
 									"id": "is-enabled",
