@@ -30,7 +30,7 @@
 			"name": "RoomType",
 			"type": "string",
 			"initialValue": "",
-			"comment": "The name of the room to join from the login screen",
+			"comment": "Type of room Public/Private",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 617249506839307
@@ -357,19 +357,7 @@
 					"sid": 243012885965041
 				}
 			],
-			"actions": [
-				{
-					"id": "join-room",
-					"objectClass": "Multiplayer",
-					"sid": 567267701927563,
-					"parameters": {
-						"game": "\"OriontFedora-Ninimamar\"",
-						"instance": "\"default\"",
-						"room": "RoomNameTextBox.Text",
-						"max-peers": "0"
-					}
-				}
-			],
+			"actions": [],
 			"sid": 985585851838977,
 			"children": [
 				{

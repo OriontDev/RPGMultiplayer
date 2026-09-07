@@ -25,6 +25,13 @@
 			"desc": "The synced, numeric identity for each character",
 			"show": true,
 			"sid": 188325498407207
+		},
+		{
+			"name": "Username",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 273467350976165
 		}
 	],
 	"behaviorTypes": [

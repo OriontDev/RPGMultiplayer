@@ -8,6 +8,13 @@
 	"usedAddons": [
 		{
 			"type": "plugin",
+			"id": "Arr",
+			"name": "Array",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Button",
 			"name": "Button",
 			"author": "Scirra",
@@ -125,7 +132,8 @@
 			"FirebaseRDBasic",
 			"AuthErrorText",
 			"Sprite",
-			"VerifyNoticeText"
+			"VerifyNoticeText",
+			"DebugArray"
 		],
 		"subfolders": []
 	},
