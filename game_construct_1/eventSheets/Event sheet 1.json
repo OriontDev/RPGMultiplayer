@@ -739,6 +739,15 @@
 							],
 							"actions": [
 								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 381899266979034,
+									"parameters": {
+										"variable": "DebugStep",
+										"value": "DebugStep & \"=====\" & \"Sending labeltext to peer #\" & LoopIndex & \" ID:\" & Multiplayer.PeerIDAt(LoopIndex)"
+									}
+								},
+								{
 									"id": "send-message",
 									"objectClass": "Multiplayer",
 									"sid": 385752623051873,
@@ -806,7 +815,26 @@
 					}
 				}
 			],
-			"actions": [],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 924271501300036,
+					"parameters": {
+						"variable": "DebugStep",
+						"value": "DebugStep & \"=====\" & \"Received labeltext: \" & Multiplayer.Message"
+					}
+				},
+				{
+					"id": "add-key",
+					"objectClass": "PendingUsernames",
+					"sid": 479880530858529,
+					"parameters": {
+						"key": "tokenat(Multiplayer.Message, 0, \"|\")",
+						"value": "tokenat(Multiplayer.Message, 1, \"|\")"
+					}
+				}
+			],
 			"sid": 133811668423428,
 			"children": [
 				{
@@ -848,6 +876,69 @@
 					"sid": 515451788867908
 				}
 			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "PlayerUserText",
+					"sid": 474687063325090
+				},
+				{
+					"id": "has-key",
+					"objectClass": "PendingUsernames",
+					"sid": 678365444341457,
+					"parameters": {
+						"key": "str(PlayerUserText.NetID)"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "PlayerUserText",
+					"sid": 974795098711409,
+					"parameters": {
+						"text": "PendingUsernames.Get(str(PlayerUserText.NetID)) & \" - \" & str(PlayerUserText.NetID)"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 903730278397434,
+					"parameters": {
+						"seconds": "0.5",
+						"use-timescale": true
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "PlayerUserText",
+					"sid": 579331358155446,
+					"parameters": {
+						"text": "PendingUsernames.Get(str(PlayerUserText.NetID)) & \" - \" & str(PlayerUserText.NetID)"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 396018407355454,
+					"parameters": {
+						"seconds": "1.5",
+						"use-timescale": true
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "PlayerUserText",
+					"sid": 937027362940808,
+					"parameters": {
+						"text": "PendingUsernames.Get(str(PlayerUserText.NetID)) & \" - \" & str(PlayerUserText.NetID)"
+					}
+				}
+			],
+			"sid": 286468336923724
 		},
 		{
 			"eventType": "group",

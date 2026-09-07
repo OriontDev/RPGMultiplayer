@@ -23,10 +23,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 426,
-						"y": 244.5,
-						"width": 878,
-						"height": 527,
+						"x": 420,
+						"y": 460.5,
+						"width": 880,
+						"height": 973,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -128,10 +128,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 232,
-						"y": -84,
-						"width": 95,
-						"height": 95,
+						"x": 223.5,
+						"y": -75.5,
+						"width": 78,
+						"height": 78,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -345,6 +345,14 @@
 			},
 			"uid": 24,
 			"sid": 315094618327873,
+			"tags": "",
+			"instanceVariables": {}
+		},
+		{
+			"type": "PendingUsernames",
+			"properties": {},
+			"uid": 25,
+			"sid": 836743470096687,
 			"tags": "",
 			"instanceVariables": {}
 		}

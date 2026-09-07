@@ -22,6 +22,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Dictionary",
+			"name": "Dictionary",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Keyboard",
 			"name": "Keyboard",
 			"author": "Scirra",
@@ -133,7 +140,8 @@
 			"AuthErrorText",
 			"Sprite",
 			"VerifyNoticeText",
-			"DebugArray"
+			"DebugArray",
+			"PendingUsernames"
 		],
 		"subfolders": []
 	},
