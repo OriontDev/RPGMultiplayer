@@ -110,14 +110,14 @@
 				{
 					"id": "sync-object-2",
 					"objectClass": "Multiplayer",
-					"sid": 337897630794757,
+					"sid": 541937238517759,
 					"parameters": {
 						"object": "Player",
 						"x": true,
 						"y": true,
 						"angle": true,
 						"precision": "normal-float-4-bytes",
-						"bandwidth": "normal-bandwidth-unpredictable"
+						"bandwidth": "low-bandwidth-highly-predictable"
 					}
 				},
 				{
@@ -166,14 +166,14 @@
 				{
 					"id": "sync-object-2",
 					"objectClass": "Multiplayer",
-					"sid": 327752856593681,
+					"sid": 950163231150737,
 					"parameters": {
 						"object": "PlayerUserText",
 						"x": true,
 						"y": true,
 						"angle": false,
 						"precision": "normal-float-4-bytes",
-						"bandwidth": "normal-bandwidth-unpredictable"
+						"bandwidth": "low-bandwidth-highly-predictable"
 					}
 				},
 				{
@@ -308,7 +308,7 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 550687064882824,
+					"sid": 766998510868249,
 					"parameters": {
 						"object-to-create": "Player",
 						"layer": "0",
@@ -321,7 +321,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
-					"sid": 175669890852000,
+					"sid": 158101180503610,
 					"parameters": {
 						"instance-variable": "PeerID",
 						"value": "Multiplayer.PeerID"
@@ -330,7 +330,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
-					"sid": 602725275171320,
+					"sid": 983769330352007,
 					"parameters": {
 						"instance-variable": "NetID",
 						"value": "NextNetID"
@@ -339,7 +339,7 @@
 				{
 					"id": "spawn-another-object",
 					"objectClass": "Player",
-					"sid": 593934210495008,
+					"sid": 516427454020855,
 					"parameters": {
 						"object": "PlayerUserText",
 						"layer": "0",
@@ -351,7 +351,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "PlayerUserText",
-					"sid": 829890305663349,
+					"sid": 102161553813916,
 					"parameters": {
 						"instance-variable": "NetID",
 						"value": "Player.NetID"
@@ -360,7 +360,7 @@
 				{
 					"id": "send-message",
 					"objectClass": "Multiplayer",
-					"sid": 530965974948166,
+					"sid": 972790696211458,
 					"parameters": {
 						"peer-id": "Multiplayer.PeerID",
 						"tag": "\"assignid\"",
@@ -371,7 +371,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 856380469992619,
+					"sid": 246376116679295,
 					"parameters": {
 						"variable": "NextNetID",
 						"value": "1"
@@ -380,7 +380,7 @@
 				{
 					"id": "send-message",
 					"objectClass": "Multiplayer",
-					"sid": 567311369902866,
+					"sid": 692804586595912,
 					"parameters": {
 						"peer-id": "Multiplayer.PeerID",
 						"tag": "\"requestusername\"",
@@ -430,7 +430,8 @@
 							}
 						}
 					],
-					"sid": 703555450210935
+					"sid": 703555450210935,
+					"disabled": true
 				}
 			]
 		},
@@ -454,6 +455,17 @@
 					"parameters": {
 						"variable": "MyNetID",
 						"value": "int(Multiplayer.Message)"
+					}
+				},
+				{
+					"id": "send-message",
+					"objectClass": "Multiplayer",
+					"sid": 301729765002816,
+					"parameters": {
+						"peer-id": "Multiplayer.HostID",
+						"tag": "\"requestbackfill\"",
+						"message": "\"\"",
+						"mode": "reliable-ordered"
 					}
 				}
 			],
@@ -763,7 +775,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "sub of 18"
+							"text": "sub of 19"
 						},
 						{
 							"eventType": "block",
@@ -839,7 +851,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "sub of 20"
+					"text": "sub of 21"
 				},
 				{
 					"eventType": "block",
@@ -953,7 +965,7 @@
 						{
 							"id": "for-each",
 							"objectClass": "System",
-							"sid": 308911286607302,
+							"sid": 289402879592131,
 							"parameters": {
 								"object": "Player"
 							}
@@ -961,11 +973,11 @@
 						{
 							"id": "is-host",
 							"objectClass": "Multiplayer",
-							"sid": 142213135723674
+							"sid": 409404946033294
 						}
 					],
 					"actions": [],
-					"sid": 857074710563167,
+					"sid": 655601644101711,
 					"children": [
 						{
 							"eventType": "block",
@@ -973,7 +985,7 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 265739686554119,
+									"sid": 777360533523360,
 									"parameters": {
 										"first-value": "Player.NetID",
 										"comparison": 0,
@@ -982,7 +994,7 @@
 								}
 							],
 							"actions": [],
-							"sid": 618827600823186,
+							"sid": 197056476503880,
 							"children": [
 								{
 									"eventType": "block",
@@ -990,7 +1002,7 @@
 										{
 											"id": "key-is-down",
 											"objectClass": "Keyboard",
-											"sid": 740045424653623,
+											"sid": 289401132322068,
 											"parameters": {
 												"key": 65
 											}
@@ -1000,7 +1012,7 @@
 										{
 											"id": "simulate-control",
 											"objectClass": "Player",
-											"sid": 982030801605407,
+											"sid": 283869079404880,
 											"behaviorType": "8Direction",
 											"parameters": {
 												"control": "left"
@@ -1009,7 +1021,7 @@
 										{
 											"id": "set-mirrored",
 											"objectClass": "Player",
-											"sid": 913582305336611,
+											"sid": 187227468069079,
 											"parameters": {
 												"state": "not-mirrored"
 											}
@@ -1017,14 +1029,14 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "Player",
-											"sid": 501052167005547,
+											"sid": 923296028020951,
 											"parameters": {
 												"instance-variable": "FacingLeft",
 												"value": "0"
 											}
 										}
 									],
-									"sid": 948401285947427
+									"sid": 716620630767906
 								},
 								{
 									"eventType": "block",
@@ -1032,7 +1044,7 @@
 										{
 											"id": "key-is-down",
 											"objectClass": "Keyboard",
-											"sid": 510439841163545,
+											"sid": 849909789692933,
 											"parameters": {
 												"key": 68
 											}
@@ -1042,7 +1054,7 @@
 										{
 											"id": "simulate-control",
 											"objectClass": "Player",
-											"sid": 327064288323467,
+											"sid": 648109478057253,
 											"behaviorType": "8Direction",
 											"parameters": {
 												"control": "right"
@@ -1051,7 +1063,7 @@
 										{
 											"id": "set-mirrored",
 											"objectClass": "Player",
-											"sid": 636706977789329,
+											"sid": 117979582379103,
 											"parameters": {
 												"state": "mirrored"
 											}
@@ -1059,14 +1071,14 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "Player",
-											"sid": 184245048140599,
+											"sid": 909601358619835,
 											"parameters": {
 												"instance-variable": "FacingLeft",
 												"value": "1"
 											}
 										}
 									],
-									"sid": 347724345540465
+									"sid": 772955625717022
 								},
 								{
 									"eventType": "block",
@@ -1074,7 +1086,7 @@
 										{
 											"id": "key-is-down",
 											"objectClass": "Keyboard",
-											"sid": 710300333736357,
+											"sid": 525174319363826,
 											"parameters": {
 												"key": 87
 											}
@@ -1084,14 +1096,14 @@
 										{
 											"id": "simulate-control",
 											"objectClass": "Player",
-											"sid": 285680350769187,
+											"sid": 258097821218266,
 											"behaviorType": "8Direction",
 											"parameters": {
 												"control": "up"
 											}
 										}
 									],
-									"sid": 135061895440456
+									"sid": 397618179861346
 								},
 								{
 									"eventType": "block",
@@ -1099,7 +1111,7 @@
 										{
 											"id": "key-is-down",
 											"objectClass": "Keyboard",
-											"sid": 705339361321244,
+											"sid": 430644227589964,
 											"parameters": {
 												"key": 83
 											}
@@ -1109,14 +1121,14 @@
 										{
 											"id": "simulate-control",
 											"objectClass": "Player",
-											"sid": 676654951736088,
+											"sid": 297653740632852,
 											"behaviorType": "8Direction",
 											"parameters": {
 												"control": "down"
 											}
 										}
 									],
-									"sid": 879274743617636
+									"sid": 669439806411421
 								}
 							]
 						},
@@ -1126,7 +1138,7 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 150192171103939,
+									"sid": 699925535377142,
 									"parameters": {
 										"first-value": "Player.NetID",
 										"comparison": 1,
@@ -1135,7 +1147,7 @@
 								}
 							],
 							"actions": [],
-							"sid": 901398434748613,
+							"sid": 196771073101298,
 							"children": [
 								{
 									"eventType": "block",
@@ -1143,7 +1155,7 @@
 										{
 											"id": "compare-two-values",
 											"objectClass": "System",
-											"sid": 718537519646644,
+											"sid": 859201564503646,
 											"parameters": {
 												"first-value": "Multiplayer.PeerState(Player.PeerID, \"dx\")",
 												"comparison": 0,
@@ -1155,7 +1167,7 @@
 										{
 											"id": "simulate-control",
 											"objectClass": "Player",
-											"sid": 993575826487106,
+											"sid": 892414357442310,
 											"behaviorType": "8Direction",
 											"parameters": {
 												"control": "left"
@@ -1164,14 +1176,14 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "Player",
-											"sid": 972485897430627,
+											"sid": 555782436571199,
 											"parameters": {
 												"instance-variable": "FacingLeft",
 												"value": "0"
 											}
 										}
 									],
-									"sid": 965622424026831
+									"sid": 835620771030855
 								},
 								{
 									"eventType": "block",
@@ -1179,7 +1191,7 @@
 										{
 											"id": "compare-two-values",
 											"objectClass": "System",
-											"sid": 238172503705302,
+											"sid": 356092824534978,
 											"parameters": {
 												"first-value": "Multiplayer.PeerState(Player.PeerID, \"dx\")",
 												"comparison": 0,
@@ -1191,7 +1203,7 @@
 										{
 											"id": "simulate-control",
 											"objectClass": "Player",
-											"sid": 728930566025211,
+											"sid": 512976493419835,
 											"behaviorType": "8Direction",
 											"parameters": {
 												"control": "right"
@@ -1200,14 +1212,14 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "Player",
-											"sid": 241555589929331,
+											"sid": 165903576359695,
 											"parameters": {
 												"instance-variable": "FacingLeft",
 												"value": "1"
 											}
 										}
 									],
-									"sid": 724053281009731
+									"sid": 229690816852414
 								},
 								{
 									"eventType": "block",
@@ -1215,7 +1227,7 @@
 										{
 											"id": "compare-two-values",
 											"objectClass": "System",
-											"sid": 972998267179495,
+											"sid": 951321767552389,
 											"parameters": {
 												"first-value": "Multiplayer.PeerState(Player.PeerID, \"dy\")",
 												"comparison": 0,
@@ -1227,14 +1239,14 @@
 										{
 											"id": "simulate-control",
 											"objectClass": "Player",
-											"sid": 391452874240908,
+											"sid": 944382658210932,
 											"behaviorType": "8Direction",
 											"parameters": {
 												"control": "up"
 											}
 										}
 									],
-									"sid": 665122412829402
+									"sid": 387601737358673
 								},
 								{
 									"eventType": "block",
@@ -1242,7 +1254,7 @@
 										{
 											"id": "compare-two-values",
 											"objectClass": "System",
-											"sid": 405418146359051,
+											"sid": 403371545094622,
 											"parameters": {
 												"first-value": "Multiplayer.PeerState(Player.PeerID, \"dy\")",
 												"comparison": 0,
@@ -1254,14 +1266,14 @@
 										{
 											"id": "simulate-control",
 											"objectClass": "Player",
-											"sid": 811701048855432,
+											"sid": 662609807736766,
 											"behaviorType": "8Direction",
 											"parameters": {
 												"control": "down"
 											}
 										}
 									],
-									"sid": 173143394840866
+									"sid": 882741163268066
 								}
 							]
 						}
@@ -1273,11 +1285,11 @@
 						{
 							"id": "on-client-update",
 							"objectClass": "Multiplayer",
-							"sid": 340679642893220
+							"sid": 421008944853646
 						}
 					],
 					"actions": [],
-					"sid": 620602469972844,
+					"sid": 182323851428979,
 					"children": [
 						{
 							"eventType": "block",
@@ -1285,7 +1297,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 766596619106186,
+									"sid": 320525142899606,
 									"parameters": {
 										"key": 65
 									}
@@ -1295,14 +1307,14 @@
 								{
 									"id": "set-client-state",
 									"objectClass": "Multiplayer",
-									"sid": 702066922436535,
+									"sid": 568584425610252,
 									"parameters": {
 										"tag": "\"dx\"",
 										"value": "-1"
 									}
 								}
 							],
-							"sid": 854640679537154
+							"sid": 691807388734245
 						},
 						{
 							"eventType": "block",
@@ -1310,7 +1322,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 966800875892973,
+									"sid": 884991655378633,
 									"parameters": {
 										"key": 68
 									}
@@ -1320,14 +1332,14 @@
 								{
 									"id": "set-client-state",
 									"objectClass": "Multiplayer",
-									"sid": 453113221469613,
+									"sid": 489520784921217,
 									"parameters": {
 										"tag": "\"dx\"",
 										"value": "1"
 									}
 								}
 							],
-							"sid": 987009377067552
+							"sid": 945707466871704
 						},
 						{
 							"eventType": "block",
@@ -1335,7 +1347,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 532754431612382,
+									"sid": 553977199874007,
 									"parameters": {
 										"key": 87
 									}
@@ -1345,14 +1357,14 @@
 								{
 									"id": "set-client-state",
 									"objectClass": "Multiplayer",
-									"sid": 455272068115630,
+									"sid": 158189691211060,
 									"parameters": {
 										"tag": "\"dy\"",
 										"value": "-1"
 									}
 								}
 							],
-							"sid": 360437551772784
+							"sid": 798189247293912
 						},
 						{
 							"eventType": "block",
@@ -1360,7 +1372,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 844656531910768,
+									"sid": 156957442426395,
 									"parameters": {
 										"key": 83
 									}
@@ -1370,14 +1382,14 @@
 								{
 									"id": "set-client-state",
 									"objectClass": "Multiplayer",
-									"sid": 273014387773631,
+									"sid": 205288924412258,
 									"parameters": {
 										"tag": "\"dy\"",
 										"value": "1"
 									}
 								}
 							],
-							"sid": 118973503882833
+							"sid": 435081221678775
 						},
 						{
 							"eventType": "block",
@@ -1385,7 +1397,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 127966913542820,
+									"sid": 461332403582220,
 									"parameters": {
 										"key": 65
 									},
@@ -1394,7 +1406,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 899828059320616,
+									"sid": 295349805659708,
 									"parameters": {
 										"key": 68
 									},
@@ -1405,14 +1417,14 @@
 								{
 									"id": "set-client-state",
 									"objectClass": "Multiplayer",
-									"sid": 299787192317940,
+									"sid": 270254151142739,
 									"parameters": {
 										"tag": "\"dx\"",
 										"value": "0"
 									}
 								}
 							],
-							"sid": 414657736913481
+							"sid": 123834721975827
 						},
 						{
 							"eventType": "block",
@@ -1420,7 +1432,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 138022812790312,
+									"sid": 489825350409776,
 									"parameters": {
 										"key": 87
 									},
@@ -1429,7 +1441,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 707014366327782,
+									"sid": 976444022197181,
 									"parameters": {
 										"key": 83
 									},
@@ -1440,14 +1452,14 @@
 								{
 									"id": "set-client-state",
 									"objectClass": "Multiplayer",
-									"sid": 876942265102243,
+									"sid": 781475781550883,
 									"parameters": {
 										"tag": "\"dy\"",
 										"value": "0"
 									}
 								}
 							],
-							"sid": 505028721300114
+							"sid": 975199290977977
 						}
 					]
 				},
@@ -1457,12 +1469,12 @@
 						{
 							"id": "on-created",
 							"objectClass": "Player",
-							"sid": 592491442649269
+							"sid": 976634921307043
 						},
 						{
 							"id": "is-host",
 							"objectClass": "Multiplayer",
-							"sid": 765504097834323,
+							"sid": 808679963610738,
 							"isInverted": true
 						}
 					],
@@ -1470,14 +1482,14 @@
 						{
 							"id": "set-enabled",
 							"objectClass": "Player",
-							"sid": 175217046285876,
+							"sid": 665006518448646,
 							"behaviorType": "8Direction",
 							"parameters": {
 								"state": "disabled"
 							}
 						}
 					],
-					"sid": 548708813733972
+					"sid": 623384441075472
 				},
 				{
 					"eventType": "block",
@@ -1485,7 +1497,7 @@
 						{
 							"id": "compare-instance-variable",
 							"objectClass": "Player",
-							"sid": 566952207094971,
+							"sid": 677080854466690,
 							"parameters": {
 								"instance-variable": "FacingLeft",
 								"comparison": 0,
@@ -1497,13 +1509,13 @@
 						{
 							"id": "set-mirrored",
 							"objectClass": "Player",
-							"sid": 681596301795769,
+							"sid": 959596178611810,
 							"parameters": {
 								"state": "not-mirrored"
 							}
 						}
 					],
-					"sid": 194158346772721
+					"sid": 735956331836445
 				},
 				{
 					"eventType": "block",
@@ -1511,7 +1523,7 @@
 						{
 							"id": "compare-instance-variable",
 							"objectClass": "Player",
-							"sid": 910670360370521,
+							"sid": 135276396540221,
 							"parameters": {
 								"instance-variable": "FacingLeft",
 								"comparison": 0,
@@ -1523,16 +1535,721 @@
 						{
 							"id": "set-mirrored",
 							"objectClass": "Player",
-							"sid": 226494953344171,
+							"sid": 462211096790604,
 							"parameters": {
 								"state": "mirrored"
 							}
 						}
 					],
-					"sid": 184168831251124
+					"sid": 242315366690075
 				}
 			],
-			"sid": 220389483007832
+			"sid": 265405208678333
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "ControlFix1",
+			"description": "",
+			"isActiveOnStart": false,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 649518703749066,
+							"parameters": {
+								"object": "Player"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 277300638836580,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 770973069124079,
+									"parameters": {
+										"first-value": "Player.NetID",
+										"comparison": 0,
+										"second-value": "MyNetID"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 869658450642213,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 327612055429962,
+											"parameters": {
+												"key": 65
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "Player",
+											"sid": 552755491429333,
+											"behaviorType": "8Direction",
+											"parameters": {
+												"control": "left"
+											}
+										},
+										{
+											"id": "set-mirrored",
+											"objectClass": "Player",
+											"sid": 727782883173273,
+											"parameters": {
+												"state": "not-mirrored"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Player",
+											"sid": 273254003520490,
+											"parameters": {
+												"instance-variable": "FacingLeft",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 332176637386177
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 949718118799616,
+											"parameters": {
+												"key": 68
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "Player",
+											"sid": 123605276808420,
+											"behaviorType": "8Direction",
+											"parameters": {
+												"control": "right"
+											}
+										},
+										{
+											"id": "set-mirrored",
+											"objectClass": "Player",
+											"sid": 304698508567595,
+											"parameters": {
+												"state": "mirrored"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Player",
+											"sid": 999984963262163,
+											"parameters": {
+												"instance-variable": "FacingLeft",
+												"value": "1"
+											}
+										}
+									],
+									"sid": 891146879697880
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 869013214052308,
+											"parameters": {
+												"key": 87
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "Player",
+											"sid": 593556127875146,
+											"behaviorType": "8Direction",
+											"parameters": {
+												"control": "up"
+											}
+										}
+									],
+									"sid": 263470327353149
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 389476658381297,
+											"parameters": {
+												"key": 83
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "Player",
+											"sid": 243546578278530,
+											"behaviorType": "8Direction",
+											"parameters": {
+												"control": "down"
+											}
+										}
+									],
+									"sid": 385247426632293
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 983939818061923,
+									"parameters": {
+										"first-value": "Player.NetID",
+										"comparison": 1,
+										"second-value": "MyNetID"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 963537800789359,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 529006744622551,
+											"parameters": {
+												"first-value": "Multiplayer.PeerState(Player.PeerID, \"dx\")",
+												"comparison": 0,
+												"second-value": "-1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "Player",
+											"sid": 250631002188102,
+											"behaviorType": "8Direction",
+											"parameters": {
+												"control": "left"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Player",
+											"sid": 403980291868638,
+											"parameters": {
+												"instance-variable": "FacingLeft",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 298638719699940
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 893970695593475,
+											"parameters": {
+												"first-value": "Multiplayer.PeerState(Player.PeerID, \"dx\")",
+												"comparison": 0,
+												"second-value": "1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "Player",
+											"sid": 524012922812455,
+											"behaviorType": "8Direction",
+											"parameters": {
+												"control": "right"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Player",
+											"sid": 293774729545322,
+											"parameters": {
+												"instance-variable": "FacingLeft",
+												"value": "1"
+											}
+										}
+									],
+									"sid": 412717625576804
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 763783510173687,
+											"parameters": {
+												"first-value": "Multiplayer.PeerState(Player.PeerID, \"dy\")",
+												"comparison": 0,
+												"second-value": "-1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "Player",
+											"sid": 147284386953859,
+											"behaviorType": "8Direction",
+											"parameters": {
+												"control": "up"
+											}
+										}
+									],
+									"sid": 468549678889179
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 945960787107003,
+											"parameters": {
+												"first-value": "Multiplayer.PeerState(Player.PeerID, \"dy\")",
+												"comparison": 0,
+												"second-value": "1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "Player",
+											"sid": 317180778634948,
+											"behaviorType": "8Direction",
+											"parameters": {
+												"control": "down"
+											}
+										}
+									],
+									"sid": 296436544998741
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "Player",
+							"sid": 376008640835642
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 722028200257603,
+							"parameters": {
+								"instance-variable": "FacingLeft",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "Player",
+							"sid": 114252524068995,
+							"parameters": {
+								"state": "mirrored"
+							}
+						}
+					],
+					"sid": 680089913626522
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 192985426136783,
+							"parameters": {
+								"instance-variable": "FacingLeft",
+								"comparison": 0,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 695582763058414,
+							"parameters": {
+								"first-value": "Player.NetID",
+								"comparison": 1,
+								"second-value": "MyNetID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "Player",
+							"sid": 961745953030414,
+							"parameters": {
+								"state": "not-mirrored"
+							}
+						}
+					],
+					"sid": 637299102124077
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 747349368028838,
+							"parameters": {
+								"instance-variable": "FacingLeft",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 154777910459789,
+							"parameters": {
+								"first-value": "Player.NetID",
+								"comparison": 1,
+								"second-value": "MyNetID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "Player",
+							"sid": 698227359560299,
+							"parameters": {
+								"state": "mirrored"
+							}
+						}
+					],
+					"sid": 277808991964943
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-client-update",
+							"objectClass": "Multiplayer",
+							"sid": 984074571344993
+						}
+					],
+					"actions": [],
+					"sid": 722614784105164,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 582752559629601,
+									"parameters": {
+										"key": 65
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-client-state",
+									"objectClass": "Multiplayer",
+									"sid": 118706578656585,
+									"parameters": {
+										"tag": "\"dx\"",
+										"value": "-1"
+									}
+								}
+							],
+							"sid": 577403827377399
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 231527655476231,
+									"parameters": {
+										"key": 68
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-client-state",
+									"objectClass": "Multiplayer",
+									"sid": 922599857702373,
+									"parameters": {
+										"tag": "\"dx\"",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 434382194346949
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 996702287479810,
+									"parameters": {
+										"key": 87
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-client-state",
+									"objectClass": "Multiplayer",
+									"sid": 134137189488063,
+									"parameters": {
+										"tag": "\"dy\"",
+										"value": "-1"
+									}
+								}
+							],
+							"sid": 334521550393654
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 854461990021448,
+									"parameters": {
+										"key": 83
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-client-state",
+									"objectClass": "Multiplayer",
+									"sid": 493606478523593,
+									"parameters": {
+										"tag": "\"dy\"",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 218576634841410
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 925415264712354,
+									"parameters": {
+										"key": 65
+									},
+									"isInverted": true
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 812659450190070,
+									"parameters": {
+										"key": 68
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-client-state",
+									"objectClass": "Multiplayer",
+									"sid": 649340453092459,
+									"parameters": {
+										"tag": "\"dx\"",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 550486008659411
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 684176034181837,
+									"parameters": {
+										"key": 87
+									},
+									"isInverted": true
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 365489181082358,
+									"parameters": {
+										"key": 83
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-client-state",
+									"objectClass": "Multiplayer",
+									"sid": 785061379071859,
+									"parameters": {
+										"tag": "\"dy\"",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 103950115839110
+						}
+					]
+				}
+			],
+			"sid": 307101572011969
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-message",
+					"objectClass": "Multiplayer",
+					"sid": 512276895423693,
+					"parameters": {
+						"tag": "\"requestbackfill\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 129639768518432,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 767214983587375,
+							"parameters": {
+								"object": "Player"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "send-message",
+							"objectClass": "Multiplayer",
+							"sid": 478934342879145,
+							"parameters": {
+								"peer-id": "Multiplayer.PeerID",
+								"tag": "\"labeltext\"",
+								"message": "str(Player.NetID) & \"|\" & Player.Username",
+								"mode": "reliable-ordered"
+							}
+						}
+					],
+					"sid": 570894993863236
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 343419282443749,
+					"parameters": {
+						"interval-seconds": "0.3"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 206797106937275,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "PlayerUserText",
+							"sid": 127316966138760,
+							"parameters": {
+								"instance-variable": "Labeled"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "has-key",
+							"objectClass": "PendingUsernames",
+							"sid": 412551243543144,
+							"parameters": {
+								"key": "str(PlayerUserText.NetID)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "PlayerUserText",
+							"sid": 127971720327835,
+							"parameters": {
+								"text": "PendingUsernames.Get(str(PlayerUserText.NetID)) & \" - \" & str(PlayerUserText.NetID)"
+							}
+						}
+					],
+					"sid": 702752193169047
+				}
+			]
 		}
 	],
 	"sid": 474297610386447

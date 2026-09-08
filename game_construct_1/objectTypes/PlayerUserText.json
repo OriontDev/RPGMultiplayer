@@ -18,6 +18,13 @@
 			"desc": "\tSynced identity so each label knows which Player it belongs to",
 			"show": true,
 			"sid": 232096143375879
+		},
+		{
+			"name": "Labeled",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 835181693768013
 		}
 	],
 	"behaviorTypes": [],

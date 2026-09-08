@@ -223,7 +223,8 @@
 					"tags": "",
 					"instanceVariables": {
 						"PeerID": "",
-						"NetID": -1
+						"NetID": -1,
+						"Labeled": false
 					},
 					"behaviors": {},
 					"showing": true,
