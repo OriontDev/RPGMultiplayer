@@ -1,0 +1,39 @@
+{
+  "basic_sword": {
+    "name": "Sword",
+    "damage": 10,
+    "firerate": 5,
+    "type": "melee",
+    "subtype": "Sword",
+    "sfx": "sword.mp3",
+    "animation": {
+        "still": "basic_sword_still",
+        "attack": "basic_sword_attack",
+        "swoosh": "basic_sword_swoosh"
+    }
+  },
+  "basic_spear": {
+    "name": "Sword",
+    "damage": 10,
+    "firerate": 0.5,
+    "type": "melee",
+    "subtype": "Sword",
+    "sfx": "spear.mp3",
+    "animation": {
+        "still": "basic_sword_still",
+        "attack": "basic_spear_attack"
+    }
+  },
+  "basic_bow": {
+    "name": "Bow",
+    "damage": 6,
+    "firerate": 0.8,
+    "type": "ranged",
+    "subtype": "Bow",
+    "sfx": "bow.mp3",
+    "animation": {
+        "still": "basic_bow_still",
+        "attack": "basic_bow_attack"
+    }
+  }
+}

@@ -105,7 +105,12 @@
 						"FacingLeft": 0,
 						"NetID": -1,
 						"Username": "",
-						"NearEnemy": false
+						"NearEnemy": false,
+						"Slot1_ItemID": "",
+						"Slot2_ItemID": "",
+						"ActiveSlot": 1,
+						"AttackTimer": 0,
+						"EquippedItemID": ""
 					},
 					"behaviors": {
 						"8Direction": {
@@ -246,6 +251,41 @@
 						"z": 0,
 						"angle": 0
 					}
+				},
+				{
+					"type": "WeaponPickup",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "basic_sword_still",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 29,
+					"sid": 134799763674546,
+					"tags": "",
+					"instanceVariables": {
+						"ItemID": "basic_sword"
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 232,
+						"y": 145,
+						"width": 42,
+						"height": 23,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
 				}
 			],
 			"sid": 814337982317056,
@@ -362,6 +402,75 @@
 			"blendMode": "normal",
 			"zElevation": 0,
 			"global": false
+		},
+		{
+			"name": "Effects",
+			"overriden": 0,
+			"subLayers": [],
+			"instances": [
+				{
+					"type": "AttackEffect",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "basic_sword_swoosh",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 30,
+					"sid": 956188215378017,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 247.5,
+						"y": -218.5,
+						"width": 37,
+						"height": 37,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				}
+			],
+			"sid": 862522840307869,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"isInitiallyInteractive": true,
+			"isHTMLElementsLayer": false,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				1,
+				1,
+				1,
+				1
+			],
+			"isTransparent": true,
+			"sampling": "auto",
+			"parallaxX": 1,
+			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"renderingMode": "3d",
+			"drawOrder": "z-order",
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"zElevation": 0,
+			"global": false
 		}
 	],
 	"sid": 485971560474563,
@@ -440,6 +549,14 @@
 			"properties": {},
 			"uid": 25,
 			"sid": 836743470096687,
+			"tags": "",
+			"instanceVariables": {}
+		},
+		{
+			"type": "WeaponDB",
+			"properties": {},
+			"uid": 28,
+			"sid": 687485449855337,
 			"tags": "",
 			"instanceVariables": {}
 		}

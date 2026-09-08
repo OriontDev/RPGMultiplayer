@@ -1,0 +1,8 @@
+{
+	"name": "WeaponDB",
+	"plugin-id": "Json",
+	"sid": 528373884944665,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": []
+}

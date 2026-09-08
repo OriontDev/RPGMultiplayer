@@ -1,0 +1,19 @@
+{
+	"name": "Pickups",
+	"plugin-id": "Sprite",
+	"sid": 151624163823708,
+	"instanceVariables": [
+		{
+			"name": "ItemID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 852689046304399
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"WeaponPickup"
+	]
+}

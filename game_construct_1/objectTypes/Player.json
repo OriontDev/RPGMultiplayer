@@ -39,6 +39,41 @@
 			"desc": "Wether an enemy is within player's detection or not (player will turn to the enemy that is within their sight)",
 			"show": true,
 			"sid": 854104048931077
+		},
+		{
+			"name": "Slot1_ItemID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 257189379685582
+		},
+		{
+			"name": "Slot2_ItemID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 996349748025109
+		},
+		{
+			"name": "ActiveSlot",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 448803985396306
+		},
+		{
+			"name": "AttackTimer",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 907176454698487
+		},
+		{
+			"name": "EquippedItemID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 409025391115560
 		}
 	],
 	"behaviorTypes": [

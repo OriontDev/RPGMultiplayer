@@ -132,6 +132,462 @@
 					]
 				}
 			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 358678541558839,
+					"parameters": {
+						"key": 76
+					}
+				},
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "Player",
+					"sid": 793014786800578,
+					"parameters": {
+						"object": "Pickups"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 278742623710361,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 375092614833171,
+							"parameters": {
+								"instance-variable": "Slot1_ItemID",
+								"comparison": 0,
+								"value": "\"\""
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 883206637773875,
+							"parameters": {
+								"instance-variable": "Slot2_ItemID",
+								"comparison": 0,
+								"value": "\"\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 988353003502116,
+							"parameters": {
+								"instance-variable": "Slot1_ItemID",
+								"value": "Pickups.ItemID"
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "Pickups",
+							"sid": 233565472383072
+						}
+					],
+					"sid": 499959352555377,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 537826039629366
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 614181554275708,
+							"parameters": {
+								"instance-variable": "EquippedItemID",
+								"comparison": 1,
+								"value": "\"\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 208839801213096,
+							"parameters": {
+								"object-to-create": "WeaponPickup",
+								"layer": "0",
+								"x": "Player.X",
+								"y": "Player.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "WeaponPickup",
+							"sid": 454672471258657,
+							"parameters": {
+								"instance-variable": "ItemID",
+								"value": "Player.EquippedItemID"
+							}
+						}
+					],
+					"sid": 674547337291293,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 718721355344971,
+									"parameters": {
+										"instance-variable": "Slot1_ItemID",
+										"comparison": 0,
+										"value": "Player.EquippedItemID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 448005905188338,
+									"parameters": {
+										"instance-variable": "Slot1_ItemID",
+										"value": "\"\""
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 384461135924334,
+									"parameters": {
+										"instance-variable": "EquippedItemID",
+										"value": "\"\""
+									}
+								}
+							],
+							"sid": 818194454348866
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 144525307383678,
+									"parameters": {
+										"instance-variable": "Slot2_ItemID",
+										"comparison": 0,
+										"value": "Player.EquippedItemID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 196225370987611,
+									"parameters": {
+										"instance-variable": "Slot2_ItemID",
+										"value": "\"\""
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 321234166912523,
+									"parameters": {
+										"instance-variable": "EquippedItemID",
+										"value": "\"\""
+									}
+								}
+							],
+							"sid": 325070644995027
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 300238757414039
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 606467241585176,
+					"parameters": {
+						"instance-variable": "AttackTimer",
+						"comparison": 4,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "Player",
+					"sid": 343322946670607,
+					"parameters": {
+						"instance-variable": "AttackTimer",
+						"value": "dt"
+					}
+				}
+			],
+			"sid": 526137158053760
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 905720827557858,
+					"parameters": {
+						"key": 75
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 933094534429399,
+					"parameters": {
+						"instance-variable": "AttackTimer",
+						"comparison": 3,
+						"value": "0"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 478978800862788,
+					"parameters": {
+						"instance-variable": "EquippedItemID",
+						"comparison": 1,
+						"value": "\"\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 401172419296292,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 948499150374654,
+							"parameters": {
+								"instance-variable": "FacingLeft",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 261809927169206,
+							"parameters": {
+								"object-to-create": "AttackEffect",
+								"layer": "0",
+								"x": "Player.X - 30",
+								"y": "Player.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "AttackEffect",
+							"sid": 836375687535471,
+							"parameters": {
+								"state": "not-mirrored"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 555014883626492,
+							"parameters": {
+								"instance-variable": "AttackTimer",
+								"value": "WeaponDB.Get(Player.EquippedItemID & \".firerate\")"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "AttackEffect",
+							"sid": 252607941965266,
+							"parameters": {
+								"animation": "WeaponDB.Get(Player.EquippedItemID & \".animation.swoosh\")",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 581792583981913
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 619708820917849,
+							"parameters": {
+								"instance-variable": "FacingLeft",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 904711753739658,
+							"parameters": {
+								"object-to-create": "AttackEffect",
+								"layer": "0",
+								"x": "Player.X + 30",
+								"y": "Player.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "AttackEffect",
+							"sid": 853538718245742,
+							"parameters": {
+								"state": "mirrored"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 215814969149737,
+							"parameters": {
+								"instance-variable": "AttackTimer",
+								"value": "WeaponDB.Get(Player.EquippedItemID & \".firerate\")"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "AttackEffect",
+							"sid": 923935434075589,
+							"parameters": {
+								"animation": "WeaponDB.Get(Player.EquippedItemID & \".animation.swoosh\")",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 905846304824856
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 118116715202782,
+					"parameters": {
+						"key": 49
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 833016918138453,
+					"parameters": {
+						"instance-variable": "ActiveSlot",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 612891562976614,
+					"parameters": {
+						"instance-variable": "EquippedItemID",
+						"value": "Player.Slot1_ItemID"
+					}
+				}
+			],
+			"sid": 996826279144327
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 743761242976848,
+					"parameters": {
+						"key": 50
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 371308746201534,
+					"parameters": {
+						"instance-variable": "ActiveSlot",
+						"value": "2"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 128177406564106,
+					"parameters": {
+						"instance-variable": "EquippedItemID",
+						"value": "Player.Slot2_ItemID"
+					}
+				}
+			],
+			"sid": 741079853304068
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-any-animation-finished",
+					"objectClass": "AttackEffect",
+					"sid": 229085863800431
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "AttackEffect",
+					"sid": 775841040537414
+				}
+			],
+			"sid": 169116363708926
 		}
 	],
 	"sid": 623186428620448

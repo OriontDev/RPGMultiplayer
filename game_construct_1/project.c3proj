@@ -8,6 +8,13 @@
 	"usedAddons": [
 		{
 			"type": "plugin",
+			"id": "AJAX",
+			"name": "AJAX",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Arr",
 			"name": "Array",
 			"author": "Scirra",
@@ -24,6 +31,13 @@
 			"type": "plugin",
 			"id": "Dictionary",
 			"name": "Dictionary",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Json",
+			"name": "JSON",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -149,7 +163,11 @@
 			"VerifyNoticeText",
 			"DebugArray",
 			"PendingUsernames",
-			"PunchingBags"
+			"PunchingBags",
+			"AJAX",
+			"WeaponDB",
+			"WeaponPickup",
+			"AttackEffect"
 		],
 		"subfolders": []
 	},
@@ -158,7 +176,8 @@
 	"containers": [],
 	"families": {
 		"items": [
-			"Enemies"
+			"Enemies",
+			"Pickups"
 		],
 		"subfolders": []
 	},
@@ -262,7 +281,16 @@
 			"subfolders": []
 		},
 		"general": {
-			"items": [],
+			"items": [
+				{
+					"name": "weapons.json",
+					"type": "application/json",
+					"sid": 332587517454177,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		}
 	},

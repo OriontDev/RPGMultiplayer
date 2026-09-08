@@ -93,9 +93,45 @@
 					"parameters": {
 						"text": "MyUsername"
 					}
+				},
+				{
+					"id": "request-project-file",
+					"objectClass": "AJAX",
+					"sid": 147354553629345,
+					"parameters": {
+						"tag": "\"LoadWeapons\"",
+						"file": {
+							"path": "weapons.json"
+						}
+					}
 				}
 			],
 			"sid": 170996053314423
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-completed",
+					"objectClass": "AJAX",
+					"sid": 232205455259587,
+					"parameters": {
+						"tag": "\"LoadWeapons\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-json",
+					"objectClass": "WeaponDB",
+					"sid": 202500305106266,
+					"parameters": {
+						"path": "\"LoadWeapons\"",
+						"json": "AJAX.LastData"
+					}
+				}
+			],
+			"sid": 544885931140963
 		},
 		{
 			"eventType": "block",
