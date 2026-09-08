@@ -36,6 +36,16 @@
 			"sid": 745739925580352
 		},
 		{
+			"eventType": "variable",
+			"name": "WeaponDBLoaded",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 511471745862002
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{

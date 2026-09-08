@@ -167,7 +167,8 @@
 			"AJAX",
 			"WeaponDB",
 			"WeaponPickup",
-			"AttackEffect"
+			"AttackEffect",
+			"DebugText2"
 		],
 		"subfolders": []
 	},

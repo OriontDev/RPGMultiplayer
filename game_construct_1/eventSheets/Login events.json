@@ -124,9 +124,9 @@
 				{
 					"id": "set-json",
 					"objectClass": "WeaponDB",
-					"sid": 202500305106266,
+					"sid": 965373081885586,
 					"parameters": {
-						"path": "\"LoadWeapons\"",
+						"path": "\"WeaponDB\"",
 						"json": "AJAX.LastData"
 					}
 				}

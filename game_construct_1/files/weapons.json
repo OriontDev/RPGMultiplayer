@@ -2,7 +2,7 @@
   "basic_sword": {
     "name": "Sword",
     "damage": 10,
-    "firerate": 5,
+    "firerate": 0.3,
     "type": "melee",
     "subtype": "Sword",
     "sfx": "sword.mp3",
