@@ -32,6 +32,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 273467350976165
+		},
+		{
+			"name": "NearEnemy",
+			"type": "boolean",
+			"desc": "Wether an enemy is within player's detection or not (player will turn to the enemy that is within their sight)",
+			"show": true,
+			"sid": 854104048931077
 		}
 	],
 	"behaviorTypes": [

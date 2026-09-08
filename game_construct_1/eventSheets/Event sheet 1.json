@@ -2,6 +2,10 @@
 	"name": "Event sheet 1",
 	"events": [
 		{
+			"eventType": "include",
+			"includeSheet": "PlayerCombat"
+		},
+		{
 			"eventType": "variable",
 			"name": "MyNetID",
 			"type": "number",
@@ -973,26 +977,37 @@
 											"parameters": {
 												"control": "left"
 											}
-										},
-										{
-											"id": "set-mirrored",
-											"objectClass": "Player",
-											"sid": 187227468069079,
-											"parameters": {
-												"state": "not-mirrored"
-											}
-										},
-										{
-											"id": "set-instvar-value",
-											"objectClass": "Player",
-											"sid": 923296028020951,
-											"parameters": {
-												"instance-variable": "FacingLeft",
-												"value": "0"
-											}
 										}
 									],
-									"sid": 716620630767906
+									"sid": 716620630767906,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "Player",
+													"sid": 686217938120622,
+													"parameters": {
+														"instance-variable": "NearEnemy"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Player",
+													"sid": 155605349839770,
+													"parameters": {
+														"instance-variable": "FacingLeft",
+														"value": "0"
+													}
+												}
+											],
+											"sid": 796014723346596
+										}
+									]
 								},
 								{
 									"eventType": "block",
@@ -1015,26 +1030,37 @@
 											"parameters": {
 												"control": "right"
 											}
-										},
-										{
-											"id": "set-mirrored",
-											"objectClass": "Player",
-											"sid": 117979582379103,
-											"parameters": {
-												"state": "mirrored"
-											}
-										},
-										{
-											"id": "set-instvar-value",
-											"objectClass": "Player",
-											"sid": 909601358619835,
-											"parameters": {
-												"instance-variable": "FacingLeft",
-												"value": "1"
-											}
 										}
 									],
-									"sid": 772955625717022
+									"sid": 772955625717022,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "Player",
+													"sid": 263394074204947,
+													"parameters": {
+														"instance-variable": "NearEnemy"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Player",
+													"sid": 671986304052399,
+													"parameters": {
+														"instance-variable": "FacingLeft",
+														"value": "1"
+													}
+												}
+											],
+											"sid": 253443402222312
+										}
+									]
 								},
 								{
 									"eventType": "block",
@@ -1139,7 +1165,35 @@
 											}
 										}
 									],
-									"sid": 835620771030855
+									"sid": 835620771030855,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "Player",
+													"sid": 620172329347197,
+													"parameters": {
+														"instance-variable": "NearEnemy"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Player",
+													"sid": 535575886343566,
+													"parameters": {
+														"instance-variable": "FacingLeft",
+														"value": "0"
+													}
+												}
+											],
+											"sid": 655220016750242
+										}
+									]
 								},
 								{
 									"eventType": "block",
@@ -1175,7 +1229,35 @@
 											}
 										}
 									],
-									"sid": 229690816852414
+									"sid": 229690816852414,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "Player",
+													"sid": 185969767879660,
+													"parameters": {
+														"instance-variable": "NearEnemy"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Player",
+													"sid": 891020247160853,
+													"parameters": {
+														"instance-variable": "FacingLeft",
+														"value": "1"
+													}
+												}
+											],
+											"sid": 825537970506495
+										}
+									]
 								},
 								{
 									"eventType": "block",

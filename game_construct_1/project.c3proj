@@ -109,6 +109,13 @@
 			"name": "Scroll To",
 			"author": "Scirra",
 			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "solid",
+			"name": "Solid",
+			"author": "Scirra",
+			"bundled": false
 		}
 	],
 	"uniqueId": "t5o1vwj90an",
@@ -141,7 +148,8 @@
 			"Sprite",
 			"VerifyNoticeText",
 			"DebugArray",
-			"PendingUsernames"
+			"PendingUsernames",
+			"PunchingBags"
 		],
 		"subfolders": []
 	},
@@ -149,7 +157,9 @@
 	"autosaveData": null,
 	"containers": [],
 	"families": {
-		"items": [],
+		"items": [
+			"Enemies"
+		],
 		"subfolders": []
 	},
 	"layouts": {
@@ -164,7 +174,8 @@
 		"items": [
 			"Event sheet 1",
 			"Login events",
-			"SignIn events"
+			"SignIn events",
+			"PlayerCombat"
 		],
 		"subfolders": []
 	},

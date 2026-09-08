@@ -1,0 +1,138 @@
+{
+	"name": "PlayerCombat",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "EnemyDetectRadius",
+			"type": "number",
+			"initialValue": "150",
+			"comment": "How close enemy have to be to the player for the player to turn to them",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 361172474624412
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 814605836191691,
+					"parameters": {
+						"object": "Player"
+					}
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 267267112748559
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-instvar",
+					"objectClass": "Player",
+					"sid": 979400444430226,
+					"parameters": {
+						"instance-variable": "NearEnemy",
+						"value": "false"
+					}
+				}
+			],
+			"sid": 604595656581094,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-nearestfurthest",
+							"objectClass": "Enemies",
+							"sid": 489716522241178,
+							"parameters": {
+								"which": "nearest",
+								"x": "Player.X",
+								"y": "Player.Y",
+								"z": "0",
+								"pick-all-tied": false
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 107390394444550,
+							"parameters": {
+								"first-value": "distance(Player.X, Player.Y, Enemies.X, Enemies.Y)",
+								"comparison": 3,
+								"second-value": "EnemyDetectRadius"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 932500768777393,
+							"parameters": {
+								"instance-variable": "NearEnemy",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 419343058447572,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 933396556862905,
+									"parameters": {
+										"first-value": "Enemies.X",
+										"comparison": 2,
+										"second-value": "Player.X"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 305097984657295,
+									"parameters": {
+										"instance-variable": "FacingLeft",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 904773783847582
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 570088039702898
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 489906999549272,
+									"parameters": {
+										"instance-variable": "FacingLeft",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 405110845732101
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 623186428620448
+}

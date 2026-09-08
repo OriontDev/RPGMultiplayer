@@ -1,0 +1,61 @@
+{
+	"name": "Enemies",
+	"plugin-id": "Sprite",
+	"sid": 876682702892236,
+	"instanceVariables": [
+		{
+			"name": "Health",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 895962537473461
+		},
+		{
+			"name": "MaxHealth",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 333745455589961
+		},
+		{
+			"name": "Tier",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 328949186543282
+		},
+		{
+			"name": "IsInvincible",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 909021822106399
+		},
+		{
+			"name": "MoveSpeed",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 354531908667069
+		},
+		{
+			"name": "Type",
+			"type": "string",
+			"desc": "(text: \"melee\" / \"ranged\" / \"magic\" / \"none\")",
+			"show": true,
+			"sid": 921836760817139
+		},
+		{
+			"name": "State",
+			"type": "string",
+			"desc": "(text: \"idle\" / \"chase\" / \"attack\" / \"dead\")",
+			"show": true,
+			"sid": 301653212698131
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"PunchingBags"
+	]
+}
