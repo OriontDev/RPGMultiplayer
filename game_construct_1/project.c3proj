@@ -168,13 +168,21 @@
 			"WeaponDB",
 			"WeaponPickup",
 			"AttackEffect",
-			"DebugText2"
+			"DebugText2",
+			"PlayerWeapon"
 		],
 		"subfolders": []
 	},
 	"functionsName": "Functions",
 	"autosaveData": null,
-	"containers": [],
+	"containers": [
+		{
+			"members": [
+				"Player",
+				"PlayerWeapon"
+			]
+		}
+	],
 	"families": {
 		"items": [
 			"Enemies",

@@ -46,6 +46,18 @@
 						"exportQuality": 0.8,
 						"fileType": "image/png",
 						"imageSpriteId": 4224224,
+						"collisionPoly": {
+							"points": [
+								1,
+								1,
+								0,
+								1,
+								0,
+								0,
+								1,
+								0
+							]
+						},
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
@@ -60,6 +72,18 @@
 						"exportQuality": 0.8,
 						"fileType": "image/png",
 						"imageSpriteId": 2634705,
+						"collisionPoly": {
+							"points": [
+								1,
+								1,
+								0,
+								1,
+								0,
+								0,
+								1,
+								0
+							]
+						},
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
@@ -74,6 +98,18 @@
 						"exportQuality": 0.8,
 						"fileType": "image/png",
 						"imageSpriteId": 5647488,
+						"collisionPoly": {
+							"points": [
+								1,
+								1,
+								0,
+								1,
+								0,
+								0,
+								1,
+								0
+							]
+						},
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
@@ -88,6 +124,18 @@
 						"exportQuality": 0.8,
 						"fileType": "image/png",
 						"imageSpriteId": 1728804,
+						"collisionPoly": {
+							"points": [
+								1,
+								1,
+								0,
+								1,
+								0,
+								0,
+								1,
+								0
+							]
+						},
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
@@ -102,6 +150,18 @@
 						"exportQuality": 0.8,
 						"fileType": "image/png",
 						"imageSpriteId": 3594809,
+						"collisionPoly": {
+							"points": [
+								1,
+								1,
+								0,
+								1,
+								0,
+								0,
+								1,
+								0
+							]
+						},
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
@@ -116,6 +176,18 @@
 						"exportQuality": 0.8,
 						"fileType": "image/png",
 						"imageSpriteId": 1550712,
+						"collisionPoly": {
+							"points": [
+								1,
+								1,
+								0,
+								1,
+								0,
+								0,
+								1,
+								0
+							]
+						},
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""

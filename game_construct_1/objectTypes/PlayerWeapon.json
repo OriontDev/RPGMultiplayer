@@ -1,0 +1,93 @@
+{
+	"name": "PlayerWeapon",
+	"plugin-id": "Sprite",
+	"sid": 184330461325808,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7108366,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 701327482144584,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 332,
+						"height": 179,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 4291711,
+						"collisionPoly": {
+							"points": [
+								0.927710843373494,
+								0.5195530726256983,
+								0.8524096385542168,
+								0.5865921787709497,
+								0.7951807228915663,
+								0.6201117318435754,
+								0.3313253012048193,
+								0.7597765363128491,
+								0.27409638554216864,
+								0.7597765363128491,
+								0.10542168674698793,
+								0.5865921787709497,
+								0.06927710843373491,
+								0.4860335195530726,
+								0.10542168674698793,
+								0.4134078212290503,
+								0.27409638554216864,
+								0.24022346368715086,
+								0.3313253012048193,
+								0.24022346368715086,
+								0.7951807228915663,
+								0.3798882681564246,
+								0.8524096385542168,
+								0.4134078212290503
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 219742644894851,
+				"name": "basic_sword_still",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}
