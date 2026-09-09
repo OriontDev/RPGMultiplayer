@@ -5,7 +5,9 @@
     "firerate": 0.3,
     "type": "melee",
     "subtype": "Sword",
-    "sfx": "sword.mp3",
+    "critrate": 30,
+    "critdamage": 2,
+    "sfx": "Weapons/Swords/basic_sword",
     "animation": {
         "still": "basic_sword_still",
         "attack": "basic_sword_attack",
@@ -18,7 +20,7 @@
     "firerate": 0.5,
     "type": "melee",
     "subtype": "Sword",
-    "sfx": "spear.mp3",
+    "sfx": "Weapons/Swords/basic_sword",
     "animation": {
         "still": "basic_sword_still",
         "attack": "basic_spear_attack"
@@ -30,7 +32,7 @@
     "firerate": 0.8,
     "type": "ranged",
     "subtype": "Bow",
-    "sfx": "bow.mp3",
+    "sfx": "Weapons/Swords/basic_sword",
     "animation": {
         "still": "basic_bow_still",
         "attack": "basic_bow_attack"

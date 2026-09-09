@@ -22,6 +22,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Button",
 			"name": "Button",
 			"author": "Scirra",
@@ -191,7 +198,8 @@
 			"AttackEffect",
 			"DebugText2",
 			"PlayerWeapon",
-			"DamageNumber"
+			"DamageNumber",
+			"Audio"
 		],
 		"subfolders": []
 	},
@@ -236,7 +244,37 @@
 		},
 		"sound": {
 			"items": [],
-			"subfolders": []
+			"subfolders": [
+				{
+					"items": [
+						{
+							"name": "weaponSwitch.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 756494896208156,
+							"file-info": {
+								"purpose": "none"
+							}
+						}
+					],
+					"subfolders": [
+						{
+							"items": [
+								{
+									"name": "basic_sword.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 488970066092182,
+									"file-info": {
+										"purpose": "none"
+									}
+								}
+							],
+							"subfolders": [],
+							"name": "Swords"
+						}
+					],
+					"name": "Weapons"
+				}
+			]
 		},
 		"music": {
 			"items": [],
@@ -247,7 +285,16 @@
 			"subfolders": []
 		},
 		"font": {
-			"items": [],
+			"items": [
+				{
+					"name": "VCR_OSD_MONO_1.001.woff",
+					"type": "application/font-woff",
+					"sid": 804510821672409,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"icon": {
@@ -359,7 +406,7 @@
 		"fov": 0.7853981633974483,
 		"useLoaderLayout": false,
 		"fullscreenMode": "letterbox-integer-scale",
-		"fullscreenQuality": "low",
+		"fullscreenQuality": "high",
 		"viewportFit": "auto",
 		"backgroundColor": [
 			0,

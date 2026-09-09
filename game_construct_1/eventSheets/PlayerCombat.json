@@ -767,14 +767,27 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 363970031709350,
+					"sid": 879920109158722,
 					"parameters": {
 						"object-to-create": "AttackEffect",
-						"layer": "0",
+						"layer": "2",
 						"x": "Player.X",
 						"y": "Player.Y",
 						"create-hierarchy": false,
 						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "play-by-name",
+					"objectClass": "Audio",
+					"sid": 320846366294413,
+					"parameters": {
+						"folder": "sounds",
+						"audio-file-name": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".sfx\")",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"sfx\""
 					}
 				},
 				{
@@ -888,6 +901,16 @@
 					"sid": 368310762119181
 				},
 				{
+					"eventType": "variable",
+					"name": "HitDamage",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 427869563703539
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -909,33 +932,12 @@
 					],
 					"actions": [
 						{
-							"id": "create-object",
+							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 514372777791036,
+							"sid": 660698968436013,
 							"parameters": {
-								"object-to-create": "DamageNumber",
-								"layer": "2",
-								"x": "Enemies.X",
-								"y": "Enemies.Y",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-angle-of-motion",
-							"objectClass": "DamageNumber",
-							"sid": 814944613288457,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"angle": "270"
-							}
-						},
-						{
-							"id": "set-text",
-							"objectClass": "DamageNumber",
-							"sid": 493274424910912,
-							"parameters": {
-								"text": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\")"
+								"variable": "HitDamage",
+								"value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\"))"
 							}
 						}
 					],
@@ -945,9 +947,126 @@
 							"eventType": "block",
 							"conditions": [
 								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 800221015383269,
+									"parameters": {
+										"first-value": "random(100)",
+										"comparison": 2,
+										"second-value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".critrate\"))"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 510975449635486,
+									"parameters": {
+										"variable": "HitDamage",
+										"value": "HitDamage + (HitDamage * float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".critdamage\")))"
+									}
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 781560292800634,
+									"parameters": {
+										"object-to-create": "DamageNumber",
+										"layer": "2",
+										"x": "Enemies.X",
+										"y": "Enemies.Y",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-font-color",
+									"objectClass": "DamageNumber",
+									"sid": 627342984148205,
+									"parameters": {
+										"color": "rgbEx(255, 234, 0)"
+									}
+								},
+								{
+									"id": "set-angle-of-motion",
+									"objectClass": "DamageNumber",
+									"sid": 664169702169292,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"angle": "270"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "DamageNumber",
+									"sid": 535748603936329,
+									"parameters": {
+										"text": "\"[bold][lineThickness=1][outline=black]\" & HitDamage & \"[/outline][/lineThickness][/bold]\""
+									}
+								}
+							],
+							"sid": 987709425912068
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 102689469063721
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 142496222999782,
+									"parameters": {
+										"variable": "HitDamage",
+										"value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\")"
+									}
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 941056156481448,
+									"parameters": {
+										"object-to-create": "DamageNumber",
+										"layer": "2",
+										"x": "Enemies.X",
+										"y": "Enemies.Y",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-angle-of-motion",
+									"objectClass": "DamageNumber",
+									"sid": 288299368256338,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"angle": "270"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "DamageNumber",
+									"sid": 345402554390413,
+									"parameters": {
+										"text": "\"[bold][lineThickness=1][outline=black]\" & WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\") & \"[/outline][/lineThickness][/bold]\""
+									}
+								}
+							],
+							"sid": 474523468135734
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
 									"id": "is-boolean-instance-variable-set",
 									"objectClass": "Enemies",
-									"sid": 619829363078583,
+									"sid": 567075140095190,
 									"parameters": {
 										"instance-variable": "IsInvincible"
 									},
@@ -958,14 +1077,14 @@
 								{
 									"id": "subtract-from-instvar",
 									"objectClass": "Enemies",
-									"sid": 397928693527647,
+									"sid": 683668606614099,
 									"parameters": {
 										"instance-variable": "Health",
-										"value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\")"
+										"value": "HitDamage"
 									}
 								}
 							],
-							"sid": 825577212159818
+							"sid": 734471841180047
 						}
 					]
 				}
@@ -980,6 +1099,16 @@
 					"sid": 118116715202782,
 					"parameters": {
 						"key": 49
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 834360713516030,
+					"parameters": {
+						"instance-variable": "ActiveSlot",
+						"comparison": 1,
+						"value": "1"
 					}
 				}
 			],
@@ -1001,6 +1130,20 @@
 						"instance-variable": "EquippedItemID",
 						"value": "Player.Slot1_ItemID"
 					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 180138727885611,
+					"parameters": {
+						"audio-file": {
+							"path": "Weapons/weaponSwitch"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"sfx\""
+					}
 				}
 			],
 			"sid": 996826279144327
@@ -1014,6 +1157,16 @@
 					"sid": 743761242976848,
 					"parameters": {
 						"key": 50
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 782126732702529,
+					"parameters": {
+						"instance-variable": "ActiveSlot",
+						"comparison": 1,
+						"value": "2"
 					}
 				}
 			],
@@ -1034,6 +1187,20 @@
 					"parameters": {
 						"instance-variable": "EquippedItemID",
 						"value": "Player.Slot2_ItemID"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 657236976145349,
+					"parameters": {
+						"audio-file": {
+							"path": "Weapons/weaponSwitch"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"sfx\""
 					}
 				}
 			],
