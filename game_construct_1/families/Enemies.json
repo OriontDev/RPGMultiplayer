@@ -51,9 +51,22 @@
 			"desc": "(text: \"idle\" / \"chase\" / \"attack\" / \"dead\")",
 			"show": true,
 			"sid": 301653212698131
+		},
+		{
+			"name": "Name",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 225191298761829
 		}
 	],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 385695143412373
+		}
+	],
 	"effectTypes": [],
 	"members": [
 		"PunchingBags"

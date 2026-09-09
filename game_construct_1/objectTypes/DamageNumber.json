@@ -1,0 +1,21 @@
+{
+	"name": "DamageNumber",
+	"plugin-id": "Text",
+	"sid": 396975048989844,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 926543779134774
+		},
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 526583323562604
+		}
+	],
+	"effectTypes": []
+}
