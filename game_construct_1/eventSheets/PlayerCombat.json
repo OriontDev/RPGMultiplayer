@@ -57,6 +57,14 @@
 						"instance-variable": "NearEnemy",
 						"value": "false"
 					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "CloseEnemyMarker",
+					"sid": 501039579432503,
+					"parameters": {
+						"visibility": "invisible"
+					}
 				}
 			],
 			"sid": 604595656581094,
@@ -103,6 +111,23 @@
 							"sid": 698885036928179,
 							"parameters": {
 								"angle": "angle(Player.X, Player.Y, Enemies.X, Enemies.Y)"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "CloseEnemyMarker",
+							"sid": 860757706439163,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-position-to-another-object",
+							"objectClass": "CloseEnemyMarker",
+							"sid": 284458080290756,
+							"parameters": {
+								"object": "Enemies",
+								"image-point-optional": "1"
 							}
 						}
 					],
@@ -2055,6 +2080,22 @@
 			],
 			"sid": 132988214564165,
 			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "Player",
+					"sid": 757000158161748,
+					"parameters": {
+						"instance-variable": "NearEnemy"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 884230705301121
 		}
 	],
 	"sid": 623186428620448

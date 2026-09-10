@@ -1,17 +1,11 @@
 {
-	"name": "PunchingBags",
+	"name": "CloseEnemyMarker",
 	"plugin-id": "Sprite",
-	"sid": 367988651208426,
+	"sid": 874881931860944,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
-	"behaviorTypes": [
-		{
-			"behaviorId": "solid",
-			"name": "Solid",
-			"sid": 494496260267362
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [
@@ -26,32 +20,13 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 8250020,
-						"collisionPoly": {
-							"points": [
-								0.33599999999999985,
-								0.42399993896484367,
-								0.6960002441406252,
-								0.42,
-								0.7040001220703124,
-								0.988,
-								0.33199987792968744,
-								1
-							]
-						},
+						"imageSpriteId": 6192355,
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "Image Point 1",
-								"x": 0.516,
-								"y": 0.944
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 279239520036600,
+				"sid": 908097861176406,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

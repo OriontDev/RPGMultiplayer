@@ -199,7 +199,8 @@
 			"DebugText2",
 			"PlayerWeapon",
 			"DamageNumber",
-			"Audio"
+			"Audio",
+			"CloseEnemyMarker"
 		],
 		"subfolders": []
 	},
