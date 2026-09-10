@@ -121,6 +121,174 @@
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
+					"sid": 120427453675550
+				}
+			],
+			"actions": [
+				{
+					"id": "sync-object-2",
+					"objectClass": "Multiplayer",
+					"sid": 896691706225919,
+					"parameters": {
+						"object": "WeaponPickup",
+						"x": true,
+						"y": true,
+						"angle": false,
+						"precision": "normal-float-4-bytes",
+						"bandwidth": "low-bandwidth-highly-predictable"
+					}
+				},
+				{
+					"id": "sync-object-2",
+					"objectClass": "Multiplayer",
+					"sid": 421043106022389,
+					"parameters": {
+						"object": "AttackEffect",
+						"x": true,
+						"y": true,
+						"angle": true,
+						"precision": "normal-float-4-bytes",
+						"bandwidth": "low-bandwidth-highly-predictable"
+					}
+				}
+			],
+			"sid": 896171396976535
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 712719501055079
+				}
+			],
+			"actions": [],
+			"sid": 303460512523549,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "OrigItemID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 793768375920981
+				},
+				{
+					"eventType": "variable",
+					"name": "OrigX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 510840711442275
+				},
+				{
+					"eventType": "variable",
+					"name": "OrigY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 477748044243182
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 495145114538499,
+							"parameters": {
+								"object": "WeaponPickup"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 446323948394394,
+							"parameters": {
+								"variable": "OrigItemID",
+								"value": "WeaponPickup.ItemID"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 437076606903557,
+							"parameters": {
+								"variable": "OrigX",
+								"value": "WeaponPickup.X"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 698467810268505,
+							"parameters": {
+								"variable": "OrigY",
+								"value": "WeaponPickup.Y"
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "WeaponPickup",
+							"sid": 207716930962787
+						}
+					],
+					"sid": 550469208867733,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-host",
+									"objectClass": "Multiplayer",
+									"sid": 624228761330873
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 741353754116921,
+									"parameters": {
+										"object-to-create": "WeaponPickup",
+										"layer": "0",
+										"x": "OrigX",
+										"y": "OrigY",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "WeaponPickup",
+									"sid": 935019999003114,
+									"parameters": {
+										"instance-variable": "ItemID",
+										"value": "OrigItemID"
+									}
+								}
+							],
+							"sid": 528242180098892
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
 					"sid": 216040548570291
 				}
 			],
@@ -529,6 +697,67 @@
 				}
 			],
 			"sid": 375825776339091
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-message",
+					"objectClass": "Multiplayer",
+					"sid": 464829191516810,
+					"parameters": {
+						"tag": "\"equipchange\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 458111467880505,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 106969205975857,
+							"parameters": {
+								"object": "Player"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 441686602629390,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 454856190004032,
+									"parameters": {
+										"instance-variable": "NetID",
+										"comparison": 0,
+										"value": "int(tokenat(Multiplayer.Message, 0, \"|\"))"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 944917416704235,
+									"parameters": {
+										"instance-variable": "EquippedItemID",
+										"value": "tokenat(Multiplayer.Message, 1, \"|\")"
+									}
+								}
+							],
+							"sid": 845446687656833
+						}
+					]
+				}
+			]
 		},
 		{
 			"eventType": "block",
