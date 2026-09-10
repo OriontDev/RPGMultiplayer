@@ -137,19 +137,6 @@
 						"precision": "normal-float-4-bytes",
 						"bandwidth": "low-bandwidth-highly-predictable"
 					}
-				},
-				{
-					"id": "sync-object-2",
-					"objectClass": "Multiplayer",
-					"sid": 421043106022389,
-					"parameters": {
-						"object": "AttackEffect",
-						"x": true,
-						"y": true,
-						"angle": true,
-						"precision": "normal-float-4-bytes",
-						"bandwidth": "low-bandwidth-highly-predictable"
-					}
 				}
 			],
 			"sid": 896171396976535
@@ -163,7 +150,36 @@
 					"sid": 712719501055079
 				}
 			],
-			"actions": [],
+			"actions": [
+				{
+					"id": "sync-object-2",
+					"objectClass": "Multiplayer",
+					"sid": 420650048670312,
+					"parameters": {
+						"object": "AttackEffect",
+						"x": true,
+						"y": true,
+						"angle": true,
+						"precision": "normal-float-4-bytes",
+						"bandwidth": "low-bandwidth-highly-predictable"
+					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
+					"sid": 796192182039009,
+					"parameters": {
+						"object": "AttackEffect",
+						"instance-variable": {
+							"name": "NetID",
+							"objectClass": "AttackEffect"
+						},
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none",
+						"client-value-tag": "\"attackeffectnetid\""
+					}
+				}
+			],
 			"sid": 303460512523549,
 			"children": [
 				{

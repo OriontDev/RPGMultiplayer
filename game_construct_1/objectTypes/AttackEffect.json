@@ -4,7 +4,22 @@
 	"sid": 884687079915877,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "NetID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 758791597026206
+		},
+		{
+			"name": "AnimationSet",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 816268851977676
+		}
+	],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {

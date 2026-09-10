@@ -216,10 +216,6 @@
 			]
 		},
 		{
-			"eventType": "comment",
-			"text": "Handles get/drop item (cclick to open)"
-		},
-		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -926,382 +922,6 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "key-is-down",
-					"objectClass": "Keyboard",
-					"sid": 905720827557858,
-					"parameters": {
-						"key": 75
-					}
-				},
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Player",
-					"sid": 933094534429399,
-					"parameters": {
-						"instance-variable": "AttackTimer",
-						"comparison": 3,
-						"value": "0"
-					}
-				},
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Player",
-					"sid": 478978800862788,
-					"parameters": {
-						"instance-variable": "EquippedItemID",
-						"comparison": 1,
-						"value": "\"\""
-					}
-				},
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "PlayerWeapon",
-					"sid": 614170990591948,
-					"parameters": {
-						"instance-variable": "NetID",
-						"comparison": 0,
-						"value": "Player.NetID"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "create-object",
-					"objectClass": "System",
-					"sid": 879920109158722,
-					"parameters": {
-						"object-to-create": "AttackEffect",
-						"layer": "2",
-						"x": "Player.X",
-						"y": "Player.Y",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "play-by-name",
-					"objectClass": "Audio",
-					"sid": 320846366294413,
-					"parameters": {
-						"folder": "sounds",
-						"audio-file-name": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".sfx\")",
-						"loop": "not-looping",
-						"volume": "0",
-						"stereo-pan": "0",
-						"tag-optional": "\"sfx\""
-					}
-				},
-				{
-					"id": "add-child",
-					"objectClass": "Player",
-					"sid": 951234084405734,
-					"parameters": {
-						"child": "AttackEffect",
-						"transform-x": true,
-						"transform-y": true,
-						"transform-z-elevation": false,
-						"transform-w": false,
-						"transform-h": false,
-						"transform-d": false,
-						"transform-a": false,
-						"transform-o": false,
-						"transform-visibility": false,
-						"destroy-with-parent": false
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
-					"sid": 249440616330843,
-					"parameters": {
-						"instance-variable": "AttackTimer",
-						"value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".firerate\")"
-					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "DebugText2",
-					"sid": 504910631793363,
-					"parameters": {
-						"text": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".firerate\") & WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".name\")"
-					}
-				},
-				{
-					"id": "set-animation",
-					"objectClass": "AttackEffect",
-					"sid": 113059001414025,
-					"parameters": {
-						"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.swoosh\")",
-						"from": "beginning"
-					}
-				}
-			],
-			"sid": 401172419296292,
-			"disabled": true,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "Player",
-							"sid": 848839074027143,
-							"parameters": {
-								"instance-variable": "NearEnemy"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-angle",
-							"objectClass": "AttackEffect",
-							"sid": 491447167442869,
-							"parameters": {
-								"angle": "angle(Player.X, Player.Y, Enemies.X, Enemies.Y)"
-							}
-						},
-						{
-							"id": "set-position",
-							"objectClass": "AttackEffect",
-							"sid": 131714519828485,
-							"parameters": {
-								"x": "Player.X + cos(AttackEffect.Angle) * AttackEffectDistance",
-								"y": "Player.Y + sin(AttackEffect.Angle) * AttackEffectDistance"
-							}
-						}
-					],
-					"sid": 221277897628754,
-					"disabled": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 928920913213814
-						}
-					],
-					"actions": [
-						{
-							"id": "set-angle",
-							"objectClass": "AttackEffect",
-							"sid": 891415098434788,
-							"parameters": {
-								"angle": "PlayerWeapon.Angle"
-							}
-						},
-						{
-							"id": "set-position",
-							"objectClass": "AttackEffect",
-							"sid": 316067547917588,
-							"parameters": {
-								"x": "Player.X + cos(PlayerWeapon.Angle) * AttackEffectDistance",
-								"y": "Player.Y + sin(PlayerWeapon.Angle) * AttackEffectDistance"
-							}
-						}
-					],
-					"sid": 368310762119181,
-					"disabled": true
-				},
-				{
-					"eventType": "variable",
-					"name": "HitDamage",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 427869563703539
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 513988064427482,
-							"parameters": {
-								"object": "Enemies"
-							}
-						},
-						{
-							"id": "is-overlapping-another-object",
-							"objectClass": "Enemies",
-							"sid": 529381351516791,
-							"parameters": {
-								"object": "AttackEffect"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 660698968436013,
-							"parameters": {
-								"variable": "HitDamage",
-								"value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\"))"
-							}
-						}
-					],
-					"sid": 308527325680781,
-					"disabled": true,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 800221015383269,
-									"parameters": {
-										"first-value": "random(100)",
-										"comparison": 2,
-										"second-value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".critrate\"))"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 510975449635486,
-									"parameters": {
-										"variable": "HitDamage",
-										"value": "HitDamage + (HitDamage * float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".critdamage\")))"
-									}
-								},
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 781560292800634,
-									"parameters": {
-										"object-to-create": "DamageNumber",
-										"layer": "2",
-										"x": "Enemies.X",
-										"y": "Enemies.Y",
-										"create-hierarchy": false,
-										"template-name": "\"\""
-									}
-								},
-								{
-									"id": "set-font-color",
-									"objectClass": "DamageNumber",
-									"sid": 627342984148205,
-									"parameters": {
-										"color": "rgbEx(255, 234, 0)"
-									}
-								},
-								{
-									"id": "set-angle-of-motion",
-									"objectClass": "DamageNumber",
-									"sid": 664169702169292,
-									"behaviorType": "Bullet",
-									"parameters": {
-										"angle": "270"
-									}
-								},
-								{
-									"id": "set-text",
-									"objectClass": "DamageNumber",
-									"sid": 535748603936329,
-									"parameters": {
-										"text": "\"[bold][lineThickness=1][outline=black]\" & HitDamage & \"[/outline][/lineThickness][/bold]\""
-									}
-								}
-							],
-							"sid": 987709425912068,
-							"disabled": true
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 102689469063721
-								}
-							],
-							"actions": [
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 142496222999782,
-									"parameters": {
-										"variable": "HitDamage",
-										"value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\")"
-									}
-								},
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 941056156481448,
-									"parameters": {
-										"object-to-create": "DamageNumber",
-										"layer": "2",
-										"x": "Enemies.X",
-										"y": "Enemies.Y",
-										"create-hierarchy": false,
-										"template-name": "\"\""
-									}
-								},
-								{
-									"id": "set-angle-of-motion",
-									"objectClass": "DamageNumber",
-									"sid": 288299368256338,
-									"behaviorType": "Bullet",
-									"parameters": {
-										"angle": "270"
-									}
-								},
-								{
-									"id": "set-text",
-									"objectClass": "DamageNumber",
-									"sid": 345402554390413,
-									"parameters": {
-										"text": "\"[bold][lineThickness=1][outline=black]\" & WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\") & \"[/outline][/lineThickness][/bold]\""
-									}
-								}
-							],
-							"sid": 474523468135734,
-							"disabled": true
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-boolean-instance-variable-set",
-									"objectClass": "Enemies",
-									"sid": 567075140095190,
-									"parameters": {
-										"instance-variable": "IsInvincible"
-									},
-									"isInverted": true
-								}
-							],
-							"actions": [
-								{
-									"id": "subtract-from-instvar",
-									"objectClass": "Enemies",
-									"sid": 683668606614099,
-									"parameters": {
-										"instance-variable": "Health",
-										"value": "HitDamage"
-									}
-								}
-							],
-							"sid": 734471841180047,
-							"disabled": true
-						}
-					]
-				}
-			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
 					"id": "on-any-animation-finished",
 					"objectClass": "AttackEffect",
 					"sid": 229085863800431
@@ -1879,6 +1499,15 @@
 							}
 						},
 						{
+							"id": "set-instvar-value",
+							"objectClass": "AttackEffect",
+							"sid": 954585601191658,
+							"parameters": {
+								"instance-variable": "NetID",
+								"value": "PlayerNetID"
+							}
+						},
+						{
 							"id": "play-by-name",
 							"objectClass": "Audio",
 							"sid": 422840203899695,
@@ -1929,7 +1558,7 @@
 						{
 							"id": "set-animation",
 							"objectClass": "AttackEffect",
-							"sid": 150803060417990,
+							"sid": 689970626584114,
 							"parameters": {
 								"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.swoosh\")",
 								"from": "beginning"
@@ -2330,6 +1959,102 @@
 				}
 			],
 			"sid": 739148295299441
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "AttackEffect",
+					"sid": 284666547723008
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 762798169023435,
+					"parameters": {
+						"instance-variable": "NetID",
+						"comparison": 0,
+						"value": "AttackEffect.NetID"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "AttackEffect",
+					"sid": 819914951835357,
+					"parameters": {
+						"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.swoosh\")",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 703266974277622,
+			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 447601706730250
+				},
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "AttackEffect",
+					"sid": 171715845223498,
+					"parameters": {
+						"instance-variable": "AnimationSet"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 538905144720232,
+			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 984824623224911
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 156059678250360,
+					"parameters": {
+						"instance-variable": "NetID",
+						"comparison": 0,
+						"value": "AttackEffect.NetID"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "AttackEffect",
+					"sid": 532613988161665,
+					"parameters": {
+						"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.swoosh\")",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-boolean-instvar",
+					"objectClass": "AttackEffect",
+					"sid": 778810287750377,
+					"parameters": {
+						"instance-variable": "AnimationSet",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 132988214564165,
+			"disabled": true
 		}
 	],
 	"sid": 623186428620448

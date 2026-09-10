@@ -579,7 +579,10 @@
 					"uid": 30,
 					"sid": 956188215378017,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"NetID": -1,
+						"AnimationSet": false
+					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
