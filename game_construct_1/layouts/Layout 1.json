@@ -253,41 +253,6 @@
 					}
 				},
 				{
-					"type": "WeaponPickup",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "basic_sword_still",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 29,
-					"sid": 134799763674546,
-					"tags": "",
-					"instanceVariables": {
-						"ItemID": "basic_sword"
-					},
-					"behaviors": {},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 232,
-						"y": 145,
-						"width": 42,
-						"height": 23,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"z": 0,
-						"angle": 0
-					}
-				},
-				{
 					"type": "DebugText2",
 					"properties": {
 						"text": "Text",
@@ -348,7 +313,9 @@
 					"uid": 32,
 					"sid": 532836790361850,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"NetID": -1
+					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
@@ -430,6 +397,41 @@
 						"height": 29,
 						"originX": 0,
 						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "WeaponPickup",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "basic_sword_still",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 29,
+					"sid": 134799763674546,
+					"tags": "",
+					"instanceVariables": {
+						"ItemID": "basic_sword"
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 232,
+						"y": 145,
+						"width": 42,
+						"height": 23,
+						"originX": 0.5,
+						"originY": 0.5,
 						"color": [
 							1,
 							1,

@@ -33,6 +33,16 @@
 					}
 				},
 				{
+					"id": "compare-instance-variable",
+					"objectClass": "PlayerWeapon",
+					"sid": 567384096438956,
+					"parameters": {
+						"instance-variable": "NetID",
+						"comparison": 0,
+						"value": "Player.NetID"
+					}
+				},
+				{
 					"id": "is-host",
 					"objectClass": "Multiplayer",
 					"sid": 267267112748559
@@ -550,7 +560,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "Sub event of 14"
+							"text": "Sub event of 17"
 						},
 						{
 							"eventType": "block",
@@ -590,7 +600,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "Sub event of 14"
+							"text": "Sub event of 17"
 						},
 						{
 							"eventType": "block",
@@ -629,12 +639,6 @@
 							"sid": 325070644995027
 						}
 					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [],
-					"actions": [],
-					"sid": 308680679276775
 				}
 			]
 		},
@@ -649,6 +653,16 @@
 						"instance-variable": "EquippedItemID",
 						"comparison": 0,
 						"value": "\"\""
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "PlayerWeapon",
+					"sid": 258429832504916,
+					"parameters": {
+						"instance-variable": "NetID",
+						"comparison": 0,
+						"value": "Player.NetID"
 					}
 				}
 			],
@@ -675,6 +689,16 @@
 						"instance-variable": "EquippedItemID",
 						"comparison": 1,
 						"value": "\"\""
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "PlayerWeapon",
+					"sid": 521158715506156,
+					"parameters": {
+						"instance-variable": "NetID",
+						"comparison": 0,
+						"value": "Player.NetID"
 					}
 				}
 			],
@@ -760,6 +784,16 @@
 						"instance-variable": "EquippedItemID",
 						"comparison": 1,
 						"value": "\"\""
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "PlayerWeapon",
+					"sid": 614170990591948,
+					"parameters": {
+						"instance-variable": "NetID",
+						"comparison": 0,
+						"value": "Player.NetID"
 					}
 				}
 			],
@@ -1232,6 +1266,16 @@
 					"objectClass": "Player",
 					"sid": 803684596435810,
 					"behaviorType": "8Direction"
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "PlayerWeapon",
+					"sid": 155817534411031,
+					"parameters": {
+						"instance-variable": "NetID",
+						"comparison": 0,
+						"value": "Player.NetID"
+					}
 				},
 				{
 					"id": "is-boolean-instance-variable-set",

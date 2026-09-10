@@ -205,14 +205,7 @@
 	},
 	"functionsName": "Functions",
 	"autosaveData": null,
-	"containers": [
-		{
-			"members": [
-				"Player",
-				"PlayerWeapon"
-			]
-		}
-	],
+	"containers": [],
 	"families": {
 		"items": [
 			"Enemies",
