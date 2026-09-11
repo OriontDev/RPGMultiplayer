@@ -1466,6 +1466,10 @@
 			"sid": 457570497050353,
 			"children": [
 				{
+					"eventType": "comment",
+					"text": "Sub-event of 42"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -1533,19 +1537,6 @@
 							}
 						},
 						{
-							"id": "play-by-name",
-							"objectClass": "Audio",
-							"sid": 422840203899695,
-							"parameters": {
-								"folder": "sounds",
-								"audio-file-name": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".sfx\")",
-								"loop": "not-looping",
-								"volume": "0",
-								"stereo-pan": "0",
-								"tag-optional": "\"sfx\""
-							}
-						},
-						{
 							"id": "add-child",
 							"objectClass": "Player",
 							"sid": 217376286221651,
@@ -1583,15 +1574,32 @@
 						{
 							"id": "set-animation",
 							"objectClass": "AttackEffect",
-							"sid": 689970626584114,
+							"sid": 843602174838765,
 							"parameters": {
 								"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.swoosh\")",
 								"from": "beginning"
+							}
+						},
+						{
+							"id": "play-by-name",
+							"objectClass": "Audio",
+							"sid": 101231521715562,
+							"parameters": {
+								"folder": "sounds",
+								"audio-file-name": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".sfx\")",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"sfx\""
 							}
 						}
 					],
 					"sid": 368192437072437,
 					"children": [
+						{
+							"eventType": "comment",
+							"text": "Sub-event of 43"
+						},
 						{
 							"eventType": "block",
 							"conditions": [
@@ -1626,6 +1634,10 @@
 							"sid": 912983803759320
 						},
 						{
+							"eventType": "comment",
+							"text": "Sub-event of 43"
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -1654,6 +1666,10 @@
 								}
 							],
 							"sid": 661973001411678
+						},
+						{
+							"eventType": "comment",
+							"text": "Sub-event of 43"
 						},
 						{
 							"eventType": "variable",
@@ -1842,8 +1858,201 @@
 									"sid": 749061713219370
 								}
 							]
+						},
+						{
+							"eventType": "comment",
+							"text": "Sub-event of 42"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "repeat",
+									"objectClass": "System",
+									"sid": 322073814359142,
+									"parameters": {
+										"count": "Multiplayer.PeerCount"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "send-message",
+									"objectClass": "Multiplayer",
+									"sid": 930097953560953,
+									"parameters": {
+										"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
+										"tag": "\"attackfx\"",
+										"message": "str(PlayerNetID)",
+										"mode": "reliable-ordered"
+									}
+								}
+							],
+							"sid": 828914574656108
 						}
 					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-message",
+					"objectClass": "Multiplayer",
+					"sid": 602566263376881,
+					"parameters": {
+						"tag": "\"attackfx\""
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 807066445025552,
+					"parameters": {
+						"instance-variable": "NetID",
+						"comparison": 0,
+						"value": "int(Multiplayer.Message)"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 924448371716717,
+					"parameters": {
+						"object-to-create": "AttackEffect",
+						"layer": "2",
+						"x": "Player.X",
+						"y": "Player.Y",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "add-child",
+					"objectClass": "Player",
+					"sid": 975545484627685,
+					"parameters": {
+						"child": "AttackEffect",
+						"transform-x": true,
+						"transform-y": true,
+						"transform-z-elevation": false,
+						"transform-w": false,
+						"transform-h": false,
+						"transform-d": false,
+						"transform-a": false,
+						"transform-o": false,
+						"transform-visibility": false,
+						"destroy-with-parent": false
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "AttackEffect",
+					"sid": 271911175808737,
+					"parameters": {
+						"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.swoosh\")",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "play-by-name",
+					"objectClass": "Audio",
+					"sid": 906577367308201,
+					"parameters": {
+						"folder": "sounds",
+						"audio-file-name": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".sfx\")",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"sfx\""
+					}
+				}
+			],
+			"sid": 162520732809713,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Sub-event of 51"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 635256863674320,
+							"parameters": {
+								"instance-variable": "NearEnemy"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-angle",
+							"objectClass": "AttackEffect",
+							"sid": 181463824818578,
+							"parameters": {
+								"angle": "angle(Player.X, Player.Y, Enemies.X, Enemies.Y)"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "AttackEffect",
+							"sid": 408097156786647,
+							"parameters": {
+								"x": "Player.X + cos(AttackEffect.Angle) * AttackEffectDistance",
+								"y": "Player.Y + sin(AttackEffect.Angle) * AttackEffectDistance"
+							}
+						}
+					],
+					"sid": 100046165986665
+				},
+				{
+					"eventType": "comment",
+					"text": "Sub-event of 51"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 848330297319615
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "PlayerWeapon",
+							"sid": 622870254366842,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 0,
+								"value": "Player.NetID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-angle",
+							"objectClass": "AttackEffect",
+							"sid": 753167875061036,
+							"parameters": {
+								"angle": "PlayerWeapon.Angle"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "AttackEffect",
+							"sid": 585077144157005,
+							"parameters": {
+								"x": "Player.X + cos(PlayerWeapon.Angle) * AttackEffectDistance",
+								"y": "Player.Y + sin(PlayerWeapon.Angle) * AttackEffectDistance"
+							}
+						}
+					],
+					"sid": 599461492831951
 				}
 			]
 		},
@@ -1984,118 +2193,6 @@
 				}
 			],
 			"sid": 739148295299441
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-created",
-					"objectClass": "AttackEffect",
-					"sid": 284666547723008
-				},
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Player",
-					"sid": 762798169023435,
-					"parameters": {
-						"instance-variable": "NetID",
-						"comparison": 0,
-						"value": "AttackEffect.NetID"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "set-animation",
-					"objectClass": "AttackEffect",
-					"sid": 819914951835357,
-					"parameters": {
-						"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.swoosh\")",
-						"from": "beginning"
-					}
-				}
-			],
-			"sid": 703266974277622,
-			"disabled": true
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "every-tick",
-					"objectClass": "System",
-					"sid": 447601706730250
-				},
-				{
-					"id": "is-boolean-instance-variable-set",
-					"objectClass": "AttackEffect",
-					"sid": 171715845223498,
-					"parameters": {
-						"instance-variable": "AnimationSet"
-					}
-				}
-			],
-			"actions": [],
-			"sid": 538905144720232,
-			"disabled": true
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "else",
-					"objectClass": "System",
-					"sid": 984824623224911
-				},
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Player",
-					"sid": 156059678250360,
-					"parameters": {
-						"instance-variable": "NetID",
-						"comparison": 0,
-						"value": "AttackEffect.NetID"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "set-animation",
-					"objectClass": "AttackEffect",
-					"sid": 532613988161665,
-					"parameters": {
-						"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.swoosh\")",
-						"from": "beginning"
-					}
-				},
-				{
-					"id": "set-boolean-instvar",
-					"objectClass": "AttackEffect",
-					"sid": 778810287750377,
-					"parameters": {
-						"instance-variable": "AnimationSet",
-						"value": "true"
-					}
-				}
-			],
-			"sid": 132988214564165,
-			"disabled": true
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "is-boolean-instance-variable-set",
-					"objectClass": "Player",
-					"sid": 757000158161748,
-					"parameters": {
-						"instance-variable": "NearEnemy"
-					},
-					"isInverted": true
-				}
-			],
-			"actions": [],
-			"sid": 884230705301121
 		}
 	],
 	"sid": 623186428620448
