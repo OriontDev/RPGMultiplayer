@@ -147,167 +147,6 @@
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 712719501055079
-				}
-			],
-			"actions": [
-				{
-					"id": "sync-object-2",
-					"objectClass": "Multiplayer",
-					"sid": 420650048670312,
-					"parameters": {
-						"object": "AttackEffect",
-						"x": true,
-						"y": true,
-						"angle": true,
-						"precision": "normal-float-4-bytes",
-						"bandwidth": "low-bandwidth-highly-predictable"
-					}
-				},
-				{
-					"id": "sync-instance-variable",
-					"objectClass": "Multiplayer",
-					"sid": 796192182039009,
-					"parameters": {
-						"object": "AttackEffect",
-						"instance-variable": {
-							"name": "NetID",
-							"objectClass": "AttackEffect"
-						},
-						"precision": "normal-float-4-bytes",
-						"interpolation": "none",
-						"client-value-tag": "\"attackeffectnetid\""
-					}
-				}
-			],
-			"sid": 303460512523549,
-			"disabled": true,
-			"children": [
-				{
-					"eventType": "variable",
-					"name": "OrigItemID",
-					"type": "string",
-					"initialValue": "",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 793768375920981
-				},
-				{
-					"eventType": "variable",
-					"name": "OrigX",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 510840711442275
-				},
-				{
-					"eventType": "variable",
-					"name": "OrigY",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 477748044243182
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 495145114538499,
-							"parameters": {
-								"object": "WeaponPickup"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 446323948394394,
-							"parameters": {
-								"variable": "OrigItemID",
-								"value": "WeaponPickup.ItemID"
-							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 437076606903557,
-							"parameters": {
-								"variable": "OrigX",
-								"value": "WeaponPickup.X"
-							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 698467810268505,
-							"parameters": {
-								"variable": "OrigY",
-								"value": "WeaponPickup.Y"
-							}
-						},
-						{
-							"id": "destroy",
-							"objectClass": "WeaponPickup",
-							"sid": 207716930962787
-						}
-					],
-					"sid": 550469208867733,
-					"disabled": true,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-host",
-									"objectClass": "Multiplayer",
-									"sid": 624228761330873
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 741353754116921,
-									"parameters": {
-										"object-to-create": "WeaponPickup",
-										"layer": "0",
-										"x": "OrigX",
-										"y": "OrigY",
-										"create-hierarchy": false,
-										"template-name": "\"\""
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "WeaponPickup",
-									"sid": 935019999003114,
-									"parameters": {
-										"instance-variable": "ItemID",
-										"value": "OrigItemID"
-									}
-								}
-							],
-							"sid": 528242180098892,
-							"disabled": true
-						}
-					]
-				}
-			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-start-of-layout",
-					"objectClass": "System",
 					"sid": 216040548570291
 				}
 			],
@@ -2039,6 +1878,135 @@
 				}
 			],
 			"sid": 943874818228185
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 754064158237441
+				}
+			],
+			"actions": [],
+			"sid": 490618991563133,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "OrigItemID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 240220598816455
+				},
+				{
+					"eventType": "variable",
+					"name": "OrigX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 487462800943007
+				},
+				{
+					"eventType": "variable",
+					"name": "OrigY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 759562811343904
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 654837641848724,
+							"parameters": {
+								"object": "PlayerWeapon"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 365841163432847,
+							"parameters": {
+								"variable": "OrigItemID",
+								"value": "WeaponPickup.ItemID"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 254196578909648,
+							"parameters": {
+								"variable": "OrigX",
+								"value": "WeaponPickup.X"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 759620468871138,
+							"parameters": {
+								"variable": "OrigY",
+								"value": "WeaponPickup.Y"
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "WeaponPickup",
+							"sid": 797206625458210
+						}
+					],
+					"sid": 707503809480989,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-host",
+									"objectClass": "Multiplayer",
+									"sid": 844636468918393
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 273440072165432,
+									"parameters": {
+										"object-to-create": "WeaponPickup",
+										"layer": "0",
+										"x": "OrigX",
+										"y": "OrigY",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "WeaponPickup",
+									"sid": 235314320143498,
+									"parameters": {
+										"instance-variable": "ItemID",
+										"value": "OrigItemID"
+									}
+								}
+							],
+							"sid": 715093280126395
+						}
+					]
+				}
+			]
 		}
 	],
 	"sid": 474297610386447
