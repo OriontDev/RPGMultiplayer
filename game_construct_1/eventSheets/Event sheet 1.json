@@ -46,6 +46,16 @@
 			"sid": 511471745862002
 		},
 		{
+			"eventType": "variable",
+			"name": "PositionDeadzone",
+			"type": "number",
+			"initialValue": "40",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 384377016180164
+		},
+		{
 			"eventType": "comment",
 			"text": "Start of Layout1 event sheet"
 		},
@@ -154,14 +164,44 @@
 				{
 					"id": "sync-object-2",
 					"objectClass": "Multiplayer",
-					"sid": 541937238517759,
+					"sid": 154920591924835,
 					"parameters": {
 						"object": "Player",
-						"x": true,
-						"y": true,
+						"x": false,
+						"y": false,
 						"angle": true,
 						"precision": "normal-float-4-bytes",
 						"bandwidth": "low-bandwidth-highly-predictable"
+					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
+					"sid": 741012298331575,
+					"parameters": {
+						"object": "Player",
+						"instance-variable": {
+							"name": "ServerX",
+							"objectClass": "Player"
+						},
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none",
+						"client-value-tag": "\"ServerX\""
+					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
+					"sid": 347164382262919,
+					"parameters": {
+						"object": "Player",
+						"instance-variable": {
+							"name": "ServerY",
+							"objectClass": "Player"
+						},
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none",
+						"client-value-tag": "\"ServerY\""
 					}
 				},
 				{
@@ -192,6 +232,21 @@
 						"precision": "normal-float-4-bytes",
 						"interpolation": "none",
 						"client-value-tag": "\"facingleft\""
+					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
+					"sid": 438987762219529,
+					"parameters": {
+						"object": "Player",
+						"instance-variable": {
+							"name": "IsNearEnemy",
+							"objectClass": "Player"
+						},
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none",
+						"client-value-tag": "\"nearenemy\""
 					}
 				}
 			],
@@ -634,7 +689,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "sub of 9"
+					"text": "sub of 14"
 				},
 				{
 					"eventType": "block",
@@ -684,7 +739,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "sub of 11"
+					"text": "sub of 16"
 				},
 				{
 					"eventType": "block",
@@ -856,7 +911,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "sub of 16"
+					"text": "sub of 21"
 				},
 				{
 					"eventType": "block",
@@ -896,7 +951,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "sub of 17"
+							"text": "sub of 22"
 						},
 						{
 							"eventType": "block",
@@ -936,7 +991,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "sub of 17"
+							"text": "sub of 22"
 						},
 						{
 							"eventType": "block",
@@ -1012,7 +1067,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "sub of 20"
+					"text": "sub of 25"
 				},
 				{
 					"eventType": "block",
@@ -1129,6 +1184,10 @@
 			"sid": 129639768518432,
 			"children": [
 				{
+					"eventType": "comment",
+					"text": "sub of 28"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -1172,6 +1231,10 @@
 			"actions": [],
 			"sid": 206797106937275,
 			"children": [
+				{
+					"eventType": "comment",
+					"text": "sub of 30"
+				},
 				{
 					"eventType": "block",
 					"conditions": [
@@ -1280,13 +1343,14 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "is-boolean-instance-variable-set",
+													"id": "compare-instance-variable",
 													"objectClass": "Player",
-													"sid": 235978620302030,
+													"sid": 326635272450426,
 													"parameters": {
-														"instance-variable": "NearEnemy"
-													},
-													"isInverted": true
+														"instance-variable": "IsNearEnemy",
+														"comparison": 0,
+														"value": "0"
+													}
 												}
 											],
 											"actions": [
@@ -1333,13 +1397,14 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "is-boolean-instance-variable-set",
+													"id": "compare-instance-variable",
 													"objectClass": "Player",
-													"sid": 551686447694208,
+													"sid": 916102177143545,
 													"parameters": {
-														"instance-variable": "NearEnemy"
-													},
-													"isInverted": true
+														"instance-variable": "IsNearEnemy",
+														"comparison": 0,
+														"value": "0"
+													}
 												}
 											],
 											"actions": [
@@ -1466,13 +1531,14 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "is-boolean-instance-variable-set",
+													"id": "compare-instance-variable",
 													"objectClass": "Player",
-													"sid": 244360449786266,
+													"sid": 665960898093537,
 													"parameters": {
-														"instance-variable": "NearEnemy"
-													},
-													"isInverted": true
+														"instance-variable": "IsNearEnemy",
+														"comparison": 0,
+														"value": "0"
+													}
 												}
 											],
 											"actions": [
@@ -1530,13 +1596,14 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "is-boolean-instance-variable-set",
+													"id": "compare-instance-variable",
 													"objectClass": "Player",
-													"sid": 459594997435406,
+													"sid": 137738191477203,
 													"parameters": {
-														"instance-variable": "NearEnemy"
-													},
-													"isInverted": true
+														"instance-variable": "IsNearEnemy",
+														"comparison": 0,
+														"value": "0"
+													}
 												}
 											],
 											"actions": [
@@ -1809,6 +1876,16 @@
 							"objectClass": "Multiplayer",
 							"sid": 476953387986200,
 							"isInverted": true
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 419674120532458,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 1,
+								"value": "MyNetID"
+							}
 						}
 					],
 					"actions": [
@@ -1823,6 +1900,422 @@
 						}
 					],
 					"sid": 857864255207389
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 363242756111999,
+							"parameters": {
+								"object": "Player"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 185032909013467,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 0,
+								"value": "MyNetID"
+							}
+						},
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 422468422500086,
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 601902160736640,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 390898301466159,
+									"parameters": {
+										"key": 65
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Player",
+									"sid": 192447130378881,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "left"
+									}
+								}
+							],
+							"sid": 852491437937636
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 227597401049619,
+									"parameters": {
+										"key": 68
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Player",
+									"sid": 529645328593280,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "right"
+									}
+								}
+							],
+							"sid": 625971064483519
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 863033261947887,
+									"parameters": {
+										"key": 87
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Player",
+									"sid": 455449025870131,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "up"
+									}
+								}
+							],
+							"sid": 157604010493329
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 225981018373928,
+									"parameters": {
+										"key": 83
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Player",
+									"sid": 139851840518909,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "down"
+									}
+								}
+							],
+							"sid": 605385331063362
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 746947784770044,
+							"parameters": {
+								"object": "Player"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 666937813853656,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 0,
+								"value": "MyNetID"
+							}
+						},
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 567707437330259,
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 563558272552881,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 958945858009072,
+									"parameters": {
+										"key": 65
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 456505727427448,
+									"parameters": {
+										"key": 68
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 647582129955163,
+									"parameters": {
+										"key": 83
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 146766525007573,
+									"parameters": {
+										"key": 87
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 178075584834158,
+									"parameters": {
+										"instance-variable": "IdleTime",
+										"value": "0"
+									}
+								},
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "Player",
+									"sid": 490360514298569,
+									"parameters": {
+										"instance-variable": "HasCorrected",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 478279531775042,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 690232514428628
+								}
+							],
+							"actions": [],
+							"sid": 723959348232779,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 987257461341933,
+											"parameters": {
+												"key": 65
+											},
+											"isInverted": true
+										},
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 954748668671978,
+											"parameters": {
+												"key": 68
+											},
+											"isInverted": true
+										},
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 400890991941217,
+											"parameters": {
+												"key": 83
+											},
+											"isInverted": true
+										},
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 608993223352160,
+											"parameters": {
+												"key": 87
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "add-to-instvar",
+											"objectClass": "Player",
+											"sid": 453596279574479,
+											"parameters": {
+												"instance-variable": "IdleTime",
+												"value": "dt"
+											}
+										}
+									],
+									"sid": 786365383111590
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 690199225826370,
+							"parameters": {
+								"object": "Player"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 741488576292128,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 0,
+								"value": "MyNetID"
+							}
+						},
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 253148117616271,
+							"isInverted": true
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 217335196803403,
+							"parameters": {
+								"instance-variable": "IdleTime",
+								"comparison": 4,
+								"value": "0.7"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 829437328750207,
+							"parameters": {
+								"instance-variable": "HasCorrected"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-x",
+							"objectClass": "Player",
+							"sid": 715395012702882,
+							"parameters": {
+								"x": "Player.ServerX"
+							}
+						},
+						{
+							"id": "set-y",
+							"objectClass": "Player",
+							"sid": 176348545317903,
+							"parameters": {
+								"y": "Player.ServerY"
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 295249776039970,
+							"parameters": {
+								"instance-variable": "HasCorrected",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 453160240460927
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 505200004458529,
+							"parameters": {
+								"object": "Player"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 951099238203448,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 1,
+								"value": "MyNetID"
+							}
+						},
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 829449338834156,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-x",
+							"objectClass": "Player",
+							"sid": 616013069830650,
+							"parameters": {
+								"x": "lerp(Player.X, Player.ServerX, 0.1)"
+							}
+						},
+						{
+							"id": "set-y",
+							"objectClass": "Player",
+							"sid": 784622660463333,
+							"parameters": {
+								"y": "lerp(Player.Y, Player.ServerY, 0.1)"
+							}
+						}
+					],
+					"sid": 676281972240823
 				},
 				{
 					"eventType": "block",

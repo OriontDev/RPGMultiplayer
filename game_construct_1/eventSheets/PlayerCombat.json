@@ -5,7 +5,7 @@
 			"eventType": "variable",
 			"name": "AttackEffectDistance",
 			"type": "number",
-			"initialValue": "30",
+			"initialValue": "50",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -50,12 +50,30 @@
 			],
 			"actions": [
 				{
-					"id": "set-boolean-instvar",
+					"id": "set-instvar-value",
 					"objectClass": "Player",
-					"sid": 979400444430226,
+					"sid": 316418528220787,
 					"parameters": {
-						"instance-variable": "NearEnemy",
-						"value": "false"
+						"instance-variable": "ServerX",
+						"value": "Player.X"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 929708435033469,
+					"parameters": {
+						"instance-variable": "ServerY",
+						"value": "Player.Y"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 753119049100903,
+					"parameters": {
+						"instance-variable": "IsNearEnemy",
+						"value": "0"
 					}
 				},
 				{
@@ -97,12 +115,12 @@
 					],
 					"actions": [
 						{
-							"id": "set-boolean-instvar",
+							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 932500768777393,
+							"sid": 119887730724008,
 							"parameters": {
-								"instance-variable": "NearEnemy",
-								"value": "true"
+								"instance-variable": "IsNearEnemy",
+								"value": "1"
 							}
 						},
 						{
@@ -237,6 +255,93 @@
 							"sid": 201742484201888
 						}
 					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 905188463706010,
+					"parameters": {
+						"object": "Player"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "PlayerWeapon",
+					"sid": 969261793088077,
+					"parameters": {
+						"instance-variable": "NetID",
+						"comparison": 0,
+						"value": "Player.NetID"
+					}
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 358271031084829,
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 817857178123937,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 271841461377009,
+							"parameters": {
+								"instance-variable": "FacingLeft",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "PlayerWeapon",
+							"sid": 561701769083836,
+							"parameters": {
+								"x": "Player.X - 10",
+								"y": "Player.Y + 10"
+							}
+						}
+					],
+					"sid": 351630692767428
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 186334501867358,
+							"parameters": {
+								"instance-variable": "FacingLeft",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "PlayerWeapon",
+							"sid": 788643027400702,
+							"parameters": {
+								"x": "Player.X + 10",
+								"y": "Player.Y + 10"
+							}
+						}
+					],
+					"sid": 656274719304047
 				}
 			]
 		},
@@ -1240,13 +1345,14 @@
 					}
 				},
 				{
-					"id": "is-boolean-instance-variable-set",
+					"id": "compare-instance-variable",
 					"objectClass": "Player",
-					"sid": 876820167966047,
+					"sid": 654093211679791,
 					"parameters": {
-						"instance-variable": "NearEnemy"
-					},
-					"isInverted": true
+						"instance-variable": "IsNearEnemy",
+						"comparison": 0,
+						"value": "0"
+					}
 				}
 			],
 			"actions": [],
@@ -1671,11 +1777,13 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "is-boolean-instance-variable-set",
+									"id": "compare-instance-variable",
 									"objectClass": "Player",
-									"sid": 488478399040910,
+									"sid": 926244879796060,
 									"parameters": {
-										"instance-variable": "NearEnemy"
+										"instance-variable": "IsNearEnemy",
+										"comparison": 0,
+										"value": "1"
 									}
 								}
 							],
@@ -2124,11 +2232,13 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "is-boolean-instance-variable-set",
+							"id": "compare-instance-variable",
 							"objectClass": "Player",
-							"sid": 635256863674320,
+							"sid": 667785801686263,
 							"parameters": {
-								"instance-variable": "NearEnemy"
+								"instance-variable": "IsNearEnemy",
+								"comparison": 0,
+								"value": "1"
 							}
 						}
 					],

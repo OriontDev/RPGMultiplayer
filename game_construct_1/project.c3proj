@@ -200,7 +200,8 @@
 			"PlayerWeapon",
 			"DamageNumber",
 			"Audio",
-			"CloseEnemyMarker"
+			"CloseEnemyMarker",
+			"InputBuffer"
 		],
 		"subfolders": []
 	},

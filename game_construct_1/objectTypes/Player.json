@@ -74,6 +74,41 @@
 			"desc": "",
 			"show": true,
 			"sid": 409025391115560
+		},
+		{
+			"name": "ServerX",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 311056419354503
+		},
+		{
+			"name": "ServerY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 225953425482454
+		},
+		{
+			"name": "IdleTime",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 738935803297382
+		},
+		{
+			"name": "HasCorrected",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 508739938800266
+		},
+		{
+			"name": "IsNearEnemy",
+			"type": "number",
+			"desc": "0 false - 1 true",
+			"show": true,
+			"sid": 117384442184847
 		}
 	],
 	"behaviorTypes": [

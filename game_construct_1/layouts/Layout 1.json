@@ -110,7 +110,12 @@
 						"Slot2_ItemID": "",
 						"ActiveSlot": 1,
 						"AttackTimer": 0,
-						"EquippedItemID": ""
+						"EquippedItemID": "",
+						"ServerX": 0,
+						"ServerY": 0,
+						"IdleTime": 0,
+						"HasCorrected": false,
+						"IsNearEnemy": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -805,6 +810,18 @@
 			"properties": {},
 			"uid": 28,
 			"sid": 687485449855337,
+			"tags": "",
+			"instanceVariables": {}
+		},
+		{
+			"type": "InputBuffer",
+			"properties": {
+				"width": 0,
+				"height": 4,
+				"depth": 1
+			},
+			"uid": 37,
+			"sid": 210265248746522,
 			"tags": "",
 			"instanceVariables": {}
 		}
