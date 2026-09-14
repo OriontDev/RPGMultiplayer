@@ -40,15 +40,15 @@
 		},
 		{
 			"name": "Type",
-			"type": "string",
-			"desc": "(text: \"melee\" / \"ranged\" / \"magic\" / \"none\")",
+			"type": "number",
+			"desc": "0 = melee, 1 = ranged, 2 = magic/support",
 			"show": true,
 			"sid": 921836760817139
 		},
 		{
 			"name": "State",
-			"type": "string",
-			"desc": "(text: \"idle\" / \"chase\" / \"attack\" / \"dead\")",
+			"type": "number",
+			"desc": "(0=Idle, 1=Wander, 2=Chase, 3=Attack)",
 			"show": true,
 			"sid": 301653212698131
 		},
@@ -58,6 +58,62 @@
 			"desc": "",
 			"show": true,
 			"sid": 225191298761829
+		},
+		{
+			"name": "DetectionRange",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 839066589864443
+		},
+		{
+			"name": "AttackRange",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 290438620579202
+		},
+		{
+			"name": "AttackTimer",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 210146487257224
+		},
+		{
+			"name": "WanderTimer",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 795209668444797
+		},
+		{
+			"name": "WanderTargetX",
+			"type": "number",
+			"desc": "where it's currently walking to",
+			"show": true,
+			"sid": 207168825337908
+		},
+		{
+			"name": "WanderTargetY",
+			"type": "number",
+			"desc": "where it's currently walking to",
+			"show": true,
+			"sid": 444690654880952
+		},
+		{
+			"name": "TargetNetID",
+			"type": "number",
+			"desc": "-1 - none",
+			"show": true,
+			"sid": 627559911595545
+		},
+		{
+			"name": "EnemyUID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 916287062464521
 		}
 	],
 	"behaviorTypes": [

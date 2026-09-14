@@ -534,9 +534,17 @@
 						"Tier": 0,
 						"IsInvincible": true,
 						"MoveSpeed": 0,
-						"Type": "none",
-						"State": "idle",
-						"Name": "Punching Bag"
+						"Type": 0,
+						"State": 0,
+						"Name": "Punching Bag",
+						"DetectionRange": 0,
+						"AttackRange": 0,
+						"AttackTimer": 0,
+						"WanderTimer": 0,
+						"WanderTargetX": 0,
+						"WanderTargetY": 0,
+						"TargetNetID": -1,
+						"EnemyUID": -1
 					},
 					"behaviors": {
 						"Timer": {
@@ -587,9 +595,17 @@
 						"Tier": 0,
 						"IsInvincible": true,
 						"MoveSpeed": 0,
-						"Type": "none",
-						"State": "idle",
-						"Name": "Punching Bag"
+						"Type": 0,
+						"State": 0,
+						"Name": "Punching Bag",
+						"DetectionRange": 0,
+						"AttackRange": 0,
+						"AttackTimer": 0,
+						"WanderTimer": 0,
+						"WanderTargetX": 0,
+						"WanderTargetY": 0,
+						"TargetNetID": -1,
+						"EnemyUID": -1
 					},
 					"behaviors": {
 						"Timer": {
@@ -822,6 +838,18 @@
 			},
 			"uid": 37,
 			"sid": 210265248746522,
+			"tags": "",
+			"instanceVariables": {}
+		},
+		{
+			"type": "EnemySpawnData",
+			"properties": {
+				"width": 10,
+				"height": 1,
+				"depth": 1
+			},
+			"uid": 38,
+			"sid": 280869413365919,
 			"tags": "",
 			"instanceVariables": {}
 		}

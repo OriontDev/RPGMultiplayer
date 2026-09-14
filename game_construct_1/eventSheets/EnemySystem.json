@@ -1,0 +1,242 @@
+{
+	"name": "EnemySystem",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "NextEnemyUID",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 317335842533247
+		},
+		{
+			"functionName": "SpawnEnemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "SpawnX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 142141433612316
+				},
+				{
+					"name": "SpawnY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 154359328482366
+				},
+				{
+					"name": "SpawnType",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 517080731467242
+				},
+				{
+					"name": "SpawnName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 279848651178122
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 631302907394285
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 690031313255061
+				}
+			],
+			"actions": [
+				{
+					"id": "sync-object-2",
+					"objectClass": "Multiplayer",
+					"sid": 385484396315498,
+					"parameters": {
+						"object": "Enemies",
+						"x": false,
+						"y": false,
+						"angle": false,
+						"precision": "normal-float-4-bytes",
+						"bandwidth": "normal-bandwidth-unpredictable"
+					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
+					"sid": 498842926282325,
+					"parameters": {
+						"object": "Enemies",
+						"instance-variable": {
+							"name": "Health",
+							"objectClass": "Enemies"
+						},
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none",
+						"client-value-tag": "\"enemyhealth\""
+					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
+					"sid": 740759132722402,
+					"parameters": {
+						"object": "Enemies",
+						"instance-variable": {
+							"name": "State",
+							"objectClass": "Enemies"
+						},
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none",
+						"client-value-tag": "\"enemystate\""
+					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
+					"sid": 339625381469901,
+					"parameters": {
+						"object": "Enemies",
+						"instance-variable": {
+							"name": "EnemyUID",
+							"objectClass": "Enemies"
+						},
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none",
+						"client-value-tag": "\"enemyuid\""
+					}
+				}
+			],
+			"sid": 372214627071252,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 248668000234889
+						}
+					],
+					"actions": [],
+					"sid": 412234001517814,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 147903857144684,
+									"parameters": {
+										"object": "Enemies"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "push",
+									"objectClass": "EnemySpawnData",
+									"sid": 687335102883352,
+									"parameters": {
+										"where": "back",
+										"value": "0",
+										"axis": "x"
+									}
+								},
+								{
+									"id": "push",
+									"objectClass": "EnemySpawnData",
+									"sid": 804471467685350,
+									"parameters": {
+										"where": "back",
+										"value": "0",
+										"axis": "y"
+									}
+								}
+							],
+							"sid": 323093097807792
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 921642626516594,
+							"parameters": {
+								"object": "Enemies"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Enemies",
+							"sid": 809946951982148
+						}
+					],
+					"sid": 531933840312514
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 199616433125770
+						}
+					],
+					"actions": [],
+					"sid": 249048517865852,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "repeat",
+									"objectClass": "System",
+									"sid": 947809577278010,
+									"parameters": {
+										"count": "EnemySpawnData.Height"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "SpawnEnemy",
+									"sid": 410107038430328,
+									"parameters": [
+										" EnemySpawnData.At(0, LoopIndex)",
+										"EnemySpawnData.At(1, LoopIndex)",
+										" EnemySpawnData.At(2, LoopIndex)",
+										" EnemySpawnData.At(3, LoopIndex)"
+									]
+								}
+							],
+							"sid": 693819126632205
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 465113697765328
+}

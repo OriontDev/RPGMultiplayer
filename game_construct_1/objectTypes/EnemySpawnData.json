@@ -1,0 +1,8 @@
+{
+	"name": "EnemySpawnData",
+	"plugin-id": "Arr",
+	"sid": 578578243642376,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": []
+}

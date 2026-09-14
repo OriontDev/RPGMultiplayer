@@ -4,7 +4,7 @@
     "damage": 10,
     "firerate": 0.3,
     "type": "melee",
-    "subtype": "Sword",
+    "subtype": "sword",
     "critrate": 30,
     "critdamage": 2,
     "sfx": "Weapons/Swords/basic_sword",
@@ -15,11 +15,11 @@
     }
   },
   "basic_spear": {
-    "name": "Sword",
+    "name": "Spear",
     "damage": 10,
     "firerate": 0.5,
     "type": "melee",
-    "subtype": "Sword",
+    "subtype": "spear",
     "sfx": "Weapons/Swords/basic_sword",
     "animation": {
         "still": "basic_sword_still",
@@ -31,7 +31,7 @@
     "damage": 6,
     "firerate": 0.8,
     "type": "ranged",
-    "subtype": "Bow",
+    "subtype": "bow",
     "sfx": "Weapons/Swords/basic_sword",
     "animation": {
         "still": "basic_bow_still",

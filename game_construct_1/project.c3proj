@@ -201,7 +201,8 @@
 			"DamageNumber",
 			"Audio",
 			"CloseEnemyMarker",
-			"InputBuffer"
+			"InputBuffer",
+			"EnemySpawnData"
 		],
 		"subfolders": []
 	},
@@ -228,7 +229,8 @@
 			"Event sheet 1",
 			"Login events",
 			"SignIn events",
-			"PlayerCombat"
+			"PlayerCombat",
+			"EnemySystem"
 		],
 		"subfolders": []
 	},
