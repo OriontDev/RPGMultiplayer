@@ -202,7 +202,8 @@
 			"Audio",
 			"CloseEnemyMarker",
 			"InputBuffer",
-			"EnemySpawnData"
+			"EnemySpawnData",
+			"KnightEnemy"
 		],
 		"subfolders": []
 	},

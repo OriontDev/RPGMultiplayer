@@ -41,7 +41,7 @@
 		{
 			"name": "Type",
 			"type": "number",
-			"desc": "0 = melee, 1 = ranged, 2 = magic/support",
+			"desc": "0 = melee, 1 = ranged, 2 = magic/support, 3 = none",
 			"show": true,
 			"sid": 921836760817139
 		},
@@ -114,6 +114,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 916287062464521
+		},
+		{
+			"name": "EquippedItemID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 980142630254493
 		}
 	],
 	"behaviorTypes": [
@@ -125,6 +132,7 @@
 	],
 	"effectTypes": [],
 	"members": [
-		"PunchingBags"
+		"PunchingBags",
+		"KnightEnemy"
 	]
 }

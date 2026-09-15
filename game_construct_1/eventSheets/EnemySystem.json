@@ -51,7 +51,287 @@
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
-			"sid": 631302907394285
+			"sid": 631302907394285,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 213113286588727,
+							"parameters": {
+								"variable": "SpawnType",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 617220556149108,
+							"parameters": {
+								"object-to-create": "KnightEnemy",
+								"layer": "0",
+								"x": "SpawnX",
+								"y": "SpawnY",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 860913921218457,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"value": "NextEnemyUID"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 470048382710381,
+							"parameters": {
+								"variable": "NextEnemyUID",
+								"value": "1"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 352621359018595,
+							"parameters": {
+								"instance-variable": "Type",
+								"value": "SpawnType"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 908096003982854,
+							"parameters": {
+								"instance-variable": "Name",
+								"value": "SpawnName"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 173091398997219,
+							"parameters": {
+								"instance-variable": "EquippedItemID",
+								"value": "\"basic_sword\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 185518024686099,
+							"parameters": {
+								"instance-variable": "MaxHealth",
+								"value": "100"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 966083759436266,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "Enemies.MaxHealth"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 510017727508525,
+							"parameters": {
+								"instance-variable": "MoveSpeed",
+								"value": "30"
+							}
+						}
+					],
+					"sid": 197426889214559
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 797614128956978,
+							"parameters": {
+								"variable": "SpawnType",
+								"comparison": 0,
+								"value": "3"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 728683375226588,
+							"parameters": {
+								"object-to-create": "PunchingBags",
+								"layer": "0",
+								"x": "SpawnX",
+								"y": "SpawnY",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 889802727914518,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"value": "NextEnemyUID"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 296019219399934,
+							"parameters": {
+								"variable": "NextEnemyUID",
+								"value": "1"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 827758834440737,
+							"parameters": {
+								"instance-variable": "Type",
+								"value": "SpawnType"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 947084225784164,
+							"parameters": {
+								"instance-variable": "Name",
+								"value": "SpawnName"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 998623597183277,
+							"parameters": {
+								"instance-variable": "EquippedItemID",
+								"value": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 107753893097611,
+							"parameters": {
+								"instance-variable": "MaxHealth",
+								"value": "100"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 523452907997493,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "Enemies.MaxHealth"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 797016053322509,
+							"parameters": {
+								"instance-variable": "MoveSpeed",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Enemies",
+							"sid": 597872363999225,
+							"parameters": {
+								"instance-variable": "IsInvincible",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 122812081485997
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 554372302707478,
+							"parameters": {
+								"instance-variable": "Type",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 488161791621118,
+							"parameters": {
+								"instance-variable": "DetectionRange",
+								"value": "100"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 626060280261299,
+							"parameters": {
+								"instance-variable": "AttackRange",
+								"value": "50"
+							}
+						}
+					],
+					"sid": 233976044307285
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 721037297494279,
+							"parameters": {
+								"count": "Multiplayer.PeerCount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "send-message",
+							"objectClass": "Multiplayer",
+							"sid": 280953556417455,
+							"parameters": {
+								"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
+								"tag": "\"enemyspawn\"",
+								"message": "Enemies.EnemyUID & \"|\" & Enemies.EquippedItemID & \"|\" & Enemies.MaxHealth & \"|\" & Enemies.Type",
+								"mode": "reliable-ordered"
+							}
+						}
+					],
+					"sid": 912239538317206
+				}
+			]
 		},
 		{
 			"eventType": "block",
@@ -66,11 +346,11 @@
 				{
 					"id": "sync-object-2",
 					"objectClass": "Multiplayer",
-					"sid": 385484396315498,
+					"sid": 924348720956893,
 					"parameters": {
 						"object": "Enemies",
-						"x": false,
-						"y": false,
+						"x": true,
+						"y": true,
 						"angle": false,
 						"precision": "normal-float-4-bytes",
 						"bandwidth": "normal-bandwidth-unpredictable"
@@ -150,23 +430,53 @@
 							],
 							"actions": [
 								{
-									"id": "push",
+									"id": "set-size",
 									"objectClass": "EnemySpawnData",
-									"sid": 687335102883352,
+									"sid": 521867966553005,
 									"parameters": {
-										"where": "back",
-										"value": "0",
-										"axis": "x"
+										"width": "EnemySpawnData.Width",
+										"height": "EnemySpawnData.Height + 1",
+										"depth": "1"
 									}
 								},
 								{
-									"id": "push",
+									"id": "set-at-xy",
 									"objectClass": "EnemySpawnData",
-									"sid": 804471467685350,
+									"sid": 917008935640458,
 									"parameters": {
-										"where": "back",
-										"value": "0",
-										"axis": "y"
+										"x": "0",
+										"y": "LoopIndex",
+										"value": "Enemies.X"
+									}
+								},
+								{
+									"id": "set-at-xy",
+									"objectClass": "EnemySpawnData",
+									"sid": 308379803503658,
+									"parameters": {
+										"x": "1",
+										"y": "LoopIndex",
+										"value": "Enemies.Y"
+									}
+								},
+								{
+									"id": "set-at-xy",
+									"objectClass": "EnemySpawnData",
+									"sid": 425471910560309,
+									"parameters": {
+										"x": "2",
+										"y": "LoopIndex",
+										"value": "Enemies.Type"
+									}
+								},
+								{
+									"id": "set-at-xy",
+									"objectClass": "EnemySpawnData",
+									"sid": 736445088590645,
+									"parameters": {
+										"x": "3",
+										"y": "LoopIndex",
+										"value": "Enemies.Name"
 									}
 								}
 							],
@@ -234,6 +544,68 @@
 							"sid": 693819126632205
 						}
 					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-message",
+					"objectClass": "Multiplayer",
+					"sid": 283735816299336,
+					"parameters": {
+						"tag": "\"enemyspawn\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 995083328864311,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 909493457437696,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"comparison": 0,
+								"value": "int(tokenat(Multiplayer.Message, 0, \"|\"))"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 773875841895177,
+							"parameters": {
+								"instance-variable": "EquippedItemID",
+								"value": "tokenat(Multiplayer.Message, 1, \"|\")"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 847618064418138,
+							"parameters": {
+								"instance-variable": "MaxHealth",
+								"value": "int(tokenat(Multiplayer.Message, 2, \"|\"))"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 176880102020435,
+							"parameters": {
+								"instance-variable": "Type",
+								"value": "int(tokenat(Multiplayer.Message, 3, \"|\"))"
+							}
+						}
+					],
+					"sid": 316106553066799
 				}
 			]
 		}

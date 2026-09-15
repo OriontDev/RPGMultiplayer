@@ -6,6 +6,10 @@
 			"includeSheet": "PlayerCombat"
 		},
 		{
+			"eventType": "include",
+			"includeSheet": "EnemySystem"
+		},
+		{
 			"eventType": "variable",
 			"name": "MyNetID",
 			"type": "number",
