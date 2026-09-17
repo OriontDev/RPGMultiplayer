@@ -608,6 +608,387 @@
 					"sid": 316106553066799
 				}
 			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 109516756964500
+				}
+			],
+			"actions": [],
+			"sid": 943370591308317,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Subevent of 14"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 414066056910208
+						}
+					],
+					"actions": [],
+					"sid": 887638009365199,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Subevent of 15"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemies",
+									"sid": 779729527636343,
+									"parameters": {
+										"instance-variable": "Type",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 918183321808467,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "Subevent of 16"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Enemies",
+											"sid": 592091074865864,
+											"parameters": {
+												"instance-variable": "State",
+												"comparison": 0,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "subtract-from-instvar",
+											"objectClass": "Enemies",
+											"sid": 403675014919148,
+											"parameters": {
+												"instance-variable": "WanderTimer",
+												"value": "dt"
+											}
+										}
+									],
+									"sid": 516364968017252,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "Subevent of 19"
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Enemies",
+													"sid": 225314419126741,
+													"parameters": {
+														"instance-variable": "WanderTimer",
+														"comparison": 3,
+														"value": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Enemies",
+													"sid": 290955894192357,
+													"parameters": {
+														"instance-variable": "WanderTargetX",
+														"value": "Enemies.X + random(-60,60)"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Enemies",
+													"sid": 800445017966103,
+													"parameters": {
+														"instance-variable": "WanderTargetY",
+														"value": "Enemies.Y + random(-60,60)"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Enemies",
+													"sid": 776782468097068,
+													"parameters": {
+														"instance-variable": "State",
+														"value": "1"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Enemies",
+													"sid": 561011263498498,
+													"parameters": {
+														"instance-variable": "WanderTimer",
+														"value": "3"
+													}
+												}
+											],
+											"sid": 494794920939452
+										},
+										{
+											"eventType": "comment",
+											"text": "Subevent of 16"
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Enemies",
+											"sid": 844961194684921,
+											"parameters": {
+												"instance-variable": "State",
+												"comparison": 0,
+												"value": "1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 259170035380586,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "Subevent of 19"
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 295527621312332,
+													"parameters": {
+														"first-value": "distance(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)",
+														"comparison": 3,
+														"second-value": "Enemies.MoveSpeed * dt"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-x",
+													"objectClass": "Enemies",
+													"sid": 747306878616294,
+													"parameters": {
+														"x": "Enemies.X +cos(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
+													}
+												},
+												{
+													"id": "set-y",
+													"objectClass": "Enemies",
+													"sid": 928674505892880,
+													"parameters": {
+														"y": "Enemies.Y + sin(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Enemies",
+													"sid": 496239848396409,
+													"parameters": {
+														"instance-variable": "State",
+														"value": "0"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Enemies",
+													"sid": 902528227952185,
+													"parameters": {
+														"instance-variable": "WanderTimer",
+														"value": "random(2,4)"
+													}
+												}
+											],
+											"sid": 713077801022521,
+											"isOrBlock": true
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 809595697254024,
+													"parameters": {
+														"first-value": "distance(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)",
+														"comparison": 4,
+														"second-value": "Enemies.MoveSpeed * dt"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "subtract-from-instvar",
+													"objectClass": "Enemies",
+													"sid": 612672538845139,
+													"parameters": {
+														"instance-variable": "WanderTimer",
+														"value": "dt"
+													}
+												},
+												{
+													"id": "set-x",
+													"objectClass": "Enemies",
+													"sid": 510652510471925,
+													"parameters": {
+														"x": "cos(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
+													}
+												},
+												{
+													"id": "set-y",
+													"objectClass": "Enemies",
+													"sid": 549463903175188,
+													"parameters": {
+														"y": "sin(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
+													}
+												}
+											],
+											"sid": 121120297828144,
+											"isOrBlock": true
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Enemies",
+													"sid": 385375680323621,
+													"parameters": {
+														"instance-variable": "WanderTimer",
+														"comparison": 3,
+														"value": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Enemies",
+													"sid": 487262450561772,
+													"parameters": {
+														"instance-variable": "State",
+														"value": "0"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Enemies",
+													"sid": 164765377956050,
+													"parameters": {
+														"instance-variable": "WanderTimer",
+														"value": "random(2,4)"
+													}
+												}
+											],
+											"sid": 223393776577132
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "replace this with a new json similar to weapons.json, which will have info about enemies and their animations"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 626810622227189,
+					"parameters": {
+						"object": "Enemies"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 749038648321631,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 851618200974182,
+							"parameters": {
+								"instance-variable": "State",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Enemies",
+							"sid": 552133829424235,
+							"parameters": {
+								"animation": "\"idle\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 987732100612542
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 661216733295343,
+							"parameters": {
+								"instance-variable": "State",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Enemies",
+							"sid": 678615421304014,
+							"parameters": {
+								"animation": "\"walk\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 433568051662315
+				}
+			]
 		}
 	],
 	"sid": 465113697765328
