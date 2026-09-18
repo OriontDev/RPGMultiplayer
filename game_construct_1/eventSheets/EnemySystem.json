@@ -854,17 +854,17 @@
 												{
 													"id": "set-x",
 													"objectClass": "Enemies",
-													"sid": 510652510471925,
+													"sid": 669038225421898,
 													"parameters": {
-														"x": "cos(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
+														"x": "Enemies.X + cos(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
 													}
 												},
 												{
 													"id": "set-y",
 													"objectClass": "Enemies",
-													"sid": 549463903175188,
+													"sid": 537645614403646,
 													"parameters": {
-														"y": "sin(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
+														"y": "Enemies.Y + sin(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
 													}
 												}
 											],
