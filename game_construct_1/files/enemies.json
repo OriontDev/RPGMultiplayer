@@ -1,0 +1,22 @@
+{
+  "knight": {
+    "name": "Knight",
+    "type": 0,
+    "maxhealth": 100,
+    "movespeed": 30,
+    "detectionrange": 100,
+    "attackrange": 50,
+    "isinvincible": 0,
+    "equipped_item": "basic_sword"
+  },
+  "punching_bag": {
+    "name": "Punching Bag",
+    "type": 3,
+    "maxhealth": 100,
+    "movespeed": 0,
+    "detectionrange": 0,
+    "attackrange": 0,
+    "isinvincible": 1,
+    "equipped_item": ""
+  }
+}

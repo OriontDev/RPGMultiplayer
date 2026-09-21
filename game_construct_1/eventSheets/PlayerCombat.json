@@ -1648,7 +1648,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 42"
+					"text": "Sub-event of 47"
 				},
 				{
 					"eventType": "block",
@@ -1771,7 +1771,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "Sub-event of 43"
+							"text": "Sub-event of 48"
 						},
 						{
 							"eventType": "block",
@@ -1831,7 +1831,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "Sub-event of 43"
+							"text": "Sub-event of 48"
 						},
 						{
 							"eventType": "block",
@@ -1865,7 +1865,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "Sub-event of 43"
+							"text": "Sub-event of 48"
 						},
 						{
 							"eventType": "variable",
@@ -2097,12 +2097,20 @@
 										{
 											"id": "send-message",
 											"objectClass": "Multiplayer",
-											"sid": 317972841858921,
+											"sid": 394700714187098,
 											"parameters": {
 												"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
 												"tag": "\"damagenum\"",
-												"message": "str(Enemies.UID) & \"|\" & str(HitDamage) & \"|\" & str(IsCrit)",
+												"message": "str(Enemies.EnemyUID) & \"|\" & str(HitDamage) & \"|\" & str(IsCrit)",
 												"mode": "reliable-ordered"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "DebugText2",
+											"sid": 480995192785535,
+											"parameters": {
+												"text": "\"sending, peercount=\" & Multiplayer.PeerCount"
 											}
 										}
 									],
@@ -2112,7 +2120,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "Sub-event of 42"
+							"text": "Sub-event of 48"
 						},
 						{
 							"eventType": "block",
@@ -2226,7 +2234,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 51"
+					"text": "Sub-event of 58"
 				},
 				{
 					"eventType": "block",
@@ -2286,7 +2294,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 51"
+					"text": "Sub-event of 58"
 				},
 				{
 					"eventType": "block",
@@ -2482,10 +2490,10 @@
 				{
 					"id": "pick-by-comparison",
 					"objectClass": "System",
-					"sid": 271543960375717,
+					"sid": 573915591435511,
 					"parameters": {
 						"object": "Enemies",
-						"expression": "Enemies.UID",
+						"expression": "Enemies.EnemyUID",
 						"comparison": 0,
 						"value": "int(tokenat(Multiplayer.Message, 0, \"|\"))"
 					}
@@ -2535,7 +2543,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 63"
+					"text": "Sub-event of 66"
 				},
 				{
 					"eventType": "block",
@@ -2565,7 +2573,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 63"
+					"text": "Sub-event of 66"
 				},
 				{
 					"eventType": "block",

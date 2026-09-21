@@ -545,7 +545,8 @@
 						"WanderTargetY": 0,
 						"TargetNetID": -1,
 						"EnemyUID": -1,
-						"EquippedItemID": ""
+						"EquippedItemID": "",
+						"EnemyID": "punching_bag"
 					},
 					"behaviors": {
 						"Timer": {
@@ -607,7 +608,8 @@
 						"WanderTargetY": 0,
 						"TargetNetID": -1,
 						"EnemyUID": -1,
-						"EquippedItemID": ""
+						"EquippedItemID": "",
+						"EnemyID": "punching_bag"
 					},
 					"behaviors": {
 						"Timer": {
@@ -669,7 +671,8 @@
 						"WanderTargetY": 0,
 						"TargetNetID": -1,
 						"EnemyUID": -1,
-						"EquippedItemID": ""
+						"EquippedItemID": "",
+						"EnemyID": "knight"
 					},
 					"behaviors": {
 						"Timer": {
@@ -907,6 +910,14 @@
 			},
 			"uid": 38,
 			"sid": 280869413365919,
+			"tags": "",
+			"instanceVariables": {}
+		},
+		{
+			"type": "EnemyDB",
+			"properties": {},
+			"uid": 40,
+			"sid": 910406252954231,
 			"tags": "",
 			"instanceVariables": {}
 		}

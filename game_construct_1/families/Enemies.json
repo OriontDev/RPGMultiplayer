@@ -121,6 +121,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 980142630254493
+		},
+		{
+			"name": "EnemyID",
+			"type": "string",
+			"desc": "this is the JSON lookup key (\"knight\", \"punching_bag\")",
+			"show": true,
+			"sid": 626312548483044
 		}
 	],
 	"behaviorTypes": [

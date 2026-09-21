@@ -203,7 +203,8 @@
 			"CloseEnemyMarker",
 			"InputBuffer",
 			"EnemySpawnData",
-			"KnightEnemy"
+			"KnightEnemy",
+			"EnemyDB"
 		],
 		"subfolders": []
 	},
@@ -362,6 +363,14 @@
 					"name": "weapons.json",
 					"type": "application/json",
 					"sid": 332587517454177,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "enemies.json",
+					"type": "application/json",
+					"sid": 586367645747333,
 					"file-info": {
 						"purpose": "none"
 					}

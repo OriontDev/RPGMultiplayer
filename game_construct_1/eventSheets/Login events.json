@@ -104,6 +104,17 @@
 							"path": "weapons.json"
 						}
 					}
+				},
+				{
+					"id": "request-project-file",
+					"objectClass": "AJAX",
+					"sid": 368749784929053,
+					"parameters": {
+						"tag": "\"LoadEnemies\"",
+						"file": {
+							"path": "enemies.json"
+						}
+					}
 				}
 			],
 			"sid": 170996053314423
@@ -132,6 +143,31 @@
 				}
 			],
 			"sid": 544885931140963
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-completed",
+					"objectClass": "AJAX",
+					"sid": 650560726320972,
+					"parameters": {
+						"tag": "\"LoadEnemies\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-json",
+					"objectClass": "EnemyDB",
+					"sid": 990983530130985,
+					"parameters": {
+						"path": "\"EnemiesDB\"",
+						"json": "AJAX.LastData"
+					}
+				}
+			],
+			"sid": 795336600943690
 		},
 		{
 			"eventType": "block",

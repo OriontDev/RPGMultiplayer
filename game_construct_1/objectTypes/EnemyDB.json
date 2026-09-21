@@ -1,0 +1,8 @@
+{
+	"name": "EnemyDB",
+	"plugin-id": "Json",
+	"sid": 719434874450718,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": []
+}
