@@ -47,6 +47,7 @@
 			"sid": 631302907394285,
 			"children": [
 				{
+					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -76,7 +77,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "KnightEnemy",
 							"sid": 860913921218457,
 							"parameters": {
 								"instance-variable": "EnemyUID",
@@ -122,15 +123,6 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Enemies",
-							"sid": 567461025115818,
-							"parameters": {
-								"instance-variable": "Health",
-								"value": "Enemies.MaxHealth"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemies",
 							"sid": 682521354324013,
 							"parameters": {
 								"instance-variable": "MoveSpeed",
@@ -162,6 +154,27 @@
 							"parameters": {
 								"instance-variable": "EquippedItemID",
 								"value": "EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".equipped_item\")"
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "KnightEnemy",
+							"sid": 264269959708632,
+							"parameters": {
+								"object": "EnemyHealthDebugText",
+								"layer": "1",
+								"image-point": "2",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "EnemyHealthDebugText",
+							"sid": 170816654679866,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"value": "KnightEnemy.EnemyUID"
 							}
 						}
 					],
@@ -219,6 +232,7 @@
 					]
 				},
 				{
+					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -248,7 +262,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "PunchingBags",
 							"sid": 560267151365663,
 							"parameters": {
 								"instance-variable": "EnemyUID",
@@ -334,6 +348,27 @@
 							"parameters": {
 								"instance-variable": "EquippedItemID",
 								"value": "EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".equipped_item\")"
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "PunchingBags",
+							"sid": 264269959708632,
+							"parameters": {
+								"object": "EnemyHealthDebugText",
+								"layer": "1",
+								"image-point": "2",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "EnemyHealthDebugText",
+							"sid": 166235470637809,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"value": "PunchingBags.EnemyUID"
 							}
 						}
 					],
@@ -499,7 +534,18 @@
 							"sid": 248668000234889
 						}
 					],
-					"actions": [],
+					"actions": [
+						{
+							"id": "set-size",
+							"objectClass": "EnemySpawnData",
+							"sid": 140210531109694,
+							"parameters": {
+								"width": "3",
+								"height": "0",
+								"depth": "1"
+							}
+						}
+					],
 					"sid": 412234001517814,
 					"children": [
 						{
@@ -606,6 +652,14 @@
 								}
 							],
 							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "DebugText3",
+									"sid": 807255087509294,
+									"parameters": {
+										"text": "DebugText3.Text & \" || array height: \" & EnemySpawnData.Height"
+									}
+								},
 								{
 									"callFunction": "SpawnEnemy",
 									"sid": 439543127720366,
@@ -716,7 +770,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Subevent of 14"
+					"text": "Subevent of 17"
 				},
 				{
 					"eventType": "block",
@@ -732,7 +786,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "Subevent of 15"
+							"text": "Subevent of 18"
 						},
 						{
 							"eventType": "block",
@@ -753,7 +807,7 @@
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "Subevent of 16"
+									"text": "Subevent of 19"
 								},
 								{
 									"eventType": "block",
@@ -784,7 +838,7 @@
 									"children": [
 										{
 											"eventType": "comment",
-											"text": "Subevent of 19"
+											"text": "Subevent of 20"
 										},
 										{
 											"eventType": "block",
@@ -839,12 +893,12 @@
 												}
 											],
 											"sid": 494794920939452
-										},
-										{
-											"eventType": "comment",
-											"text": "Subevent of 16"
 										}
 									]
+								},
+								{
+									"eventType": "comment",
+									"text": "Subevent of 19"
 								},
 								{
 									"eventType": "block",
@@ -865,7 +919,7 @@
 									"children": [
 										{
 											"eventType": "comment",
-											"text": "Subevent of 19"
+											"text": "Subevent of 22"
 										},
 										{
 											"eventType": "block",
@@ -921,6 +975,10 @@
 											"isOrBlock": true
 										},
 										{
+											"eventType": "comment",
+											"text": "Subevent of 22"
+										},
+										{
 											"eventType": "block",
 											"conditions": [
 												{
@@ -963,6 +1021,10 @@
 											],
 											"sid": 121120297828144,
 											"isOrBlock": true
+										},
+										{
+											"eventType": "comment",
+											"text": "Subevent of 22"
 										},
 										{
 											"eventType": "block",
@@ -1080,6 +1142,58 @@
 						}
 					],
 					"sid": 433568051662315
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 775990109762652,
+					"parameters": {
+						"object": "EnemyHealthDebugText"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 602115134261071,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 425185024237623,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"comparison": 0,
+								"value": "EnemyHealthDebugText.EnemyUID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "EnemyHealthDebugText",
+							"sid": 864894198434799,
+							"parameters": {
+								"x": "Enemies.X - 30",
+								"y": "Enemies.Y - 60"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "EnemyHealthDebugText",
+							"sid": 424856509987765,
+							"parameters": {
+								"text": "str(Enemies.Health)"
+							}
+						}
+					],
+					"sid": 596376036255017
 				}
 			]
 		}

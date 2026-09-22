@@ -60,6 +60,16 @@
 			"sid": 384377016180164
 		},
 		{
+			"eventType": "variable",
+			"name": "HostPeerID",
+			"type": "string",
+			"initialValue": "",
+			"comment": "Room Host's Peer ID",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 537122397005667
+		},
+		{
 			"eventType": "comment",
 			"text": "Start of Layout1 event sheet"
 		},
@@ -72,7 +82,17 @@
 					"sid": 503041452993917
 				}
 			],
-			"actions": [],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 180626323908589,
+					"parameters": {
+						"variable": "HostPeerID",
+						"value": "str(Multiplayer.HostID)"
+					}
+				}
+			],
 			"sid": 694656774795971,
 			"children": [
 				{
@@ -333,6 +353,34 @@
 						"precision": "normal-float-4-bytes",
 						"interpolation": "none",
 						"client-value-tag": "\"usertextpeerid\""
+					}
+				},
+				{
+					"id": "sync-object-2",
+					"objectClass": "Multiplayer",
+					"sid": 222421665049099,
+					"parameters": {
+						"object": "EnemyHealthDebugText",
+						"x": true,
+						"y": true,
+						"angle": false,
+						"precision": "normal-float-4-bytes",
+						"bandwidth": "low-bandwidth-highly-predictable"
+					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
+					"sid": 882589304004204,
+					"parameters": {
+						"object": "EnemyHealthDebugText",
+						"instance-variable": {
+							"name": "EnemyUID",
+							"objectClass": "EnemyHealthDebugText"
+						},
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none",
+						"client-value-tag": "\"enemyhealthdebugtext\""
 					}
 				}
 			],
@@ -2502,6 +2550,84 @@
 							"sid": 715093280126395
 						}
 					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-disconnected",
+					"objectClass": "Multiplayer",
+					"sid": 742718409810164
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 789591367056852,
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 794296576184462,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 808532315933995,
+							"parameters": {
+								"first-value": "str(Multiplayer.PeerID)",
+								"comparison": 0,
+								"second-value": "HostPeerID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "leave-room",
+							"objectClass": "Multiplayer",
+							"sid": 729091935666091
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 133464272014116,
+							"parameters": {
+								"variable": "MyNetID",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 818558481576837,
+							"parameters": {
+								"variable": "NextNetID",
+								"value": "1"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 745458852167129,
+							"parameters": {
+								"variable": "HostPeerID",
+								"value": "\"\""
+							}
+						},
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 974606546743551,
+							"parameters": {
+								"layout": "Login"
+							}
+						}
+					],
+					"sid": 674989684185464
 				}
 			]
 		}

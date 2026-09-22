@@ -1888,6 +1888,16 @@
 							"sid": 687277209143127
 						},
 						{
+							"eventType": "variable",
+							"name": "TargetUID",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 155682726229463
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -1916,10 +1926,23 @@
 										"variable": "HitDamage",
 										"value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\"))"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 389037575531407,
+									"parameters": {
+										"variable": "TargetUID",
+										"value": "Enemies.EnemyUID"
+									}
 								}
 							],
 							"sid": 984777510408876,
 							"children": [
+								{
+									"eventType": "comment",
+									"text": "Sub-event of 52"
+								},
 								{
 									"eventType": "block",
 									"conditions": [
@@ -1995,6 +2018,10 @@
 									"sid": 233338082641974
 								},
 								{
+									"eventType": "comment",
+									"text": "Sub-event of 52"
+								},
+								{
 									"eventType": "block",
 									"conditions": [
 										{
@@ -2056,6 +2083,10 @@
 									"sid": 938919587936915
 								},
 								{
+									"eventType": "comment",
+									"text": "Sub-event of 52"
+								},
+								{
 									"eventType": "block",
 									"conditions": [
 										{
@@ -2082,6 +2113,10 @@
 									"sid": 749061713219370
 								},
 								{
+									"eventType": "comment",
+									"text": "Sub-event of 52"
+								},
+								{
 									"eventType": "block",
 									"conditions": [
 										{
@@ -2097,11 +2132,11 @@
 										{
 											"id": "send-message",
 											"objectClass": "Multiplayer",
-											"sid": 394700714187098,
+											"sid": 846038347748210,
 											"parameters": {
 												"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
 												"tag": "\"damagenum\"",
-												"message": "str(Enemies.EnemyUID) & \"|\" & str(HitDamage) & \"|\" & str(IsCrit)",
+												"message": "str(TargetUID) & \"|\" & str(HitDamage) & \"|\" & str(IsCrit)",
 												"mode": "reliable-ordered"
 											}
 										},

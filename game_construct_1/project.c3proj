@@ -204,7 +204,9 @@
 			"InputBuffer",
 			"EnemySpawnData",
 			"KnightEnemy",
-			"EnemyDB"
+			"EnemyDB",
+			"EnemyHealthDebugText",
+			"DebugText3"
 		],
 		"subfolders": []
 	},
