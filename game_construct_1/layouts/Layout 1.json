@@ -399,7 +399,8 @@
 						"TargetNetID": -1,
 						"EnemyUID": -1,
 						"EquippedItemID": "",
-						"EnemyID": "punching_bag"
+						"EnemyID": "punching_bag",
+						"FacingLeft": 0
 					},
 					"behaviors": {
 						"Timer": {
@@ -462,7 +463,8 @@
 						"TargetNetID": -1,
 						"EnemyUID": -1,
 						"EquippedItemID": "",
-						"EnemyID": "punching_bag"
+						"EnemyID": "punching_bag",
+						"FacingLeft": 0
 					},
 					"behaviors": {
 						"Timer": {
@@ -525,7 +527,8 @@
 						"TargetNetID": -1,
 						"EnemyUID": -1,
 						"EquippedItemID": "",
-						"EnemyID": "knight"
+						"EnemyID": "knight",
+						"FacingLeft": 0
 					},
 					"behaviors": {
 						"Timer": {
@@ -896,6 +899,41 @@
 						"height": 30,
 						"originX": 0,
 						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "EnemyWeapon",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 2",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 43,
+					"sid": 915909908830103,
+					"tags": "",
+					"instanceVariables": {
+						"EnemyUID": -1
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 553,
+						"y": -268,
+						"width": 31.626506,
+						"height": 32.122905,
+						"originX": 0.5,
+						"originY": 0.5,
 						"color": [
 							1,
 							1,

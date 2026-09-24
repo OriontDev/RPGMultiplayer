@@ -3,7 +3,7 @@
     "name": "Knight",
     "type": 0,
     "maxhealth": 100,
-    "movespeed": 30,
+    "movespeed": 60,
     "detectionrange": 100,
     "attackrange": 50,
     "isinvincible": 0,

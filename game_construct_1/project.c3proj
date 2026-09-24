@@ -206,7 +206,8 @@
 			"KnightEnemy",
 			"EnemyDB",
 			"EnemyHealthDebugText",
-			"DebugText3"
+			"DebugText3",
+			"EnemyWeapon"
 		],
 		"subfolders": []
 	},

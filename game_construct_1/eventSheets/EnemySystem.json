@@ -95,7 +95,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "KnightEnemy",
 							"sid": 252312748700332,
 							"parameters": {
 								"instance-variable": "Name",
@@ -104,7 +104,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "KnightEnemy",
 							"sid": 804404427399857,
 							"parameters": {
 								"instance-variable": "Type",
@@ -113,7 +113,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "KnightEnemy",
 							"sid": 476754619798632,
 							"parameters": {
 								"instance-variable": "MaxHealth",
@@ -122,7 +122,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "KnightEnemy",
 							"sid": 682521354324013,
 							"parameters": {
 								"instance-variable": "MoveSpeed",
@@ -131,7 +131,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "KnightEnemy",
 							"sid": 374297604404764,
 							"parameters": {
 								"instance-variable": "DetectionRange",
@@ -140,7 +140,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "KnightEnemy",
 							"sid": 678086743490092,
 							"parameters": {
 								"instance-variable": "AttackRange",
@@ -149,11 +149,42 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "KnightEnemy",
 							"sid": 231779563916558,
 							"parameters": {
 								"instance-variable": "EquippedItemID",
 								"value": "EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".equipped_item\")"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 805679251836564,
+							"parameters": {
+								"object-to-create": "EnemyWeapon",
+								"layer": "0",
+								"x": "KnightEnemy.X",
+								"y": "KnightEnemy.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "EnemyWeapon",
+							"sid": 898556628118758,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"value": "KnightEnemy.EnemyUID"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "EnemyWeapon",
+							"sid": 351488366275434,
+							"parameters": {
+								"animation": "WeaponDB.Get(\"WeaponDB.\" & KnightEnemy.EquippedItemID & \".animation.still\")",
+								"from": "beginning"
 							}
 						},
 						{
@@ -280,7 +311,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "PunchingBags",
 							"sid": 685223615931513,
 							"parameters": {
 								"instance-variable": "Name",
@@ -289,7 +320,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "PunchingBags",
 							"sid": 579188110821826,
 							"parameters": {
 								"instance-variable": "Type",
@@ -298,7 +329,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "PunchingBags",
 							"sid": 980580125658538,
 							"parameters": {
 								"instance-variable": "MaxHealth",
@@ -307,16 +338,16 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "PunchingBags",
 							"sid": 119093502979930,
 							"parameters": {
 								"instance-variable": "Health",
-								"value": "Enemies.MaxHealth"
+								"value": "PunchingBags.MaxHealth"
 							}
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "PunchingBags",
 							"sid": 951220100251342,
 							"parameters": {
 								"instance-variable": "MoveSpeed",
@@ -325,7 +356,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "PunchingBags",
 							"sid": 522750627811035,
 							"parameters": {
 								"instance-variable": "DetectionRange",
@@ -334,7 +365,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "PunchingBags",
 							"sid": 764413653765783,
 							"parameters": {
 								"instance-variable": "AttackRange",
@@ -343,7 +374,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Enemies",
+							"objectClass": "PunchingBags",
 							"sid": 404317191570317,
 							"parameters": {
 								"instance-variable": "EquippedItemID",
@@ -520,6 +551,21 @@
 						"precision": "normal-float-4-bytes",
 						"interpolation": "none",
 						"client-value-tag": "\"enemyuid\""
+					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
+					"sid": 247507168619970,
+					"parameters": {
+						"object": "Enemies",
+						"instance-variable": {
+							"name": "FacingLeft",
+							"objectClass": "Enemies"
+						},
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none",
+						"client-value-tag": "\"enemyfacingleft\""
 					}
 				}
 			],
@@ -749,6 +795,37 @@
 							"parameters": {
 								"instance-variable": "Name",
 								"value": "int(EnemyDB.Get(\"EnemyDB.\" & Enemies.EnemyID & \".name\"))"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 225446253754591,
+							"parameters": {
+								"object-to-create": "EnemyWeapon",
+								"layer": "0",
+								"x": "KnightEnemy.X",
+								"y": "KnightEnemy.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "EnemyWeapon",
+							"sid": 300187909632726,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"value": "KnightEnemy.EnemyUID"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "EnemyWeapon",
+							"sid": 516947781431111,
+							"parameters": {
+								"animation": "WeaponDB.Get(\"WeaponDB.\" & KnightEnemy.EquippedItemID & \".animation.still\")",
+								"from": "beginning"
 							}
 						}
 					],
@@ -1020,6 +1097,57 @@
 												}
 											],
 											"sid": 121120297828144,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 856491617586007,
+															"parameters": {
+																"first-value": "Player.X",
+																"comparison": 2,
+																"second-value": "Enemies.X"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-instvar-value",
+															"objectClass": "Enemies",
+															"sid": 143866836394103,
+															"parameters": {
+																"instance-variable": "FacingLeft",
+																"value": "0"
+															}
+														}
+													],
+													"sid": 961607660146977
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 238848748057193
+														}
+													],
+													"actions": [
+														{
+															"id": "set-instvar-value",
+															"objectClass": "Enemies",
+															"sid": 567406442771779,
+															"parameters": {
+																"instance-variable": "FacingLeft",
+																"value": "1"
+															}
+														}
+													],
+													"sid": 763274825882974
+												}
+											],
 											"isOrBlock": true
 										},
 										{
@@ -1063,6 +1191,359 @@
 											"sid": 223393776577132
 										}
 									]
+								},
+								{
+									"eventType": "comment",
+									"text": "Subevent of 19"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Enemies",
+											"sid": 956616069920970,
+											"parameters": {
+												"instance-variable": "State",
+												"comparison": 0,
+												"value": "2"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 933049683175673,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "Subevent of 28"
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "for-each",
+													"objectClass": "System",
+													"sid": 955816413818848,
+													"parameters": {
+														"object": "Enemies"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 554300788815765,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "Subevent of 29"
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "Player",
+															"sid": 698955613732483,
+															"parameters": {
+																"instance-variable": "NetID",
+																"comparison": 0,
+																"value": "Enemies.TargetNetID"
+															}
+														}
+													],
+													"actions": [],
+													"sid": 394432376120642,
+													"children": [
+														{
+															"eventType": "comment",
+															"text": "Subevent of 30"
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 340301402500935,
+																	"parameters": {
+																		"first-value": "distance(Enemies.X, Enemies.Y, Player.X, Player.Y)",
+																		"comparison": 4,
+																		"second-value": "Enemies.DetectionRange * 1.3"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-instvar-value",
+																	"objectClass": "Enemies",
+																	"sid": 935674544762696,
+																	"parameters": {
+																		"instance-variable": "TargetNetID",
+																		"value": "-1"
+																	}
+																},
+																{
+																	"id": "set-instvar-value",
+																	"objectClass": "Enemies",
+																	"sid": 899152931114525,
+																	"parameters": {
+																		"instance-variable": "State",
+																		"value": "0"
+																	}
+																}
+															],
+															"sid": 117885843420254
+														},
+														{
+															"eventType": "comment",
+															"text": "Subevent of 30"
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 851080555534000,
+																	"parameters": {
+																		"first-value": "distance(Enemies.X, Enemies.Y, Player.X, Player.Y)",
+																		"comparison": 3,
+																		"second-value": "Enemies.AttackRange"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-instvar-value",
+																	"objectClass": "Enemies",
+																	"sid": 213102390998387,
+																	"parameters": {
+																		"instance-variable": "State",
+																		"value": "3"
+																	}
+																}
+															],
+															"sid": 326172368176586
+														},
+														{
+															"eventType": "comment",
+															"text": "Subevent of 30"
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 734744801706788,
+																	"parameters": {
+																		"first-value": "distance(Enemies.X, Enemies.Y, Player.X, Player.Y)",
+																		"comparison": 4,
+																		"second-value": "Enemies.AttackRange"
+																	}
+																},
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 927251350409911,
+																	"parameters": {
+																		"first-value": "distance(Enemies.X, Enemies.Y, Player.X, Player.Y)",
+																		"comparison": 3,
+																		"second-value": "Enemies.DetectionRange * 1.3"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-x",
+																	"objectClass": "Enemies",
+																	"sid": 615422342360831,
+																	"parameters": {
+																		"x": "cos(angle(Enemies.X, Enemies.Y, Player.X, Player.Y)) * Enemies.MoveSpeed * dt"
+																	}
+																},
+																{
+																	"id": "set-y",
+																	"objectClass": "Enemies",
+																	"sid": 412714475540318,
+																	"parameters": {
+																		"y": "sin(angle(Enemies.X, Enemies.Y, Player.X, Player.Y)) * Enemies.MoveSpeed * dt"
+																	}
+																}
+															],
+															"sid": 253207953334833,
+															"children": [
+																{
+																	"eventType": "comment",
+																	"text": "Subevent of 33"
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "compare-two-values",
+																			"objectClass": "System",
+																			"sid": 880684499355973,
+																			"parameters": {
+																				"first-value": "Player.X",
+																				"comparison": 2,
+																				"second-value": "Enemies.X"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"id": "set-instvar-value",
+																			"objectClass": "Enemies",
+																			"sid": 733585087055942,
+																			"parameters": {
+																				"instance-variable": "FacingLeft",
+																				"value": "0"
+																			}
+																		}
+																	],
+																	"sid": 663655269184938
+																},
+																{
+																	"eventType": "comment",
+																	"text": "Subevent of 33"
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "else",
+																			"objectClass": "System",
+																			"sid": 697762632287914
+																		}
+																	],
+																	"actions": [
+																		{
+																			"id": "set-instvar-value",
+																			"objectClass": "Enemies",
+																			"sid": 508560148921862,
+																			"parameters": {
+																				"instance-variable": "FacingLeft",
+																				"value": "1"
+																			}
+																		}
+																	],
+																	"sid": 241903848167708
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"eventType": "comment",
+									"text": "Subevent of 19"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Enemies",
+											"sid": 417108622034908,
+											"parameters": {
+												"instance-variable": "State",
+												"comparison": 0,
+												"value": "0"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Enemies",
+											"sid": 536054021081518,
+											"parameters": {
+												"instance-variable": "State",
+												"comparison": 0,
+												"value": "1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 923182151096887,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "for-each",
+													"objectClass": "System",
+													"sid": 801767561540665,
+													"parameters": {
+														"object": "Enemies"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 102008393388481,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-nearestfurthest",
+															"objectClass": "Player",
+															"sid": 626624838027607,
+															"parameters": {
+																"which": "nearest",
+																"x": "Enemies.X",
+																"y": "Enemies.Y",
+																"z": "0",
+																"pick-all-tied": false
+															}
+														}
+													],
+													"actions": [],
+													"sid": 627761177423594,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 800002400614445,
+																	"parameters": {
+																		"first-value": "distance(Enemies.X, Enemies.Y, Player.X, Player.Y)",
+																		"comparison": 3,
+																		"second-value": "Enemies.DetectionRange"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-instvar-value",
+																	"objectClass": "Enemies",
+																	"sid": 879411050011128,
+																	"parameters": {
+																		"instance-variable": "TargetNetID",
+																		"value": "Player.NetID"
+																	}
+																},
+																{
+																	"id": "set-instvar-value",
+																	"objectClass": "Enemies",
+																	"sid": 750973141954456,
+																	"parameters": {
+																		"instance-variable": "State",
+																		"value": "2"
+																	}
+																}
+															],
+															"sid": 494210519619711
+														}
+													]
+												}
+											]
+										}
+									],
+									"isOrBlock": true
 								}
 							]
 						}
@@ -1194,6 +1675,96 @@
 						}
 					],
 					"sid": 596376036255017
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 828777411043559,
+					"parameters": {
+						"object": "EnemyWeapon"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 141283307356177,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 751287735296547,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"comparison": 0,
+								"value": "EnemyWeapon.EnemyUID"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 785868785595124,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemies",
+									"sid": 404355730920676,
+									"parameters": {
+										"instance-variable": "FacingLeft",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position",
+									"objectClass": "EnemyWeapon",
+									"sid": 921932834677577,
+									"parameters": {
+										"x": "Enemies.X - 10",
+										"y": "Enemies.Y + 10"
+									}
+								}
+							],
+							"sid": 225195263974780
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemies",
+									"sid": 319500977503442,
+									"parameters": {
+										"instance-variable": "FacingLeft",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position",
+									"objectClass": "EnemyWeapon",
+									"sid": 525185295086004,
+									"parameters": {
+										"x": "Enemies.X + 10",
+										"y": "Enemies.Y - 10"
+									}
+								}
+							],
+							"sid": 770452869445009
+						}
+					]
 				}
 			]
 		}
