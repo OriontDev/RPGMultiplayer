@@ -41,16 +41,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "WeaponDBLoaded",
-			"type": "boolean",
-			"initialValue": "false",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 511471745862002
-		},
-		{
-			"eventType": "variable",
 			"name": "PositionDeadzone",
 			"type": "number",
 			"initialValue": "40",

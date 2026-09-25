@@ -207,6 +207,14 @@
 								"instance-variable": "EnemyUID",
 								"value": "KnightEnemy.EnemyUID"
 							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "DebugText3",
+							"sid": 304797734591238,
+							"parameters": {
+								"text": "DebugText3.Text & \" || \" & EnemyDB.Get(\"EnemiesDB.\" & SpawnEnemyID & \".equipped_item\")"
+							}
 						}
 					],
 					"sid": 197426889214559,
@@ -400,6 +408,14 @@
 							"parameters": {
 								"instance-variable": "EnemyUID",
 								"value": "PunchingBags.EnemyUID"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "DebugText3",
+							"sid": 909446554883574,
+							"parameters": {
+								"text": "DebugText3.Text & \" || \" & EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".equipped_item\")"
 							}
 						}
 					],
@@ -698,14 +714,6 @@
 								}
 							],
 							"actions": [
-								{
-									"id": "set-text",
-									"objectClass": "DebugText3",
-									"sid": 807255087509294,
-									"parameters": {
-										"text": "DebugText3.Text & \" || array height: \" & EnemySpawnData.Height"
-									}
-								},
 								{
 									"callFunction": "SpawnEnemy",
 									"sid": 439543127720366,
@@ -1356,17 +1364,17 @@
 																{
 																	"id": "set-x",
 																	"objectClass": "Enemies",
-																	"sid": 615422342360831,
+																	"sid": 898614177005445,
 																	"parameters": {
-																		"x": "cos(angle(Enemies.X, Enemies.Y, Player.X, Player.Y)) * Enemies.MoveSpeed * dt"
+																		"x": "Enemies.X + cos(angle(Enemies.X, Enemies.Y, Player.X, Player.Y)) * Enemies.MoveSpeed * dt"
 																	}
 																},
 																{
 																	"id": "set-y",
 																	"objectClass": "Enemies",
-																	"sid": 412714475540318,
+																	"sid": 580671402967197,
 																	"parameters": {
-																		"y": "sin(angle(Enemies.X, Enemies.Y, Player.X, Player.Y)) * Enemies.MoveSpeed * dt"
+																		"y": "Enemies.Y + sin(angle(Enemies.X, Enemies.Y, Player.X, Player.Y)) * Enemies.MoveSpeed * dt"
 																	}
 																}
 															],
@@ -1623,6 +1631,58 @@
 						}
 					],
 					"sid": 433568051662315
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 831978739315716,
+							"parameters": {
+								"instance-variable": "FacingLeft",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "Enemies",
+							"sid": 487242527216521,
+							"parameters": {
+								"state": "mirrored"
+							}
+						}
+					],
+					"sid": 785532086537753
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 692969160469674,
+							"parameters": {
+								"instance-variable": "FacingLeft",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "Enemies",
+							"sid": 348099325039997,
+							"parameters": {
+								"state": "not-mirrored"
+							}
+						}
+					],
+					"sid": 116660255974228
 				}
 			]
 		},
@@ -1733,6 +1793,14 @@
 										"x": "Enemies.X - 10",
 										"y": "Enemies.Y + 10"
 									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "EnemyWeapon",
+									"sid": 260925588481092,
+									"parameters": {
+										"state": "mirrored"
+									}
 								}
 							],
 							"sid": 225195263974780
@@ -1755,10 +1823,18 @@
 								{
 									"id": "set-position",
 									"objectClass": "EnemyWeapon",
-									"sid": 525185295086004,
+									"sid": 203500120475511,
 									"parameters": {
 										"x": "Enemies.X + 10",
-										"y": "Enemies.Y - 10"
+										"y": "Enemies.Y + 10"
+									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "EnemyWeapon",
+									"sid": 793227920561377,
+									"parameters": {
+										"state": "not-mirrored"
 									}
 								}
 							],

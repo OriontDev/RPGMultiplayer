@@ -36,6 +36,26 @@
 			"sid": 617249506839307
 		},
 		{
+			"eventType": "variable",
+			"name": "WeaponDBLoaded",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 316415724366420
+		},
+		{
+			"eventType": "variable",
+			"name": "EnemyDBLoaded",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 888351972292182
+		},
+		{
 			"eventType": "comment",
 			"text": "When clicking 'Join' or pressing enter with a non-empty name, store the entered name in the global variable and go to the Chat layout which will then try to connect."
 		},
@@ -94,31 +114,67 @@
 					"parameters": {
 						"text": "MyUsername"
 					}
-				},
-				{
-					"id": "request-project-file",
-					"objectClass": "AJAX",
-					"sid": 147354553629345,
-					"parameters": {
-						"tag": "\"LoadWeapons\"",
-						"file": {
-							"path": "weapons.json"
-						}
-					}
-				},
-				{
-					"id": "request-project-file",
-					"objectClass": "AJAX",
-					"sid": 368749784929053,
-					"parameters": {
-						"tag": "\"LoadEnemies\"",
-						"file": {
-							"path": "enemies.json"
-						}
-					}
 				}
 			],
-			"sid": 170996053314423
+			"sid": 170996053314423,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 425832259318538,
+							"parameters": {
+								"variable": "WeaponDBLoaded"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "request-project-file",
+							"objectClass": "AJAX",
+							"sid": 680874792844357,
+							"parameters": {
+								"tag": "\"LoadWeapons\"",
+								"file": {
+									"path": "weapons.json"
+								}
+							}
+						}
+					],
+					"sid": 210388132393205
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 298792217094220,
+							"parameters": {
+								"variable": "EnemyDBLoaded"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "request-project-file",
+							"objectClass": "AJAX",
+							"sid": 708191949585997,
+							"parameters": {
+								"tag": "\"LoadEnemies\"",
+								"file": {
+									"path": "enemies.json"
+								}
+							}
+						}
+					],
+					"sid": 733326197852203
+				}
+			]
 		},
 		{
 			"eventType": "block",
@@ -141,6 +197,15 @@
 						"path": "\"WeaponDB\"",
 						"json": "AJAX.LastData"
 					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 269320261356594,
+					"parameters": {
+						"variable": "WeaponDBLoaded",
+						"value": "true"
+					}
 				}
 			],
 			"sid": 544885931140963
@@ -161,10 +226,19 @@
 				{
 					"id": "set-json",
 					"objectClass": "EnemyDB",
-					"sid": 990983530130985,
+					"sid": 525636189562263,
 					"parameters": {
-						"path": "\"EnemiesDB\"",
+						"path": "\"EnemyDB\"",
 						"json": "AJAX.LastData"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 539176613104793,
+					"parameters": {
+						"variable": "EnemyDBLoaded",
+						"value": "true"
 					}
 				}
 			],
@@ -187,6 +261,40 @@
 			"actions": [],
 			"sid": 889485735743091,
 			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 670336762381320,
+							"parameters": {
+								"variable": "WeaponDBLoaded"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 680129280239355,
+							"parameters": {
+								"variable": "EnemyDBLoaded"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "JoinButton",
+							"sid": 238105143375555,
+							"parameters": {
+								"mode": "disabled"
+							}
+						}
+					],
+					"sid": 701456554493450
+				},
 				{
 					"eventType": "block",
 					"conditions": [
@@ -284,6 +392,22 @@
 					"id": "is-connected",
 					"objectClass": "Multiplayer",
 					"sid": 645055534103099
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 778797843780971,
+					"parameters": {
+						"variable": "WeaponDBLoaded"
+					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 409129569987059,
+					"parameters": {
+						"variable": "EnemyDBLoaded"
+					}
 				}
 			],
 			"actions": [],

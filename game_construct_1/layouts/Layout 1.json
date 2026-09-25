@@ -400,7 +400,7 @@
 						"EnemyUID": -1,
 						"EquippedItemID": "",
 						"EnemyID": "punching_bag",
-						"FacingLeft": 0
+						"FacingLeft": 1
 					},
 					"behaviors": {
 						"Timer": {
@@ -464,7 +464,7 @@
 						"EnemyUID": -1,
 						"EquippedItemID": "",
 						"EnemyID": "punching_bag",
-						"FacingLeft": 0
+						"FacingLeft": 1
 					},
 					"behaviors": {
 						"Timer": {
@@ -528,7 +528,7 @@
 						"EnemyUID": -1,
 						"EquippedItemID": "",
 						"EnemyID": "knight",
-						"FacingLeft": 0
+						"FacingLeft": 1
 					},
 					"behaviors": {
 						"Timer": {
