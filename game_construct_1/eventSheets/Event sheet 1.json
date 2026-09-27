@@ -2101,6 +2101,26 @@
 										"key": 68
 									},
 									"isInverted": true
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 767981570196819,
+									"parameters": {
+										"variable": "MobileLeft",
+										"comparison": 1,
+										"value": "1"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 356873315482728,
+									"parameters": {
+										"variable": "MobileRight",
+										"comparison": 1,
+										"value": "1"
+									}
 								}
 							],
 							"actions": [
@@ -2140,6 +2160,26 @@
 										"key": 83
 									},
 									"isInverted": true
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 435669861386116,
+									"parameters": {
+										"variable": "MobileUp",
+										"comparison": 1,
+										"value": "1"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 838968069444368,
+									"parameters": {
+										"variable": "MobileDown",
+										"comparison": 1,
+										"value": "1"
+									}
 								}
 							],
 							"actions": [
@@ -2457,6 +2497,46 @@
 									"parameters": {
 										"key": 87
 									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 507403867839498,
+									"parameters": {
+										"variable": "MobileLeft",
+										"comparison": 0,
+										"value": "1"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 331084351750620,
+									"parameters": {
+										"variable": "MobileRight",
+										"comparison": 0,
+										"value": "1"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 324154855417877,
+									"parameters": {
+										"variable": "MobileUp",
+										"comparison": 0,
+										"value": "1"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 321536693905173,
+									"parameters": {
+										"variable": "MobileDown",
+										"comparison": 0,
+										"value": "1"
+									}
 								}
 							],
 							"actions": [
@@ -2536,6 +2616,46 @@
 												"key": 87
 											},
 											"isInverted": true
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 200670463221180,
+											"parameters": {
+												"variable": "MobileLeft",
+												"comparison": 1,
+												"value": "1"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 726936952207102,
+											"parameters": {
+												"variable": "MobileRight",
+												"comparison": 1,
+												"value": "1"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 222682148784705,
+											"parameters": {
+												"variable": "MobileUp",
+												"comparison": 1,
+												"value": "1"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 621119690096766,
+											"parameters": {
+												"variable": "MobileDown",
+												"comparison": 1,
+												"value": "1"
+											}
 										}
 									],
 									"actions": [
@@ -3248,6 +3368,52 @@
 										}
 									],
 									"sid": 213926634310206
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-any-touch-start",
+									"objectClass": "Touch",
+									"sid": 396164833316297
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 663443513494503,
+									"parameters": {
+										"variable": "Device",
+										"comparison": 0,
+										"value": "\"Mobile\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 960474154085844,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "trigger-once-while-true",
+											"objectClass": "System",
+											"sid": 353768669510234
+										}
+									],
+									"actions": [
+										{
+											"id": "request-fullscreen",
+											"objectClass": "Browser",
+											"sid": 332806642847237,
+											"parameters": {
+												"mode": "stretch-letterbox-scale",
+												"navigation-ui": "hide"
+											}
+										}
+									],
+									"sid": 621056076618061
 								}
 							]
 						}

@@ -600,6 +600,21 @@
 						"interpolation": "none",
 						"client-value-tag": "\"enemytargetnetid\""
 					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
+					"sid": 241408116736078,
+					"parameters": {
+						"object": "Enemies",
+						"instance-variable": {
+							"name": "EquippedItemID",
+							"objectClass": "Enemies"
+						},
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none",
+						"client-value-tag": "\"enemyequippeditemid\""
+					}
 				}
 			],
 			"sid": 372214627071252,
