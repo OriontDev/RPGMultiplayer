@@ -212,6 +212,7 @@
 							"id": "set-text",
 							"objectClass": "DebugText3",
 							"sid": 304797734591238,
+							"disabled": true,
 							"parameters": {
 								"text": "DebugText3.Text & \" || \" & EnemyDB.Get(\"EnemiesDB.\" & SpawnEnemyID & \".equipped_item\")"
 							}
@@ -414,6 +415,7 @@
 							"id": "set-text",
 							"objectClass": "DebugText3",
 							"sid": 909446554883574,
+							"disabled": true,
 							"parameters": {
 								"text": "DebugText3.Text & \" || \" & EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".equipped_item\")"
 							}
@@ -582,6 +584,21 @@
 						"precision": "normal-float-4-bytes",
 						"interpolation": "none",
 						"client-value-tag": "\"enemyfacingleft\""
+					}
+				},
+				{
+					"id": "sync-instance-variable",
+					"objectClass": "Multiplayer",
+					"sid": 878627892807786,
+					"parameters": {
+						"object": "Enemies",
+						"instance-variable": {
+							"name": "TargetNetID",
+							"objectClass": "Enemies"
+						},
+						"precision": "normal-float-4-bytes",
+						"interpolation": "none",
+						"client-value-tag": "\"enemytargetnetid\""
 					}
 				}
 			],
@@ -887,7 +904,17 @@
 									}
 								}
 							],
-							"actions": [],
+							"actions": [
+								{
+									"id": "subtract-from-instvar",
+									"objectClass": "Enemies",
+									"sid": 659200234985377,
+									"parameters": {
+										"instance-variable": "AttackTimer",
+										"value": "dt"
+									}
+								}
+							],
 							"sid": 918183321808467,
 							"children": [
 								{
@@ -1112,9 +1139,9 @@
 														{
 															"id": "compare-two-values",
 															"objectClass": "System",
-															"sid": 856491617586007,
+															"sid": 957688299749194,
 															"parameters": {
-																"first-value": "Player.X",
+																"first-value": "Enemies.WanderTargetX",
 																"comparison": 2,
 																"second-value": "Enemies.X"
 															}
@@ -1552,6 +1579,184 @@
 										}
 									],
 									"isOrBlock": true
+								},
+								{
+									"eventType": "comment",
+									"text": "Subevent of 19"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Enemies",
+											"sid": 606610976850330,
+											"parameters": {
+												"instance-variable": "State",
+												"comparison": 0,
+												"value": "3"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 635063786195355,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "for-each",
+													"objectClass": "System",
+													"sid": 485060758076866,
+													"parameters": {
+														"object": "Enemies"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 324398457915394,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "Player",
+															"sid": 323881588489716,
+															"parameters": {
+																"instance-variable": "NetID",
+																"comparison": 0,
+																"value": "Enemies.TargetNetID"
+															}
+														}
+													],
+													"actions": [],
+													"sid": 641077506646276,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 661003442601849,
+																	"parameters": {
+																		"first-value": "distance(Enemies.X, Enemies.Y, Player.X, Player.Y)",
+																		"comparison": 4,
+																		"second-value": "Enemies.AttackRange * 1.2"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-instvar-value",
+																	"objectClass": "Enemies",
+																	"sid": 860582440202293,
+																	"parameters": {
+																		"instance-variable": "State",
+																		"value": "2"
+																	}
+																}
+															],
+															"sid": 503405991000907
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-instance-variable",
+																	"objectClass": "Enemies",
+																	"sid": 505272862419669,
+																	"parameters": {
+																		"instance-variable": "AttackTimer",
+																		"comparison": 3,
+																		"value": "0"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-instvar-value",
+																	"objectClass": "Enemies",
+																	"sid": 372195687126419,
+																	"parameters": {
+																		"instance-variable": "AttackTimer",
+																		"value": "2"
+																	}
+																}
+															],
+															"sid": 615183081016983,
+															"children": [
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "compare-two-values",
+																			"objectClass": "System",
+																			"sid": 640013068609090,
+																			"parameters": {
+																				"first-value": "Player.X",
+																				"comparison": 2,
+																				"second-value": "Enemies.X"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"id": "set-instvar-value",
+																			"objectClass": "Enemies",
+																			"sid": 396921573153623,
+																			"parameters": {
+																				"instance-variable": "FacingLeft",
+																				"value": "0"
+																			}
+																		},
+																		{
+																			"callFunction": "HandleEnemyAttack",
+																			"sid": 838207597553609,
+																			"parameters": [
+																				"Enemies.EnemyUID"
+																			]
+																		}
+																	],
+																	"sid": 164456369204813
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "else",
+																			"objectClass": "System",
+																			"sid": 625175681660086
+																		}
+																	],
+																	"actions": [
+																		{
+																			"id": "set-instvar-value",
+																			"objectClass": "Enemies",
+																			"sid": 544465988307882,
+																			"parameters": {
+																				"instance-variable": "FacingLeft",
+																				"value": "1"
+																			}
+																		},
+																		{
+																			"callFunction": "HandleEnemyAttack",
+																			"sid": 906286655508796,
+																			"parameters": [
+																				"Enemies.EnemyUID"
+																			]
+																		}
+																	],
+																	"sid": 691768234236606
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
 								}
 							]
 						}
@@ -1823,7 +2028,7 @@
 								{
 									"id": "set-position",
 									"objectClass": "EnemyWeapon",
-									"sid": 203500120475511,
+									"sid": 648838643706327,
 									"parameters": {
 										"x": "Enemies.X + 10",
 										"y": "Enemies.Y + 10"
@@ -1843,6 +2048,273 @@
 					]
 				}
 			]
+		},
+		{
+			"functionName": "HandleEnemyAttack",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "AttackerUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 311909088115596
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 346549695104304,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 655868579189100,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"comparison": 0,
+								"value": "AttackerUID"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 670981567629787,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 0,
+								"value": "Enemies.TargetNetID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 298764209768488,
+							"parameters": {
+								"object-to-create": "EnemyAttackEffect",
+								"layer": "2",
+								"x": "Enemies.X",
+								"y": "Enemies.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "EnemyAttackEffect",
+							"sid": 730648702500374,
+							"parameters": {
+								"angle": "angle(Enemies.X, Enemies.Y, Player.X, Player.Y)"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "EnemyAttackEffect",
+							"sid": 853872132348071,
+							"parameters": {
+								"x": "Enemies.X + cos(EnemyAttackEffect.Angle) * AttackEffectDistance",
+								"y": "Enemies.Y + sin(EnemyAttackEffect.Angle) * AttackEffectDistance"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "EnemyAttackEffect",
+							"sid": 914142355573823,
+							"parameters": {
+								"animation": "WeaponDB.Get(\"WeaponDB.\" & Enemies.EquippedItemID & \".animation.swoosh\") ",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 433923223204324,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "EnemyHitDamage",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 360127559253522
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "Player",
+									"sid": 964366050947744,
+									"parameters": {
+										"object": "EnemyAttackEffect"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 393940813479021,
+									"parameters": {
+										"variable": "EnemyHitDamage",
+										"value": "float(WeaponDB.Get(\"WeaponDB.\" & Enemies.EquippedItemID & \".damage\"))"
+									}
+								},
+								{
+									"id": "subtract-from-instvar",
+									"objectClass": "Player",
+									"sid": 937066041385605,
+									"parameters": {
+										"instance-variable": "Health",
+										"value": "EnemyHitDamage "
+									}
+								}
+							],
+							"sid": 237846316543452,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "repeat",
+											"objectClass": "System",
+											"sid": 438115358180402,
+											"parameters": {
+												"count": "Multiplayer.PeerCount"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "send-message",
+											"objectClass": "Multiplayer",
+											"sid": 571114336002133,
+											"parameters": {
+												"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
+												"tag": "\"enemyattackfx\"",
+												"message": "str(AttackerUID)",
+												"mode": "reliable-ordered"
+											}
+										}
+									],
+									"sid": 728428320112597
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-message",
+					"objectClass": "Multiplayer",
+					"sid": 578637927482431,
+					"parameters": {
+						"tag": "\"enemyattackfx\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 992679761315395,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 360011511008715,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"comparison": 0,
+								"value": "int(Multiplayer.Message)"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 237660613536915,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 0,
+								"value": "Enemies.TargetNetID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 286195276929747,
+							"parameters": {
+								"object-to-create": "EnemyAttackEffect",
+								"layer": "2",
+								"x": "Enemies.X",
+								"y": "Enemies.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "EnemyAttackEffect",
+							"sid": 533202264352071,
+							"parameters": {
+								"angle": "angle(Enemies.X, Enemies.Y, Player.X, Player.Y)"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "EnemyAttackEffect",
+							"sid": 407812518601510,
+							"parameters": {
+								"x": "Enemies.X + cos(EnemyAttackEffect.Angle) * AttackEffectDistance",
+								"y": "Enemies.Y + sin(EnemyAttackEffect.Angle) * AttackEffectDistance"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "EnemyAttackEffect",
+							"sid": 452170756813772,
+							"parameters": {
+								"animation": "WeaponDB.Get(\"WeaponDB.\" & Enemies.EquippedItemID & \".animation.swoosh\") ",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 402740632553098
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-any-animation-finished",
+					"objectClass": "EnemyAttackEffect",
+					"sid": 356057724316038
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "EnemyAttackEffect",
+					"sid": 232633359159780
+				}
+			],
+			"sid": 554092238415974
 		}
 	],
 	"sid": 465113697765328

@@ -1313,6 +1313,106 @@
 			]
 		},
 		{
+			"eventType": "variable",
+			"name": "ActiveTouchID",
+			"type": "number",
+			"initialValue": "-1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 482331468868753
+		},
+		{
+			"eventType": "variable",
+			"name": "AnalogCenterX",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 483541313137612
+		},
+		{
+			"eventType": "variable",
+			"name": "AnalogCenterY",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 542206381369737
+		},
+		{
+			"eventType": "variable",
+			"name": "AnalogDX",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 419667441787567
+		},
+		{
+			"eventType": "variable",
+			"name": "AnalogDY",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 679708990974873
+		},
+		{
+			"eventType": "variable",
+			"name": "MaxRadius",
+			"type": "number",
+			"initialValue": "32",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 290574837031147
+		},
+		{
+			"eventType": "variable",
+			"name": "MobileLeft",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 537446242539134
+		},
+		{
+			"eventType": "variable",
+			"name": "MobileRight",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 880159303684891
+		},
+		{
+			"eventType": "variable",
+			"name": "MobileUp",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 709145545770011
+		},
+		{
+			"eventType": "variable",
+			"name": "MobileDown",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 296696322621057
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "Control",
@@ -1340,6 +1440,10 @@
 					"sid": 526560934605256,
 					"children": [
 						{
+							"eventType": "comment",
+							"text": "sub of 33"
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -1357,6 +1461,10 @@
 							"sid": 545280694776652,
 							"children": [
 								{
+									"eventType": "comment",
+									"text": "sub of 34"
+								},
+								{
 									"eventType": "block",
 									"conditions": [
 										{
@@ -1365,6 +1473,16 @@
 											"sid": 360178560148451,
 											"parameters": {
 												"key": 65
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 665774463317658,
+											"parameters": {
+												"variable": "MobileLeft",
+												"comparison": 0,
+												"value": "1"
 											}
 										}
 									],
@@ -1408,7 +1526,12 @@
 											],
 											"sid": 626739183627669
 										}
-									]
+									],
+									"isOrBlock": true
+								},
+								{
+									"eventType": "comment",
+									"text": "sub of 34"
 								},
 								{
 									"eventType": "block",
@@ -1419,6 +1542,16 @@
 											"sid": 792396066108217,
 											"parameters": {
 												"key": 68
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 565235480437858,
+											"parameters": {
+												"variable": "MobileRight",
+												"comparison": 0,
+												"value": "1"
 											}
 										}
 									],
@@ -1462,7 +1595,12 @@
 											],
 											"sid": 934100127806610
 										}
-									]
+									],
+									"isOrBlock": true
+								},
+								{
+									"eventType": "comment",
+									"text": "sub of 34"
 								},
 								{
 									"eventType": "block",
@@ -1473,6 +1611,16 @@
 											"sid": 365101613777916,
 											"parameters": {
 												"key": 87
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 568349471164764,
+											"parameters": {
+												"variable": "MobileUp",
+												"comparison": 0,
+												"value": "1"
 											}
 										}
 									],
@@ -1487,7 +1635,12 @@
 											}
 										}
 									],
-									"sid": 101019582180825
+									"sid": 101019582180825,
+									"isOrBlock": true
+								},
+								{
+									"eventType": "comment",
+									"text": "sub of 34"
 								},
 								{
 									"eventType": "block",
@@ -1498,6 +1651,16 @@
 											"sid": 989592951295347,
 											"parameters": {
 												"key": 83
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 116576075762294,
+											"parameters": {
+												"variable": "MobileDown",
+												"comparison": 0,
+												"value": "1"
 											}
 										}
 									],
@@ -1512,9 +1675,14 @@
 											}
 										}
 									],
-									"sid": 227907492232397
+									"sid": 227907492232397,
+									"isOrBlock": true
 								}
 							]
+						},
+						{
+							"eventType": "comment",
+							"text": "sub of 33"
 						},
 						{
 							"eventType": "block",
@@ -1533,6 +1701,10 @@
 							"actions": [],
 							"sid": 954268703186647,
 							"children": [
+								{
+									"eventType": "comment",
+									"text": "sub of 41"
+								},
 								{
 									"eventType": "block",
 									"conditions": [
@@ -1597,6 +1769,10 @@
 											"sid": 737162436545157
 										}
 									]
+								},
+								{
+									"eventType": "comment",
+									"text": "sub of 41"
 								},
 								{
 									"eventType": "block",
@@ -1664,6 +1840,10 @@
 									]
 								},
 								{
+									"eventType": "comment",
+									"text": "sub of 41"
+								},
+								{
 									"eventType": "block",
 									"conditions": [
 										{
@@ -1689,6 +1869,10 @@
 										}
 									],
 									"sid": 873612507708722
+								},
+								{
+									"eventType": "comment",
+									"text": "sub of 41"
 								},
 								{
 									"eventType": "block",
@@ -1734,6 +1918,10 @@
 					"sid": 225407180521669,
 					"children": [
 						{
+							"eventType": "comment",
+							"text": "sub of 48"
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -1742,6 +1930,16 @@
 									"sid": 660405348023276,
 									"parameters": {
 										"key": 65
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 143976901902745,
+									"parameters": {
+										"variable": "MobileLeft",
+										"comparison": 0,
+										"value": "1"
 									}
 								}
 							],
@@ -1756,7 +1954,12 @@
 									}
 								}
 							],
-							"sid": 577396226706347
+							"sid": 577396226706347,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "sub of 48"
 						},
 						{
 							"eventType": "block",
@@ -1767,6 +1970,16 @@
 									"sid": 311699758802359,
 									"parameters": {
 										"key": 68
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 121664508863447,
+									"parameters": {
+										"variable": "MobileRight",
+										"comparison": 0,
+										"value": "1"
 									}
 								}
 							],
@@ -1781,7 +1994,12 @@
 									}
 								}
 							],
-							"sid": 129111712291401
+							"sid": 129111712291401,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "sub of 48"
 						},
 						{
 							"eventType": "block",
@@ -1792,6 +2010,16 @@
 									"sid": 146039020618325,
 									"parameters": {
 										"key": 87
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 765333617604947,
+									"parameters": {
+										"variable": "MobileUp",
+										"comparison": 0,
+										"value": "1"
 									}
 								}
 							],
@@ -1806,7 +2034,12 @@
 									}
 								}
 							],
-							"sid": 645704895396517
+							"sid": 645704895396517,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "sub of 48"
 						},
 						{
 							"eventType": "block",
@@ -1817,6 +2050,16 @@
 									"sid": 697173444762637,
 									"parameters": {
 										"key": 83
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 115671294218411,
+									"parameters": {
+										"variable": "MobileDown",
+										"comparison": 0,
+										"value": "1"
 									}
 								}
 							],
@@ -1831,7 +2074,12 @@
 									}
 								}
 							],
-							"sid": 921704316541322
+							"sid": 921704316541322,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "sub of 48"
 						},
 						{
 							"eventType": "block",
@@ -1867,6 +2115,10 @@
 								}
 							],
 							"sid": 504142545212238
+						},
+						{
+							"eventType": "comment",
+							"text": "sub of 48"
 						},
 						{
 							"eventType": "block",
@@ -1975,6 +2227,10 @@
 					"sid": 601902160736640,
 					"children": [
 						{
+							"eventType": "comment",
+							"text": "sub of 56"
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -1983,6 +2239,16 @@
 									"sid": 390898301466159,
 									"parameters": {
 										"key": 65
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 771921319714884,
+									"parameters": {
+										"variable": "MobileLeft",
+										"comparison": 0,
+										"value": "1"
 									}
 								}
 							],
@@ -1997,7 +2263,12 @@
 									}
 								}
 							],
-							"sid": 852491437937636
+							"sid": 852491437937636,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "sub of 56"
 						},
 						{
 							"eventType": "block",
@@ -2008,6 +2279,16 @@
 									"sid": 227597401049619,
 									"parameters": {
 										"key": 68
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 667306585533616,
+									"parameters": {
+										"variable": "MobileRight",
+										"comparison": 0,
+										"value": "1"
 									}
 								}
 							],
@@ -2022,7 +2303,12 @@
 									}
 								}
 							],
-							"sid": 625971064483519
+							"sid": 625971064483519,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "sub of 56"
 						},
 						{
 							"eventType": "block",
@@ -2033,6 +2319,16 @@
 									"sid": 863033261947887,
 									"parameters": {
 										"key": 87
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 819739640937597,
+									"parameters": {
+										"variable": "MobileUp",
+										"comparison": 0,
+										"value": "1"
 									}
 								}
 							],
@@ -2047,7 +2343,12 @@
 									}
 								}
 							],
-							"sid": 157604010493329
+							"sid": 157604010493329,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "sub of 56"
 						},
 						{
 							"eventType": "block",
@@ -2058,6 +2359,16 @@
 									"sid": 225981018373928,
 									"parameters": {
 										"key": 83
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 790776040398212,
+									"parameters": {
+										"variable": "MobileDown",
+										"comparison": 0,
+										"value": "1"
 									}
 								}
 							],
@@ -2072,7 +2383,8 @@
 									}
 								}
 							],
-							"sid": 605385331063362
+							"sid": 605385331063362,
+							"isOrBlock": true
 						}
 					]
 				},
@@ -2107,6 +2419,10 @@
 					"actions": [],
 					"sid": 563558272552881,
 					"children": [
+						{
+							"eventType": "comment",
+							"text": "sub of 61"
+						},
 						{
 							"eventType": "block",
 							"conditions": [
@@ -2178,6 +2494,10 @@
 							"actions": [],
 							"sid": 723959348232779,
 							"children": [
+								{
+									"eventType": "comment",
+									"text": "sub of 62"
+								},
 								{
 									"eventType": "block",
 									"conditions": [
@@ -2410,6 +2730,529 @@
 						}
 					],
 					"sid": 712437179681119
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "MobileControl",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-start-of-layout",
+									"objectClass": "System",
+									"sid": 321847997679825
+								}
+							],
+							"actions": [],
+							"sid": 508408292580231,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 447416038534667,
+											"parameters": {
+												"variable": "Device",
+												"comparison": 0,
+												"value": "\"Mobile\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "ControlAnalog",
+											"sid": 782792167099532,
+											"parameters": {
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "set-visible",
+											"objectClass": "ControlAnalogBall",
+											"sid": 328756000070825,
+											"parameters": {
+												"visibility": "visible"
+											}
+										}
+									],
+									"sid": 754667120584682
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 382614412094462
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "ControlAnalog",
+											"sid": 973059907521464,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										},
+										{
+											"id": "set-visible",
+											"objectClass": "ControlAnalogBall",
+											"sid": 679103179055481,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										}
+									],
+									"sid": 371786486223913
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-any-touch-start",
+									"objectClass": "Touch",
+									"sid": 520967234488196
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 394228479948738,
+									"parameters": {
+										"variable": "Device",
+										"comparison": 0,
+										"value": "\"Mobile\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 218448915754727,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 202221404530035,
+											"parameters": {
+												"variable": "ActiveTouchID",
+												"comparison": 0,
+												"value": "-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 152598341894493,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-touching-object",
+													"objectClass": "Touch",
+													"sid": 854019722351047,
+													"parameters": {
+														"object": "ControlAnalogArea"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 183682896456946,
+													"parameters": {
+														"variable": "ActiveTouchID",
+														"value": "Touch.TouchID"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 959108543848921,
+													"parameters": {
+														"variable": "AnalogCenterX",
+														"value": "CanvasToLayerX(\"ControlsUI\", Touch.AbsoluteXForID(ActiveTouchID), Touch.AbsoluteYForID(ActiveTouchID))"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 133557333772937,
+													"parameters": {
+														"variable": "AnalogCenterY",
+														"value": "CanvasToLayerY(\"ControlsUI\", Touch.AbsoluteXForID(ActiveTouchID), Touch.AbsoluteYForID(ActiveTouchID))"
+													}
+												},
+												{
+													"id": "set-position",
+													"objectClass": "ControlAnalog",
+													"sid": 318627516858335,
+													"parameters": {
+														"x": "AnalogCenterX",
+														"y": "AnalogCenterY"
+													}
+												},
+												{
+													"id": "set-position",
+													"objectClass": "ControlAnalogBall",
+													"sid": 852717885196497,
+													"parameters": {
+														"x": "AnalogCenterX",
+														"y": "AnalogCenterY"
+													}
+												}
+											],
+											"sid": 568800442586225
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 653536393897640,
+									"parameters": {
+										"variable": "ActiveTouchID",
+										"comparison": 1,
+										"value": "-1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 456350526983747,
+									"parameters": {
+										"variable": "AnalogDX",
+										"value": "clamp((CanvasToLayerX(\"ControlsUI\", Touch.AbsoluteXForID(ActiveTouchID), Touch.AbsoluteYForID(ActiveTouchID)) - AnalogCenterX) / MaxRadius, -1, 1)"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 536422280072713,
+									"parameters": {
+										"variable": "AnalogDY",
+										"value": "clamp((CanvasToLayerY(\"ControlsUI\", Touch.AbsoluteXForID(ActiveTouchID), Touch.AbsoluteYForID(ActiveTouchID)) - AnalogCenterY) / MaxRadius, -1, 1)"
+									}
+								},
+								{
+									"id": "set-position",
+									"objectClass": "ControlAnalogBall",
+									"sid": 272585759902774,
+									"parameters": {
+										"x": "AnalogCenterX + AnalogDX * MaxRadius",
+										"y": "AnalogCenterY + AnalogDY * MaxRadius"
+									}
+								}
+							],
+							"sid": 157344819281610
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-any-touch-end",
+									"objectClass": "Touch",
+									"sid": 421284547273943
+								}
+							],
+							"actions": [],
+							"sid": 293830170337827,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 184110209654737,
+											"parameters": {
+												"first-value": "Touch.TouchID",
+												"comparison": 0,
+												"second-value": "ActiveTouchID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 372448178021576,
+											"parameters": {
+												"variable": "ActiveTouchID",
+												"value": "-1"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 490566217431485,
+											"parameters": {
+												"variable": "AnalogDX",
+												"value": "0"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 460601999675639,
+											"parameters": {
+												"variable": "AnalogDY",
+												"value": "0"
+											}
+										},
+										{
+											"id": "set-position",
+											"objectClass": "ControlAnalogBall",
+											"sid": 511842728493911,
+											"parameters": {
+												"x": "AnalogCenterX",
+												"y": "AnalogCenterY"
+											}
+										}
+									],
+									"sid": 343397865749573
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 497394624566348,
+									"parameters": {
+										"variable": "Device",
+										"comparison": 0,
+										"value": "\"Mobile\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 355086363970880,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 360840320835485,
+											"parameters": {
+												"variable": "AnalogDX",
+												"comparison": 2,
+												"value": "-0.3"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 679901005109899,
+											"parameters": {
+												"variable": "MobileLeft",
+												"value": "1"
+											}
+										}
+									],
+									"sid": 812923108816839
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 713333732471839,
+											"parameters": {
+												"variable": "AnalogDX",
+												"comparison": 4,
+												"value": "0.3"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 782871634506854,
+											"parameters": {
+												"variable": "MobileRight",
+												"value": "1"
+											}
+										}
+									],
+									"sid": 218000000862428
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 509559716742092,
+											"parameters": {
+												"variable": "AnalogDX",
+												"comparison": 5,
+												"value": "-0.3"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 199200937824545,
+											"parameters": {
+												"variable": "AnalogDX",
+												"comparison": 3,
+												"value": "0.3"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 247981120869612,
+											"parameters": {
+												"variable": "MobileLeft",
+												"value": "0"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 307152248323312,
+											"parameters": {
+												"variable": "MobileRight",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 899572025458301
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 266309488702749,
+											"parameters": {
+												"variable": "AnalogDY",
+												"comparison": 2,
+												"value": "-0.3"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 809237810876243,
+											"parameters": {
+												"variable": "MobileUp",
+												"value": "1"
+											}
+										}
+									],
+									"sid": 296286611271528
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 576093083161190,
+											"parameters": {
+												"variable": "AnalogDY",
+												"comparison": 4,
+												"value": "0.3"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 851578339642846,
+											"parameters": {
+												"variable": "MobileDown",
+												"value": "1"
+											}
+										}
+									],
+									"sid": 988248063778632
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 290972423921193,
+											"parameters": {
+												"variable": "AnalogDY",
+												"comparison": 5,
+												"value": "-0.3"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 259641019217653,
+											"parameters": {
+												"variable": "AnalogDY",
+												"comparison": 3,
+												"value": "0.3"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 347411243886149,
+											"parameters": {
+												"variable": "MobileUp",
+												"value": "0"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 681215689491123,
+											"parameters": {
+												"variable": "MobileDown",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 213926634310206
+								}
+							]
+						}
+					],
+					"sid": 110382964689058
 				}
 			],
 			"sid": 943874818228185

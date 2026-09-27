@@ -66,7 +66,8 @@
 						"ServerY": 0,
 						"IdleTime": 0,
 						"HasCorrected": false,
-						"IsNearEnemy": 0
+						"IsNearEnemy": 0,
+						"Health": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -514,7 +515,7 @@
 						"MaxHealth": 100,
 						"Tier": 0,
 						"IsInvincible": false,
-						"MoveSpeed": 100,
+						"MoveSpeed": 150,
 						"Type": 0,
 						"State": 0,
 						"Name": "Knight",
@@ -699,6 +700,141 @@
 			"sampling": "auto",
 			"parallaxX": 1,
 			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"renderingMode": "3d",
+			"drawOrder": "z-order",
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"zElevation": 0,
+			"global": false
+		},
+		{
+			"name": "ControlsUI",
+			"overriden": 0,
+			"subLayers": [],
+			"instances": [
+				{
+					"type": "ControlAnalogArea",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 45,
+					"sid": 386288115288755,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 154,
+						"y": 237.5,
+						"width": 310,
+						"height": 479,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "ControlAnalog",
+					"properties": {
+						"initially-visible": false,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 46,
+					"sid": 760319353875825,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 115,
+						"y": 375,
+						"width": 97,
+						"height": 97,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							0.6
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "ControlAnalogBall",
+					"properties": {
+						"initially-visible": false,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 47,
+					"sid": 184487968444688,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 115,
+						"y": 375,
+						"width": 32.832800000000006,
+						"height": 33.20590000000001,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				}
+			],
+			"sid": 827182322066281,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"isInitiallyInteractive": true,
+			"isHTMLElementsLayer": false,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				1,
+				1,
+				1,
+				1
+			],
+			"isTransparent": true,
+			"sampling": "auto",
+			"parallaxX": 0,
+			"parallaxY": 0,
 			"scaleRate": 1,
 			"forceOwnTexture": false,
 			"renderingMode": "3d",
@@ -932,6 +1068,41 @@
 						"y": -268,
 						"width": 31.626506,
 						"height": 32.122905,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "EnemyAttackEffect",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 44,
+					"sid": 721411293404854,
+					"tags": "",
+					"instanceVariables": {
+						"EnemyUID": -1
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 131,
+						"y": -459,
+						"width": 63,
+						"height": 63,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [

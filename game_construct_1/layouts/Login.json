@@ -261,6 +261,41 @@
 							1
 						]
 					}
+				},
+				{
+					"type": "MobileCheckBox",
+					"properties": {
+						"type": "checkbox",
+						"text": "Mobile",
+						"tooltip": "",
+						"initially-visible": true,
+						"enabled": true,
+						"auto-font-size": true,
+						"checked": false,
+						"id": "",
+						"class": ""
+					},
+					"uid": 49,
+					"sid": 744270373137576,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 237,
+						"y": 290,
+						"width": 88,
+						"height": 30,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						]
+					}
 				}
 			],
 			"sid": 947074143828454,

@@ -3,8 +3,8 @@
     "name": "Knight",
     "type": 0,
     "maxhealth": 100,
-    "movespeed": 60,
-    "detectionrange": 100,
+    "movespeed": 100,
+    "detectionrange": 300,
     "attackrange": 50,
     "isinvincible": 0,
     "equipped_item": "basic_sword"

@@ -56,6 +56,16 @@
 			"sid": 888351972292182
 		},
 		{
+			"eventType": "variable",
+			"name": "Device",
+			"type": "string",
+			"initialValue": "PC",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 175628459093353
+		},
+		{
 			"eventType": "comment",
 			"text": "When clicking 'Join' or pressing enter with a non-empty name, store the entered name in the global variable and go to the Chat layout which will then try to connect."
 		},
@@ -790,6 +800,51 @@
 					]
 				}
 			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-checked",
+					"objectClass": "MobileCheckBox",
+					"sid": 807579571589976
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 258286366606226,
+					"parameters": {
+						"variable": "Device",
+						"value": "\"Mobile\""
+					}
+				}
+			],
+			"sid": 870059980748850
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-checked",
+					"objectClass": "MobileCheckBox",
+					"sid": 499668315950718,
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 629035886002921,
+					"parameters": {
+						"variable": "Device",
+						"value": "\"PC\""
+					}
+				}
+			],
+			"sid": 216647140686842
 		}
 	],
 	"sid": 518838076776327
