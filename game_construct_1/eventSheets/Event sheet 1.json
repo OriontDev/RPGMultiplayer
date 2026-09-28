@@ -1366,7 +1366,7 @@
 			"eventType": "variable",
 			"name": "MaxRadius",
 			"type": "number",
-			"initialValue": "32",
+			"initialValue": "49",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -3406,10 +3406,10 @@
 										{
 											"id": "request-fullscreen",
 											"objectClass": "Browser",
-											"sid": 332806642847237,
+											"sid": 412258357602978,
 											"parameters": {
-												"mode": "stretch-letterbox-scale",
-												"navigation-ui": "hide"
+												"mode": "stretch-scale-outer",
+												"navigation-ui": "auto"
 											}
 										}
 									],
