@@ -67,7 +67,7 @@
 						"IdleTime": 0,
 						"HasCorrected": false,
 						"IsNearEnemy": 0,
-						"Health": 0
+						"Health": 100
 					},
 					"behaviors": {
 						"8Direction": {
@@ -401,7 +401,9 @@
 						"EnemyUID": -1,
 						"EquippedItemID": "",
 						"EnemyID": "punching_bag",
-						"FacingLeft": 1
+						"FacingLeft": 1,
+						"EnemyKind": -1,
+						"Initialized": 0
 					},
 					"behaviors": {
 						"Timer": {
@@ -465,7 +467,9 @@
 						"EnemyUID": -1,
 						"EquippedItemID": "",
 						"EnemyID": "punching_bag",
-						"FacingLeft": 1
+						"FacingLeft": 1,
+						"EnemyKind": -1,
+						"Initialized": 0
 					},
 					"behaviors": {
 						"Timer": {
@@ -529,7 +533,9 @@
 						"EnemyUID": -1,
 						"EquippedItemID": "",
 						"EnemyID": "knight",
-						"FacingLeft": 1
+						"FacingLeft": 1,
+						"EnemyKind": -1,
+						"Initialized": 0
 					},
 					"behaviors": {
 						"Timer": {

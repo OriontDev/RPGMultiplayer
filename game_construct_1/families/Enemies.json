@@ -135,6 +135,20 @@
 			"desc": "0 - Left, 1 - Right",
 			"show": true,
 			"sid": 368871756339360
+		},
+		{
+			"name": "EnemyKind",
+			"type": "number",
+			"desc": "stand-in for EnemyID, purely because EnemyID is text and text can't sync.",
+			"show": true,
+			"sid": 488806552025803
+		},
+		{
+			"name": "Initialized",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 990180537559954
 		}
 	],
 	"behaviorTypes": [

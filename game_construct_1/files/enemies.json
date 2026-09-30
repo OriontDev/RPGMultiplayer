@@ -2,7 +2,7 @@
   "knight": {
     "name": "Knight",
     "type": 0,
-    "maxhealth": 100,
+    "maxhealth": 150,
     "movespeed": 100,
     "detectionrange": 300,
     "attackrange": 50,

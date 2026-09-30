@@ -482,14 +482,6 @@
 						"instance-variable": "Username",
 						"value": "MyUsername"
 					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "PlayerUserText",
-					"sid": 916343090756898,
-					"parameters": {
-						"text": "MyUsername & \" - \" & str(Player.NetID)"
-					}
 				}
 			],
 			"sid": 761896579436463
