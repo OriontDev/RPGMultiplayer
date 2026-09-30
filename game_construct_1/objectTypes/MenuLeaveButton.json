@@ -1,38 +1,44 @@
 {
-	"name": "ControlAnalogBall",
+	"name": "MenuLeaveButton",
 	"plugin-id": "Sprite",
-	"sid": 242011152263018,
+	"sid": 903928692193303,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
-	"behaviorTypes": [
-		{
-			"behaviorId": "Anchor",
-			"name": "Anchor",
-			"sid": 991734260760313
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [
 			{
 				"frames": [
 					{
-						"width": 88,
-						"height": 89,
+						"width": 250,
+						"height": 250,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 4263091,
+						"imageSpriteId": 929725,
+						"collisionPoly": {
+							"points": [
+								0.084,
+								0.38000006103515616,
+								0.8839997558593747,
+								0.3640001220703125,
+								0.904,
+								0.7680000610351561,
+								0.06800024414062501,
+								0.744000061035156
+							]
+						},
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 548698959564419,
+				"sid": 860873993286022,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

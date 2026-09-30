@@ -10,6 +10,10 @@
 			"includeSheet": "EnemySystem"
 		},
 		{
+			"eventType": "include",
+			"includeSheet": "UI System"
+		},
+		{
 			"eventType": "variable",
 			"name": "MyNetID",
 			"type": "number",
@@ -394,12 +398,12 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 116298452351024,
+					"sid": 369373526827007,
 					"parameters": {
 						"object-to-create": "Player",
 						"layer": "0",
-						"x": "315",
-						"y": "200",
+						"x": "739",
+						"y": "160",
 						"create-hierarchy": false,
 						"template-name": "\"\""
 					}
@@ -481,6 +485,14 @@
 					"parameters": {
 						"instance-variable": "Username",
 						"value": "MyUsername"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "PlayerUserText",
+					"sid": 293216359556148,
+					"parameters": {
+						"text": "MyUsername & \" - \" & PlayerUserText.NetID"
 					}
 				}
 			],
@@ -758,82 +770,6 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-peer-disconnected",
-					"objectClass": "Multiplayer",
-					"sid": 763738904467711
-				},
-				{
-					"id": "is-host",
-					"objectClass": "Multiplayer",
-					"sid": 159720224874794
-				}
-			],
-			"actions": [],
-			"sid": 687231245703546,
-			"children": [
-				{
-					"eventType": "comment",
-					"text": "sub of 16"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Player",
-							"sid": 300292396579512,
-							"parameters": {
-								"instance-variable": "PeerID",
-								"comparison": 0,
-								"value": "Multiplayer.PeerID"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "PlayerUserText",
-							"sid": 483957408260146,
-							"parameters": {
-								"instance-variable": "NetID",
-								"comparison": 0,
-								"value": "Player.NetID"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "PlayerWeapon",
-							"sid": 507097697350276,
-							"parameters": {
-								"instance-variable": "NetID",
-								"comparison": 0,
-								"value": "Player.NetID"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "destroy",
-							"objectClass": "PlayerUserText",
-							"sid": 810128395848759
-						},
-						{
-							"id": "destroy",
-							"objectClass": "Player",
-							"sid": 868826516263089
-						},
-						{
-							"id": "destroy",
-							"objectClass": "PlayerWeapon",
-							"sid": 612736826132693
-						}
-					],
-					"sid": 547699746077869
-				}
-			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
 					"id": "compare-instance-variable",
 					"objectClass": "Player",
 					"sid": 851210734728510,
@@ -945,7 +881,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "sub of 21"
+					"text": "sub of 19"
 				},
 				{
 					"eventType": "block",
@@ -985,7 +921,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "sub of 22"
+							"text": "sub of 20"
 						},
 						{
 							"eventType": "block",
@@ -1025,7 +961,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "sub of 22"
+							"text": "sub of 20"
 						},
 						{
 							"eventType": "block",
@@ -1101,7 +1037,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "sub of 25"
+					"text": "sub of 23"
 				},
 				{
 					"eventType": "block",
@@ -1219,7 +1155,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "sub of 28"
+					"text": "sub of 26"
 				},
 				{
 					"eventType": "block",
@@ -1267,7 +1203,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "sub of 30"
+					"text": "sub of 28"
 				},
 				{
 					"eventType": "block",
@@ -3545,18 +3481,27 @@
 			]
 		},
 		{
+			"eventType": "variable",
+			"name": "DeadNetID",
+			"type": "number",
+			"initialValue": "-1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 423188068855799
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
 					"id": "on-peer-disconnected",
 					"objectClass": "Multiplayer",
-					"sid": 742718409810164
+					"sid": 383159004059600
 				},
 				{
 					"id": "is-host",
 					"objectClass": "Multiplayer",
-					"sid": 789591367056852,
-					"isInverted": true
+					"sid": 488766091240785
 				}
 			],
 			"actions": [],
@@ -3566,9 +3511,127 @@
 					"eventType": "block",
 					"conditions": [
 						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 589332573492080,
+							"parameters": {
+								"instance-variable": "PeerID",
+								"comparison": 0,
+								"value": "Multiplayer.PeerID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 486208759663290,
+							"parameters": {
+								"variable": "DeadNetID",
+								"value": "Player.NetID"
+							}
+						}
+					],
+					"sid": 646451078158269,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerUserText",
+									"sid": 521623197774525,
+									"parameters": {
+										"instance-variable": "NetID",
+										"comparison": 0,
+										"value": "DeadNetID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "PlayerUserText",
+									"sid": 212168314906477
+								}
+							],
+							"sid": 819507555611199
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerWeapon",
+									"sid": 313053892834225,
+									"parameters": {
+										"instance-variable": "NetID",
+										"comparison": 0,
+										"value": "DeadNetID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "PlayerWeapon",
+									"sid": 767344531534179
+								}
+							],
+							"sid": 599631547271105
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 212719557958928,
+									"parameters": {
+										"instance-variable": "NetID",
+										"comparison": 0,
+										"value": "DeadNetID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "Player",
+									"sid": 163658056803150
+								}
+							],
+							"sid": 978988748526501
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-disconnected",
+					"objectClass": "Multiplayer",
+					"sid": 302083422676245
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 578673074862008,
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 444138551187281,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
 							"id": "compare-two-values",
 							"objectClass": "System",
-							"sid": 808532315933995,
+							"sid": 782864397543320,
 							"parameters": {
 								"first-value": "str(Multiplayer.PeerID)",
 								"comparison": 0,
@@ -3578,49 +3641,95 @@
 					],
 					"actions": [
 						{
-							"id": "leave-room",
+							"id": "disconnect-room",
 							"objectClass": "Multiplayer",
-							"sid": 729091935666091
+							"sid": 900339908558595
 						},
 						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 133464272014116,
-							"parameters": {
-								"variable": "MyNetID",
-								"value": "0"
-							}
+							"id": "disconnect-signalling",
+							"objectClass": "Multiplayer",
+							"sid": 257207909185740
 						},
 						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 818558481576837,
-							"parameters": {
-								"variable": "NextNetID",
-								"value": "1"
-							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 745458852167129,
-							"parameters": {
-								"variable": "HostPeerID",
-								"value": "\"\""
-							}
-						},
-						{
-							"id": "go-to-layout",
-							"objectClass": "System",
-							"sid": 974606546743551,
-							"parameters": {
-								"layout": "Login"
-							}
+							"callFunction": "LeaveRoom",
+							"sid": 642906111883727
 						}
 					],
-					"sid": 674989684185464
+					"sid": 518246742163967
 				}
 			]
+		},
+		{
+			"functionName": "LeaveRoom",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "clear",
+					"objectClass": "PendingUsernames",
+					"sid": 909511290628884
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 436350409371297,
+					"parameters": {
+						"variable": "IsMenu",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 159310446792713,
+					"parameters": {
+						"variable": "MyNetID",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 945358732992110,
+					"parameters": {
+						"variable": "NextNetID",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 323936875268377,
+					"parameters": {
+						"variable": "NextEnemyUID",
+						"value": "-1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 597103900783152,
+					"parameters": {
+						"variable": "HostPeerID",
+						"value": "\"\""
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 584027693166709,
+					"parameters": {
+						"layout": "Login"
+					}
+				}
+			],
+			"sid": 437511243404441
 		}
 	],
 	"sid": 474297610386447

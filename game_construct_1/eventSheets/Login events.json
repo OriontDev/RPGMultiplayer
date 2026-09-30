@@ -104,15 +104,6 @@
 					}
 				},
 				{
-					"id": "connect",
-					"objectClass": "Multiplayer",
-					"sid": 548543066040260,
-					"disabled": true,
-					"parameters": {
-						"server": "\"wss://multiplayer.construct.net\""
-					}
-				},
-				{
 					"id": "set-focused",
 					"objectClass": "NameTextBox",
 					"sid": 428958463406792
@@ -124,6 +115,11 @@
 					"parameters": {
 						"text": "MyUsername"
 					}
+				},
+				{
+					"id": "clear",
+					"objectClass": "PendingUsernames",
+					"sid": 102712122817284
 				}
 			],
 			"sid": 170996053314423,

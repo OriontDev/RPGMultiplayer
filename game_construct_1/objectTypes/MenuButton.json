@@ -1,7 +1,7 @@
 {
-	"name": "ControlAnalogBall",
+	"name": "MenuButton",
 	"plugin-id": "Sprite",
-	"sid": 242011152263018,
+	"sid": 108896203114157,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
@@ -9,7 +9,7 @@
 		{
 			"behaviorId": "Anchor",
 			"name": "Anchor",
-			"sid": 991734260760313
+			"sid": 589068194404356
 		}
 	],
 	"effectTypes": [],
@@ -18,21 +18,21 @@
 			{
 				"frames": [
 					{
-						"width": 88,
-						"height": 89,
+						"width": 250,
+						"height": 250,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 4263091,
+						"imageSpriteId": 1622619,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 548698959564419,
+				"sid": 817805267589680,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

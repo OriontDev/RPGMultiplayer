@@ -71,6 +71,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Multiplayer",
 			"name": "Multiplayer",
 			"author": "Scirra",
@@ -236,7 +243,12 @@
 			"ControlAnalogBall",
 			"Touch",
 			"MobileCheckBox",
-			"Browser"
+			"Browser",
+			"MenuButton",
+			"Mouse",
+			"Sprite4",
+			"MenuBackground",
+			"MenuLeaveButton"
 		],
 		"subfolders": []
 	},
@@ -264,7 +276,8 @@
 			"Login events",
 			"SignIn events",
 			"PlayerCombat",
-			"EnemySystem"
+			"EnemySystem",
+			"UI System"
 		],
 		"subfolders": []
 	},

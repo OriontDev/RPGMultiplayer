@@ -1,0 +1,199 @@
+{
+	"name": "UI System",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "IsMenu",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Wether Menu is open or not ( 0 No, 1 yes)",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 862390051242793
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 419470701614024,
+					"parameters": {
+						"object": "MenuButton"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 902554189477199,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 306798670697042,
+							"parameters": {
+								"variable": "IsMenu",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 388715967647606,
+							"parameters": {
+								"variable": "IsMenu",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 377180491710293
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 964301729856619
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 113026252057249,
+							"parameters": {
+								"variable": "IsMenu",
+								"value": "0"
+							}
+						}
+					],
+					"sid": 628508962152656
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 343131244518757,
+					"parameters": {
+						"variable": "IsMenu",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 213384916863167,
+					"parameters": {
+						"layer": "5",
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 652473044193931
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 418842784645278,
+					"parameters": {
+						"variable": "IsMenu",
+						"comparison": 0,
+						"value": "1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 763786958047979,
+					"parameters": {
+						"layer": "5",
+						"visibility": "visible"
+					}
+				}
+			],
+			"sid": 611945356387126
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 681144938766584
+				}
+			],
+			"actions": [
+				{
+					"id": "set-position",
+					"objectClass": "MenuButton",
+					"sid": 987861115714019,
+					"parameters": {
+						"x": "ViewportRight(\"UI\") - 41",
+						"y": "ViewportTop(\"UI\") + 38"
+					}
+				}
+			],
+			"sid": 958532873942136
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 812701230524887,
+					"parameters": {
+						"object": "MenuLeaveButton"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 158270044507676,
+					"parameters": {
+						"variable": "IsMenu",
+						"comparison": 0,
+						"value": "1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "disconnect-room",
+					"objectClass": "Multiplayer",
+					"sid": 467361504315715
+				},
+				{
+					"id": "disconnect-signalling",
+					"objectClass": "Multiplayer",
+					"sid": 467719382260542
+				},
+				{
+					"callFunction": "LeaveRoom",
+					"sid": 516428598046100
+				}
+			],
+			"sid": 622237622958529
+		}
+	],
+	"sid": 665624822337457
+}
