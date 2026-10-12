@@ -2194,6 +2194,67 @@
 				{
 					"id": "on-peer-message",
 					"objectClass": "Multiplayer",
+					"sid": 464829191516810,
+					"parameters": {
+						"tag": "\"equipchange\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 458111467880505,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 106969205975857,
+							"parameters": {
+								"object": "Player"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 441686602629390,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 454856190004032,
+									"parameters": {
+										"instance-variable": "NetID",
+										"comparison": 0,
+										"value": "int(tokenat(Multiplayer.Message, 0, \"|\"))"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 944917416704235,
+									"parameters": {
+										"instance-variable": "EquippedItemID",
+										"value": "tokenat(Multiplayer.Message, 1, \"|\")"
+									}
+								}
+							],
+							"sid": 845446687656833
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-message",
+					"objectClass": "Multiplayer",
 					"sid": 602566263376881,
 					"parameters": {
 						"tag": "\"attackfx\""
@@ -2630,6 +2691,159 @@
 						}
 					],
 					"sid": 831722484747488
+				}
+			]
+		},
+		{
+			"functionName": "BroadcastEquip",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "PlayerNetID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 962543421004945
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 492486472031370,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 255602636626709,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 0,
+								"value": "PlayerNetID"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 789215743412879,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "repeat",
+									"objectClass": "System",
+									"sid": 427310183003801,
+									"parameters": {
+										"count": "Multiplayer.PeerCount"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "send-message",
+									"objectClass": "Multiplayer",
+									"sid": 780170761490056,
+									"parameters": {
+										"peer-id": "Multiplayer.PeerIDAt(loopindex)",
+										"tag": "\"equipchange\"",
+										"message": "str(PlayerNetID) & \"|\" & Player.EquippedItemID",
+										"mode": "reliable-ordered"
+									}
+								}
+							],
+							"sid": 463531013577330
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 824694199471531
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 738507194841393,
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 249404697933354,
+					"parameters": {
+						"seconds": "1.5",
+						"use-timescale": true
+					}
+				},
+				{
+					"id": "send-message",
+					"objectClass": "Multiplayer",
+					"sid": 569587701661520,
+					"parameters": {
+						"peer-id": "Multiplayer.HostID",
+						"tag": "\"requestequip\"",
+						"message": "str(MyNetID)",
+						"mode": "reliable-ordered"
+					}
+				}
+			],
+			"sid": 388903992654348
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-message",
+					"objectClass": "Multiplayer",
+					"sid": 650341283297422,
+					"parameters": {
+						"tag": "\"requestequip\""
+					}
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 781279251006698
+				}
+			],
+			"actions": [],
+			"sid": 296435270279444,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 418584385302348,
+							"parameters": {
+								"object": "Player"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "BroadcastEquip",
+							"sid": 636421786424026,
+							"parameters": [
+								"Player.NetID"
+							]
+						}
+					],
+					"sid": 972122443692603
 				}
 			]
 		}

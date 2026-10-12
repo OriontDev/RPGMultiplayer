@@ -661,67 +661,6 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-peer-message",
-					"objectClass": "Multiplayer",
-					"sid": 464829191516810,
-					"parameters": {
-						"tag": "\"equipchange\""
-					}
-				}
-			],
-			"actions": [],
-			"sid": 458111467880505,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 106969205975857,
-							"parameters": {
-								"object": "Player"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 441686602629390,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "Player",
-									"sid": 454856190004032,
-									"parameters": {
-										"instance-variable": "NetID",
-										"comparison": 0,
-										"value": "int(tokenat(Multiplayer.Message, 0, \"|\"))"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Player",
-									"sid": 944917416704235,
-									"parameters": {
-										"instance-variable": "EquippedItemID",
-										"value": "tokenat(Multiplayer.Message, 1, \"|\")"
-									}
-								}
-							],
-							"sid": 845446687656833
-						}
-					]
-				}
-			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
 					"id": "for-each",
 					"objectClass": "System",
 					"sid": 237059071569626,
