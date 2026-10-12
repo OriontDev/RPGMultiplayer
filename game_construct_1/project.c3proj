@@ -248,7 +248,10 @@
 			"Mouse",
 			"Sprite4",
 			"MenuBackground",
-			"MenuLeaveButton"
+			"MenuLeaveButton",
+			"PlayerProjectile",
+			"PlayerProjectileHit",
+			"Walls"
 		],
 		"subfolders": []
 	},
@@ -314,6 +317,20 @@
 							],
 							"subfolders": [],
 							"name": "Swords"
+						},
+						{
+							"items": [
+								{
+									"name": "basic_pistol.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 950019081374302,
+									"file-info": {
+										"purpose": "none"
+									}
+								}
+							],
+							"subfolders": [],
+							"name": "Guns"
 						}
 					],
 					"name": "Weapons"

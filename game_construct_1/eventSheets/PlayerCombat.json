@@ -22,6 +22,26 @@
 			"sid": 361172474624412
 		},
 		{
+			"eventType": "variable",
+			"name": "NextProjUID",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 173610317499592
+		},
+		{
+			"eventType": "variable",
+			"name": "ProjectileSpawnDistance",
+			"type": "number",
+			"initialValue": "20",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 324015901539042
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -105,11 +125,11 @@
 						{
 							"id": "compare-two-values",
 							"objectClass": "System",
-							"sid": 107390394444550,
+							"sid": 738887180637568,
 							"parameters": {
 								"first-value": "distance(Player.X, Player.Y, Enemies.X, Enemies.Y)",
 								"comparison": 3,
-								"second-value": "EnemyDetectRadius"
+								"second-value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".enemydetectradius\"))"
 							}
 						}
 					],
@@ -389,11 +409,11 @@
 						{
 							"id": "compare-two-values",
 							"objectClass": "System",
-							"sid": 198993764827682,
+							"sid": 885967971157777,
 							"parameters": {
 								"first-value": "distance(Player.X, Player.Y, Enemies.X, Enemies.Y)",
 								"comparison": 3,
-								"second-value": "EnemyDetectRadius"
+								"second-value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".enemydetectradius\"))"
 							}
 						}
 					],
@@ -533,19 +553,17 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "compare-instance-variable",
-					"objectClass": "Player",
-					"sid": 161346773025233,
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 472951881234894,
 					"parameters": {
-						"instance-variable": "EquippedItemID",
-						"comparison": 0,
-						"value": "\"\""
+						"object": "Player"
 					}
 				},
 				{
 					"id": "compare-instance-variable",
 					"objectClass": "PlayerWeapon",
-					"sid": 258429832504916,
+					"sid": 434966874435055,
 					"parameters": {
 						"instance-variable": "NetID",
 						"comparison": 0,
@@ -553,62 +571,91 @@
 					}
 				}
 			],
-			"actions": [
+			"actions": [],
+			"sid": 282588162774587,
+			"children": [
 				{
-					"id": "set-visible",
-					"objectClass": "PlayerWeapon",
-					"sid": 200367615317488,
-					"parameters": {
-						"visibility": "invisible"
-					}
-				}
-			],
-			"sid": 214750177420222
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Player",
-					"sid": 480913588978526,
-					"parameters": {
-						"instance-variable": "EquippedItemID",
-						"comparison": 1,
-						"value": "\"\""
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 646731488771056,
+							"parameters": {
+								"instance-variable": "EquippedItemID",
+								"comparison": 0,
+								"value": "\"\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "PlayerWeapon",
+							"sid": 148769329968253,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 450871448511396
 				},
 				{
-					"id": "compare-instance-variable",
-					"objectClass": "PlayerWeapon",
-					"sid": 521158715506156,
-					"parameters": {
-						"instance-variable": "NetID",
-						"comparison": 0,
-						"value": "Player.NetID"
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 761383495163050,
+							"parameters": {
+								"instance-variable": "EquippedItemID",
+								"comparison": 1,
+								"value": "\"\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "PlayerWeapon",
+							"sid": 886022057804037,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 661303297071996,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 946628019687206,
+									"parameters": {
+										"first-value": "PlayerWeapon.AnimationName",
+										"comparison": 1,
+										"second-value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.still\")"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "PlayerWeapon",
+									"sid": 483088875004925,
+									"parameters": {
+										"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.still\")",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 617658897859654
+						}
+					]
 				}
-			],
-			"actions": [
-				{
-					"id": "set-visible",
-					"objectClass": "PlayerWeapon",
-					"sid": 935310609558689,
-					"parameters": {
-						"visibility": "visible"
-					}
-				},
-				{
-					"id": "set-animation",
-					"objectClass": "PlayerWeapon",
-					"sid": 984137620946384,
-					"parameters": {
-						"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.still\")",
-						"from": "beginning"
-					}
-				}
-			],
-			"sid": 829864458005523
+			]
 		},
 		{
 			"functionName": "HandlePickupDrop",
@@ -658,6 +705,18 @@
 									"parameters": {
 										"object": "Pickups"
 									}
+								},
+								{
+									"id": "pick-nearestfurthest",
+									"objectClass": "Pickups",
+									"sid": 415786222173379,
+									"parameters": {
+										"which": "nearest",
+										"x": "Player.X",
+										"y": "Player.Y",
+										"z": "0",
+										"pick-all-tied": false
+									}
 								}
 							],
 							"actions": [],
@@ -665,7 +724,7 @@
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "Sub event of 14"
+									"text": "Sub event of 21"
 								},
 								{
 									"eventType": "block",
@@ -696,7 +755,7 @@
 									"children": [
 										{
 											"eventType": "comment",
-											"text": "Sub event of 15"
+											"text": "Sub event of 22"
 										},
 										{
 											"eventType": "block",
@@ -742,7 +801,7 @@
 										},
 										{
 											"eventType": "comment",
-											"text": "Sub event of 15"
+											"text": "Sub event of 22"
 										},
 										{
 											"eventType": "block",
@@ -858,7 +917,7 @@
 										},
 										{
 											"eventType": "comment",
-											"text": "Sub event of 15"
+											"text": "Sub event of 22"
 										},
 										{
 											"eventType": "block",
@@ -883,13 +942,22 @@
 														"instance-variable": "EquippedItemID",
 														"value": "Player.Slot1_ItemID"
 													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 161229479295035,
+													"parameters": {
+														"variable": "EnemyDetectRadius",
+														"value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".enemydetectradius\")"
+													}
 												}
 											],
 											"sid": 489214419937349
 										},
 										{
 											"eventType": "comment",
-											"text": "Sub event of 15"
+											"text": "Sub event of 22"
 										},
 										{
 											"eventType": "block",
@@ -913,6 +981,15 @@
 													"parameters": {
 														"instance-variable": "EquippedItemID",
 														"value": "Player.Slot2_ItemID"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 420995944400637,
+													"parameters": {
+														"variable": "EnemyDetectRadius",
+														"value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".enemydetectradius\")"
 													}
 												}
 											],
@@ -964,13 +1041,40 @@
 										"instance-variable": "ItemID",
 										"value": "Player.EquippedItemID"
 									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "WeaponPickup",
+									"sid": 669320969676231,
+									"parameters": {
+										"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.still\")",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "WeaponPickup",
+									"sid": 401875940409520,
+									"parameters": {
+										"instance-variable": "PickupUID",
+										"value": "NextPickupUID"
+									}
+								},
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 745975513731081,
+									"parameters": {
+										"variable": "NextPickupUID",
+										"value": "1"
+									}
 								}
 							],
 							"sid": 738062232255967,
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "Sub event of 17"
+									"text": "Sub event of 30"
 								},
 								{
 									"eventType": "block",
@@ -978,11 +1082,11 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "Player",
-											"sid": 892256216776311,
+											"sid": 133738001299839,
 											"parameters": {
-												"instance-variable": "Slot1_ItemID",
+												"instance-variable": "ActiveSlot",
 												"comparison": 0,
-												"value": "Player.EquippedItemID"
+												"value": "1"
 											}
 										}
 									],
@@ -1010,7 +1114,7 @@
 								},
 								{
 									"eventType": "comment",
-									"text": "Sub event of 17"
+									"text": "Sub event of 30"
 								},
 								{
 									"eventType": "block",
@@ -1018,11 +1122,11 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "Player",
-											"sid": 402554504683600,
+											"sid": 761115767283757,
 											"parameters": {
-												"instance-variable": "Slot2_ItemID",
+												"instance-variable": "ActiveSlot",
 												"comparison": 0,
-												"value": "Player.EquippedItemID"
+												"value": "2"
 											}
 										}
 									],
@@ -1328,6 +1432,14 @@
 		{
 			"eventType": "block",
 			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 855702981338344,
+					"parameters": {
+						"object": "Player"
+					}
+				},
 				{
 					"id": "is-moving",
 					"objectClass": "Player",
@@ -1656,7 +1768,7 @@
 						{
 							"id": "compare-instance-variable",
 							"objectClass": "Player",
-							"sid": 467716806120483,
+							"sid": 872433542607771,
 							"parameters": {
 								"instance-variable": "NetID",
 								"comparison": 0,
@@ -1664,362 +1776,191 @@
 							}
 						},
 						{
-							"id": "compare-instance-variable",
-							"objectClass": "Player",
-							"sid": 244163374607602,
-							"parameters": {
-								"instance-variable": "AttackTimer",
-								"comparison": 3,
-								"value": "0"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Player",
-							"sid": 863110250077943,
-							"parameters": {
-								"instance-variable": "EquippedItemID",
-								"comparison": 1,
-								"value": "\"\""
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "PlayerWeapon",
-							"sid": 828707656728445,
-							"parameters": {
-								"instance-variable": "NetID",
-								"comparison": 0,
-								"value": "PlayerNetID"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "create-object",
+							"id": "compare-two-values",
 							"objectClass": "System",
-							"sid": 236029747982848,
+							"sid": 245455202984987,
 							"parameters": {
-								"object-to-create": "AttackEffect",
-								"layer": "2",
-								"x": "Player.X",
-								"y": "Player.Y",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "AttackEffect",
-							"sid": 954585601191658,
-							"parameters": {
-								"instance-variable": "NetID",
-								"value": "PlayerNetID"
-							}
-						},
-						{
-							"id": "add-child",
-							"objectClass": "Player",
-							"sid": 217376286221651,
-							"parameters": {
-								"child": "AttackEffect",
-								"transform-x": true,
-								"transform-y": true,
-								"transform-z-elevation": false,
-								"transform-w": false,
-								"transform-h": false,
-								"transform-d": false,
-								"transform-a": false,
-								"transform-o": false,
-								"transform-visibility": false,
-								"destroy-with-parent": false
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 732185401186967,
-							"parameters": {
-								"instance-variable": "AttackTimer",
-								"value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".firerate\")"
-							}
-						},
-						{
-							"id": "set-animation",
-							"objectClass": "AttackEffect",
-							"sid": 843602174838765,
-							"parameters": {
-								"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.swoosh\")",
-								"from": "beginning"
-							}
-						},
-						{
-							"id": "play-by-name",
-							"objectClass": "Audio",
-							"sid": 101231521715562,
-							"parameters": {
-								"folder": "sounds",
-								"audio-file-name": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".sfx\")",
-								"loop": "not-looping",
-								"volume": "0",
-								"stereo-pan": "0",
-								"tag-optional": "\"sfx\""
+								"first-value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".type\")",
+								"comparison": 0,
+								"second-value": "\"melee\""
 							}
 						}
 					],
-					"sid": 368192437072437,
+					"actions": [],
+					"sid": 803280647202287,
 					"children": [
-						{
-							"eventType": "comment",
-							"text": "Sub-event of 48"
-						},
 						{
 							"eventType": "block",
 							"conditions": [
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "Player",
-									"sid": 926244879796060,
+									"sid": 787933730002205,
 									"parameters": {
-										"instance-variable": "IsNearEnemy",
+										"instance-variable": "AttackTimer",
+										"comparison": 3,
+										"value": "0"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 347691778307557,
+									"parameters": {
+										"instance-variable": "EquippedItemID",
+										"comparison": 1,
+										"value": "\"\""
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerWeapon",
+									"sid": 855795815604866,
+									"parameters": {
+										"instance-variable": "NetID",
 										"comparison": 0,
-										"value": "1"
-									}
-								}
-							],
-							"actions": [],
-							"sid": 912983803759320,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "pick-nearestfurthest",
-											"objectClass": "Enemies",
-											"sid": 720006142532466,
-											"parameters": {
-												"which": "nearest",
-												"x": "Player.X",
-												"y": "Player.Y",
-												"z": "0",
-												"pick-all-tied": false
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-angle",
-											"objectClass": "AttackEffect",
-											"sid": 995966759340561,
-											"parameters": {
-												"angle": "angle(Player.X, Player.Y, Enemies.X, Enemies.Y)"
-											}
-										},
-										{
-											"id": "set-position",
-											"objectClass": "AttackEffect",
-											"sid": 818214026241382,
-											"parameters": {
-												"x": "Player.X + cos(AttackEffect.Angle) * AttackEffectDistance",
-												"y": "Player.Y + sin(AttackEffect.Angle) * AttackEffectDistance"
-											}
-										}
-									],
-									"sid": 645253821256205
-								}
-							]
-						},
-						{
-							"eventType": "comment",
-							"text": "Sub-event of 48"
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 234795493417678
-								}
-							],
-							"actions": [
-								{
-									"id": "set-angle",
-									"objectClass": "AttackEffect",
-									"sid": 800901880198712,
-									"parameters": {
-										"angle": "PlayerWeapon.Angle"
-									}
-								},
-								{
-									"id": "set-position",
-									"objectClass": "AttackEffect",
-									"sid": 913674082782377,
-									"parameters": {
-										"x": "Player.X + cos(PlayerWeapon.Angle) * AttackEffectDistance",
-										"y": "Player.Y + sin(PlayerWeapon.Angle) * AttackEffectDistance"
-									}
-								}
-							],
-							"sid": 661973001411678
-						},
-						{
-							"eventType": "comment",
-							"text": "Sub-event of 48"
-						},
-						{
-							"eventType": "variable",
-							"name": "HitDamage",
-							"type": "number",
-							"initialValue": "0",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 233366749299008
-						},
-						{
-							"eventType": "variable",
-							"name": "IsCrit",
-							"type": "number",
-							"initialValue": "0",
-							"comment": "0 - false, 1 - true",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 687277209143127
-						},
-						{
-							"eventType": "variable",
-							"name": "TargetUID",
-							"type": "number",
-							"initialValue": "0",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 155682726229463
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "for-each",
-									"objectClass": "System",
-									"sid": 574279532544694,
-									"parameters": {
-										"object": "Enemies"
-									}
-								},
-								{
-									"id": "is-overlapping-another-object",
-									"objectClass": "Enemies",
-									"sid": 496581237181835,
-									"parameters": {
-										"object": "AttackEffect"
+										"value": "PlayerNetID"
 									}
 								}
 							],
 							"actions": [
 								{
-									"id": "set-eventvar-value",
+									"id": "create-object",
 									"objectClass": "System",
-									"sid": 718666035407679,
+									"sid": 797810405917241,
 									"parameters": {
-										"variable": "HitDamage",
-										"value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\"))"
+										"object-to-create": "AttackEffect",
+										"layer": "2",
+										"x": "Player.X",
+										"y": "Player.Y",
+										"create-hierarchy": false,
+										"template-name": "\"\""
 									}
 								},
 								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 389037575531407,
+									"id": "set-instvar-value",
+									"objectClass": "AttackEffect",
+									"sid": 670651496571811,
 									"parameters": {
-										"variable": "TargetUID",
-										"value": "Enemies.EnemyUID"
+										"instance-variable": "NetID",
+										"value": "PlayerNetID"
+									}
+								},
+								{
+									"id": "add-child",
+									"objectClass": "Player",
+									"sid": 446705925232898,
+									"parameters": {
+										"child": "AttackEffect",
+										"transform-x": true,
+										"transform-y": true,
+										"transform-z-elevation": false,
+										"transform-w": false,
+										"transform-h": false,
+										"transform-d": false,
+										"transform-a": false,
+										"transform-o": false,
+										"transform-visibility": false,
+										"destroy-with-parent": false
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 836683598158751,
+									"parameters": {
+										"instance-variable": "AttackTimer",
+										"value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".firerate\")"
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "AttackEffect",
+									"sid": 452956936602071,
+									"parameters": {
+										"animation": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".animation.swoosh\")",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "play-by-name",
+									"objectClass": "Audio",
+									"sid": 146401190095928,
+									"parameters": {
+										"folder": "sounds",
+										"audio-file-name": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".sfx\")",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"sfx\""
 									}
 								}
 							],
-							"sid": 984777510408876,
+							"sid": 958289623420996,
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "Sub-event of 52"
+									"text": "Sub-event of 49"
 								},
 								{
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 347370377657356,
+											"id": "compare-instance-variable",
+											"objectClass": "Player",
+											"sid": 721882206716319,
 											"parameters": {
-												"first-value": "random(100)",
-												"comparison": 2,
-												"second-value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".critrate\"))"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 327486986346237,
-											"parameters": {
-												"variable": "HitDamage",
-												"value": "HitDamage + (HitDamage * float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".critdamage\")))"
-											}
-										},
-										{
-											"id": "create-object",
-											"objectClass": "System",
-											"sid": 246241769294342,
-											"parameters": {
-												"object-to-create": "DamageNumber",
-												"layer": "2",
-												"x": "Enemies.X",
-												"y": "Enemies.Y",
-												"create-hierarchy": false,
-												"template-name": "\"\""
-											}
-										},
-										{
-											"id": "set-font-color",
-											"objectClass": "DamageNumber",
-											"sid": 146372101416425,
-											"parameters": {
-												"color": "rgbEx(255, 234, 0)"
-											}
-										},
-										{
-											"id": "set-angle-of-motion",
-											"objectClass": "DamageNumber",
-											"sid": 958814108517812,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"angle": "270"
-											}
-										},
-										{
-											"id": "set-text",
-											"objectClass": "DamageNumber",
-											"sid": 188987961229930,
-											"parameters": {
-												"text": "\"[bold][lineThickness=1][outline=black]\" & HitDamage & \"[/outline][/lineThickness][/bold]\""
-											}
-										},
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 889648038486662,
-											"parameters": {
-												"variable": "IsCrit",
+												"instance-variable": "IsNearEnemy",
+												"comparison": 0,
 												"value": "1"
 											}
 										}
 									],
-									"sid": 233338082641974
+									"actions": [],
+									"sid": 499376601529603,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-nearestfurthest",
+													"objectClass": "Enemies",
+													"sid": 110203896840863,
+													"parameters": {
+														"which": "nearest",
+														"x": "Player.X",
+														"y": "Player.Y",
+														"z": "0",
+														"pick-all-tied": false
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-angle",
+													"objectClass": "AttackEffect",
+													"sid": 922334999411244,
+													"parameters": {
+														"angle": "angle(Player.X, Player.Y, Enemies.X, Enemies.Y)"
+													}
+												},
+												{
+													"id": "set-position",
+													"objectClass": "AttackEffect",
+													"sid": 115410066251954,
+													"parameters": {
+														"x": "Player.X + cos(AttackEffect.Angle) * AttackEffectDistance",
+														"y": "Player.Y + sin(AttackEffect.Angle) * AttackEffectDistance"
+													}
+												}
+											],
+											"sid": 407201159957196
+										}
+									]
 								},
 								{
 									"eventType": "comment",
-									"text": "Sub-event of 52"
+									"text": "Sub-event of 49"
 								},
 								{
 									"eventType": "block",
@@ -2027,94 +1968,323 @@
 										{
 											"id": "else",
 											"objectClass": "System",
-											"sid": 700818473884720
+											"sid": 391411015660389
 										}
 									],
 									"actions": [
 										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 376549148090730,
+											"id": "set-angle",
+											"objectClass": "AttackEffect",
+											"sid": 243821104967930,
 											"parameters": {
-												"variable": "HitDamage",
-												"value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\")"
+												"angle": "PlayerWeapon.Angle"
 											}
 										},
 										{
-											"id": "create-object",
-											"objectClass": "System",
-											"sid": 925100247009512,
+											"id": "set-position",
+											"objectClass": "AttackEffect",
+											"sid": 159759980131319,
 											"parameters": {
-												"object-to-create": "DamageNumber",
-												"layer": "2",
-												"x": "Enemies.X",
-												"y": "Enemies.Y",
-												"create-hierarchy": false,
-												"template-name": "\"\""
-											}
-										},
-										{
-											"id": "set-angle-of-motion",
-											"objectClass": "DamageNumber",
-											"sid": 514850743539050,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"angle": "270"
-											}
-										},
-										{
-											"id": "set-text",
-											"objectClass": "DamageNumber",
-											"sid": 420318365508167,
-											"parameters": {
-												"text": "\"[bold][lineThickness=1][outline=black]\" & WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\") & \"[/outline][/lineThickness][/bold]\""
-											}
-										},
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 215866918367929,
-											"parameters": {
-												"variable": "IsCrit",
-												"value": "0"
+												"x": "Player.X + cos(PlayerWeapon.Angle) * AttackEffectDistance",
+												"y": "Player.Y + sin(PlayerWeapon.Angle) * AttackEffectDistance"
 											}
 										}
 									],
-									"sid": 938919587936915
+									"sid": 762147881586367
 								},
 								{
 									"eventType": "comment",
-									"text": "Sub-event of 52"
+									"text": "Sub-event of 49"
+								},
+								{
+									"eventType": "variable",
+									"name": "HitDamage",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 741434287586898
+								},
+								{
+									"eventType": "variable",
+									"name": "IsCrit",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "0 - false, 1 - true",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 801067463067482
+								},
+								{
+									"eventType": "variable",
+									"name": "TargetUID",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 279490475983854
 								},
 								{
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "is-boolean-instance-variable-set",
-											"objectClass": "Enemies",
-											"sid": 342438159863000,
+											"id": "for-each",
+											"objectClass": "System",
+											"sid": 115952195395868,
 											"parameters": {
-												"instance-variable": "IsInvincible"
-											},
-											"isInverted": true
+												"object": "Enemies"
+											}
+										},
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "Enemies",
+											"sid": 668661904953646,
+											"parameters": {
+												"object": "AttackEffect"
+											}
 										}
 									],
 									"actions": [
 										{
-											"id": "subtract-from-instvar",
-											"objectClass": "Enemies",
-											"sid": 479156954850176,
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 834033135356566,
 											"parameters": {
-												"instance-variable": "Health",
-												"value": "HitDamage"
+												"variable": "HitDamage",
+												"value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\"))"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 410659582215583,
+											"parameters": {
+												"variable": "TargetUID",
+												"value": "Enemies.EnemyUID"
 											}
 										}
 									],
-									"sid": 749061713219370
+									"sid": 493276579202234,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "Sub-event of 52"
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 732345892039994,
+													"parameters": {
+														"first-value": "random(100)",
+														"comparison": 2,
+														"second-value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".critrate\"))"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 861366362172943,
+													"parameters": {
+														"variable": "HitDamage",
+														"value": "HitDamage + (HitDamage * float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".critdamage\")))"
+													}
+												},
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 462091202119442,
+													"parameters": {
+														"object-to-create": "DamageNumber",
+														"layer": "2",
+														"x": "Enemies.X",
+														"y": "Enemies.Y",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-font-color",
+													"objectClass": "DamageNumber",
+													"sid": 412684794271638,
+													"parameters": {
+														"color": "rgbEx(255, 234, 0)"
+													}
+												},
+												{
+													"id": "set-angle-of-motion",
+													"objectClass": "DamageNumber",
+													"sid": 871716850679047,
+													"behaviorType": "Bullet",
+													"parameters": {
+														"angle": "270"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "DamageNumber",
+													"sid": 494042502274595,
+													"parameters": {
+														"text": "\"[bold][lineThickness=1][outline=black]\" & HitDamage & \"[/outline][/lineThickness][/bold]\""
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 670787778470648,
+													"parameters": {
+														"variable": "IsCrit",
+														"value": "1"
+													}
+												}
+											],
+											"sid": 314948446504145
+										},
+										{
+											"eventType": "comment",
+											"text": "Sub-event of 52"
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 338024560231484
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 109719525156264,
+													"parameters": {
+														"variable": "HitDamage",
+														"value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\")"
+													}
+												},
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 642051273452704,
+													"parameters": {
+														"object-to-create": "DamageNumber",
+														"layer": "2",
+														"x": "Enemies.X",
+														"y": "Enemies.Y",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-angle-of-motion",
+													"objectClass": "DamageNumber",
+													"sid": 972349521105195,
+													"behaviorType": "Bullet",
+													"parameters": {
+														"angle": "270"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "DamageNumber",
+													"sid": 837681455149169,
+													"parameters": {
+														"text": "\"[bold][lineThickness=1][outline=black]\" & WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\") & \"[/outline][/lineThickness][/bold]\""
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 903989468645896,
+													"parameters": {
+														"variable": "IsCrit",
+														"value": "0"
+													}
+												}
+											],
+											"sid": 197646186393512
+										},
+										{
+											"eventType": "comment",
+											"text": "Sub-event of 52"
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "Enemies",
+													"sid": 354947269145764,
+													"parameters": {
+														"instance-variable": "IsInvincible"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "subtract-from-instvar",
+													"objectClass": "Enemies",
+													"sid": 272256806140017,
+													"parameters": {
+														"instance-variable": "Health",
+														"value": "HitDamage"
+													}
+												}
+											],
+											"sid": 651820556498276
+										},
+										{
+											"eventType": "comment",
+											"text": "Sub-event of 52"
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "repeat",
+													"objectClass": "System",
+													"sid": 308724929959317,
+													"parameters": {
+														"count": "Multiplayer.PeerCount"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "send-message",
+													"objectClass": "Multiplayer",
+													"sid": 875239166447742,
+													"parameters": {
+														"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
+														"tag": "\"damagenum\"",
+														"message": "str(TargetUID) & \"|\" & str(HitDamage) & \"|\" & str(IsCrit)",
+														"mode": "reliable-ordered"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "DebugText2",
+													"sid": 224399538044468,
+													"parameters": {
+														"text": "\"sending, peercount=\" & Multiplayer.PeerCount"
+													}
+												}
+											],
+											"sid": 282403727239336
+										}
+									]
 								},
 								{
 									"eventType": "comment",
-									"text": "Sub-event of 52"
+									"text": "Sub-event of 49"
 								},
 								{
 									"eventType": "block",
@@ -2122,7 +2292,7 @@
 										{
 											"id": "repeat",
 											"objectClass": "System",
-											"sid": 781107513901427,
+											"sid": 389101410328661,
 											"parameters": {
 												"count": "Multiplayer.PeerCount"
 											}
@@ -2132,57 +2302,226 @@
 										{
 											"id": "send-message",
 											"objectClass": "Multiplayer",
-											"sid": 846038347748210,
+											"sid": 122402795236067,
 											"parameters": {
 												"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
-												"tag": "\"damagenum\"",
-												"message": "str(TargetUID) & \"|\" & str(HitDamage) & \"|\" & str(IsCrit)",
+												"tag": "\"attackfx\"",
+												"message": "str(PlayerNetID)",
 												"mode": "reliable-ordered"
-											}
-										},
-										{
-											"id": "set-text",
-											"objectClass": "DebugText2",
-											"sid": 480995192785535,
-											"parameters": {
-												"text": "\"sending, peercount=\" & Multiplayer.PeerCount"
 											}
 										}
 									],
-									"sid": 260341245061424
+									"sid": 860284407906715
 								}
 							]
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Sub-event of 47"
+				},
+				{
+					"eventType": "variable",
+					"name": "FireAngle",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 285677988164705
+				},
+				{
+					"eventType": "variable",
+					"name": "SpawnX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 960430441212604
+				},
+				{
+					"eventType": "variable",
+					"name": "SpawnY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 805162035355363
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 944880073862636,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 0,
+								"value": "PlayerNetID"
+							}
 						},
 						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 386515372757535,
+							"parameters": {
+								"first-value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".type\")",
+								"comparison": 0,
+								"second-value": "\"ranged\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 791225887594021,
+					"children": [
+						{
 							"eventType": "comment",
-							"text": "Sub-event of 48"
+							"text": "Sub-event of 59"
 						},
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "repeat",
-									"objectClass": "System",
-									"sid": 322073814359142,
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 306586156116814,
 									"parameters": {
-										"count": "Multiplayer.PeerCount"
+										"instance-variable": "AttackTimer",
+										"comparison": 3,
+										"value": "0"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 579211907958307,
+									"parameters": {
+										"instance-variable": "EquippedItemID",
+										"comparison": 1,
+										"value": "\"\""
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerWeapon",
+									"sid": 466787381575875,
+									"parameters": {
+										"instance-variable": "NetID",
+										"comparison": 0,
+										"value": "PlayerNetID"
 									}
 								}
 							],
 							"actions": [
 								{
-									"id": "send-message",
-									"objectClass": "Multiplayer",
-									"sid": 930097953560953,
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 977182225644732,
 									"parameters": {
-										"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
-										"tag": "\"attackfx\"",
-										"message": "str(PlayerNetID)",
-										"mode": "reliable-ordered"
+										"instance-variable": "AttackTimer",
+										"value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".firerate\")"
 									}
+								},
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 566322657493302,
+									"parameters": {
+										"variable": "NextProjUID",
+										"value": "1"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 189460964007106,
+									"parameters": {
+										"variable": "FireAngle",
+										"value": "PlayerWeapon.Angle"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 712405519513564,
+									"parameters": {
+										"variable": "SpawnX",
+										"value": "Player.X + cos(FireAngle) * ProjectileSpawnDistance"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 732428603980754,
+									"parameters": {
+										"variable": "SpawnY",
+										"value": "Player.Y + sin(FireAngle) * ProjectileSpawnDistance"
+									}
+								},
+								{
+									"id": "play-by-name",
+									"objectClass": "Audio",
+									"sid": 208168671178293,
+									"parameters": {
+										"folder": "sounds",
+										"audio-file-name": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".sfx\")",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"sfx\""
+									}
+								},
+								{
+									"callFunction": "SpawnProjectile",
+									"sid": 667677295884685,
+									"parameters": [
+										"PlayerNetID",
+										"NextProjUID",
+										"Player.EquippedItemID",
+										"SpawnX",
+										"SpawnY",
+										"FireAngle"
+									]
 								}
 							],
-							"sid": 828914574656108
+							"sid": 890703586702307,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "Sub-event of 60"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "repeat",
+											"objectClass": "System",
+											"sid": 466906049273958,
+											"parameters": {
+												"count": "Multiplayer.PeerCount"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "send-message",
+											"objectClass": "Multiplayer",
+											"sid": 107553769435720,
+											"parameters": {
+												"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
+												"tag": "\"projfire\"",
+												"message": "str(PlayerNetID) & \"|\" & str(NextProjUID) & \"|\" & Player.EquippedItemID & \"|\" & str(SpawnX) & \"|\" & str(SpawnY) & \"|\" & str(FireAngle)",
+												"mode": "reliable-ordered"
+											}
+										}
+									],
+									"sid": 446606818205878
+								}
+							]
 						}
 					]
 				}
@@ -2330,7 +2669,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 58"
+					"text": "Sub-event of 65"
 				},
 				{
 					"eventType": "block",
@@ -2390,7 +2729,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 58"
+					"text": "Sub-event of 65"
 				},
 				{
 					"eventType": "block",
@@ -2639,7 +2978,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 66"
+					"text": "Sub-event of 73"
 				},
 				{
 					"eventType": "block",
@@ -2669,7 +3008,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 66"
+					"text": "Sub-event of 73"
 				},
 				{
 					"eventType": "block",
@@ -2844,6 +3183,817 @@
 						}
 					],
 					"sid": 972122443692603
+				}
+			]
+		},
+		{
+			"functionName": "SpawnProjectile",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "pOwner",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 920808719105182
+				},
+				{
+					"name": "pUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 599231806257502
+				},
+				{
+					"name": "pWeapon",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 947441828730162
+				},
+				{
+					"name": "pX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 590785381828627
+				},
+				{
+					"name": "pY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 814246903785093
+				},
+				{
+					"name": "pAngle",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 961534693449421
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 106973267677972,
+					"parameters": {
+						"object-to-create": "PlayerProjectile",
+						"layer": "2",
+						"x": "pX",
+						"y": "pY",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "PlayerProjectile",
+					"sid": 606415941526076,
+					"parameters": {
+						"instance-variable": "OwnerNetID",
+						"value": "pOwner"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "PlayerProjectile",
+					"sid": 302505064605392,
+					"parameters": {
+						"instance-variable": "ProjUID",
+						"value": "pUID"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "PlayerProjectile",
+					"sid": 785537552058420,
+					"parameters": {
+						"instance-variable": "ItemID",
+						"value": "pWeapon"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "PlayerProjectile",
+					"sid": 318953192350025,
+					"parameters": {
+						"animation": "WeaponDB.Get(\"WeaponDB.\" & pWeapon & \".animation.projectile\")",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "PlayerProjectile",
+					"sid": 695707062571454,
+					"parameters": {
+						"angle": "pAngle"
+					}
+				},
+				{
+					"id": "set-speed",
+					"objectClass": "PlayerProjectile",
+					"sid": 502608081484197,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"speed": "float(WeaponDB.Get(\"WeaponDB.\" & pWeapon & \".projectile.speed\"))"
+					}
+				},
+				{
+					"id": "set-angle-of-motion",
+					"objectClass": "PlayerProjectile",
+					"sid": 906528425765901,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"angle": "pAngle "
+					}
+				}
+			],
+			"sid": 824409250013889
+		},
+		{
+			"functionName": "SpawnProjectileHit",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "pWeapon",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 128109158188922
+				},
+				{
+					"name": "pX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 821591563521179
+				},
+				{
+					"name": "pY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 884729043248343
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 227014707439165,
+					"parameters": {
+						"object-to-create": "PlayerProjectileHit",
+						"layer": "2",
+						"x": "pX",
+						"y": "pY",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "PlayerProjectileHit",
+					"sid": 176581607316646,
+					"parameters": {
+						"animation": "WeaponDB.Get(\"WeaponDB.\" & pWeapon & \".animation.hit\")",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 768472392803692
+		},
+		{
+			"functionName": "DealDamage",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "TargetUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 447220474052595
+				},
+				{
+					"name": "WeaponID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 412464441931966
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 296166205142236,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Sub-event of 84"
+				},
+				{
+					"eventType": "variable",
+					"name": "HitDamage",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 606382597929954
+				},
+				{
+					"eventType": "variable",
+					"name": "IsCrit",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 104247916485543
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 999108735133289,
+							"parameters": {
+								"variable": "HitDamage",
+								"value": "float(WeaponDB.Get(\"WeaponDB.\" & WeaponID & \".damage\"))"
+							}
+						}
+					],
+					"sid": 510908384872397
+				},
+				{
+					"eventType": "comment",
+					"text": "Sub-event of 84"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 257860725819182,
+							"parameters": {
+								"first-value": "random(100)",
+								"comparison": 2,
+								"second-value": "float(WeaponDB.Get(\"WeaponDB.\" & WeaponID & \".critrate\"))"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 274599272992817,
+							"parameters": {
+								"variable": "HitDamage",
+								"value": "HitDamage + (HitDamage * float(WeaponDB.Get(\"WeaponDB.\" & WeaponID & \".critdamage\")))"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 922792283530429,
+							"parameters": {
+								"variable": "IsCrit",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 525686728876400
+				},
+				{
+					"eventType": "comment",
+					"text": "Sub-event of 84"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 905534241400150,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"comparison": 0,
+								"value": "TargetUID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 935776722863798,
+							"parameters": {
+								"object-to-create": "DamageNumber",
+								"layer": "2",
+								"x": "Enemies.X",
+								"y": "Enemies.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-angle-of-motion",
+							"objectClass": "DamageNumber",
+							"sid": 955621868541780,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"angle": "270"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "DamageNumber",
+							"sid": 201636995484700,
+							"parameters": {
+								"text": "\"[bold][lineThickness=1][outline=black]\" & HitDamage & \"[/outline][/lineThickness][/bold]\""
+							}
+						}
+					],
+					"sid": 629547262596984,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Sub-event of 88"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 252400267665511,
+									"parameters": {
+										"variable": "IsCrit",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-font-color",
+									"objectClass": "DamageNumber",
+									"sid": 557012952105625,
+									"parameters": {
+										"color": "rgbEx(255, 234, 0)"
+									}
+								}
+							],
+							"sid": 585666684682031
+						},
+						{
+							"eventType": "comment",
+							"text": "Sub-event of 88"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "Enemies",
+									"sid": 427518712786215,
+									"parameters": {
+										"instance-variable": "IsInvincible"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "subtract-from-instvar",
+									"objectClass": "Enemies",
+									"sid": 250489150761977,
+									"parameters": {
+										"instance-variable": "Health",
+										"value": "HitDamage"
+									}
+								}
+							],
+							"sid": 459457311892822
+						},
+						{
+							"eventType": "comment",
+							"text": "Sub-event of 88"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "repeat",
+									"objectClass": "System",
+									"sid": 320023869710941,
+									"parameters": {
+										"count": "Multiplayer.PeerCount"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "send-message",
+									"objectClass": "Multiplayer",
+									"sid": 349627059481826,
+									"parameters": {
+										"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
+										"tag": "\"damagenum\"",
+										"message": "str(TargetUID) & \"|\" & str(HitDamage) & \"|\" & str(IsCrit)",
+										"mode": "reliable-ordered"
+									}
+								}
+							],
+							"sid": 730355743728219
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "BroadcastProjHit",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "pUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 152592947961247
+				},
+				{
+					"name": "pX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 447875657169340
+				},
+				{
+					"name": "pY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 942931728627161
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 879663018222299,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 871484534514036,
+							"parameters": {
+								"count": "Multiplayer.PeerCount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "send-message",
+							"objectClass": "Multiplayer",
+							"sid": 511174380436767,
+							"parameters": {
+								"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
+								"tag": "\"projhit\"",
+								"message": "str(pUID) & \"|\" & str(pX) & \"|\" & str(pY)",
+								"mode": "reliable-ordered"
+							}
+						}
+					],
+					"sid": 626098484007583
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 701961768455898
+				},
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 304996976032746,
+					"parameters": {
+						"object": "PlayerProjectile"
+					}
+				},
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "PlayerProjectile",
+					"sid": 156483950389017,
+					"parameters": {
+						"object": "Enemies"
+					}
+				},
+				{
+					"id": "pick-nearestfurthest",
+					"objectClass": "Enemies",
+					"sid": 371429619316814,
+					"parameters": {
+						"which": "nearest",
+						"x": "PlayerProjectile.X",
+						"y": "PlayerProjectile.Y",
+						"z": "0",
+						"pick-all-tied": false
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "DealDamage",
+					"sid": 902763100506771,
+					"parameters": [
+						"Enemies.EnemyUID",
+						"PlayerProjectile.ItemID"
+					]
+				},
+				{
+					"callFunction": "SpawnProjectileHit",
+					"sid": 152902948716426,
+					"parameters": [
+						"PlayerProjectile.ItemID",
+						"PlayerProjectile.X",
+						"PlayerProjectile.Y"
+					]
+				},
+				{
+					"callFunction": "BroadcastProjHit",
+					"sid": 333944231585125,
+					"parameters": [
+						"PlayerProjectile.ProjUID",
+						"PlayerProjectile.X",
+						"PlayerProjectile.Y"
+					]
+				},
+				{
+					"id": "destroy",
+					"objectClass": "PlayerProjectile",
+					"sid": 504916103320746
+				}
+			],
+			"sid": 915201230429460
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "PlayerProjectile",
+					"sid": 803267997263298,
+					"parameters": {
+						"object": "Walls"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "SpawnProjectileHit",
+					"sid": 517478153371165,
+					"parameters": [
+						"PlayerProjectile.ItemID",
+						"PlayerProjectile.X",
+						"PlayerProjectile.Y"
+					]
+				},
+				{
+					"id": "destroy",
+					"objectClass": "PlayerProjectile",
+					"sid": 332652027355376
+				}
+			],
+			"sid": 111624574441842
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-distance-travelled",
+					"objectClass": "PlayerProjectile",
+					"sid": 804689783760663,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"comparison": 5,
+						"distance": "float(WeaponDB.Get(\"WeaponDB.\" & PlayerProjectile.ItemID & \".projectile.range\"))"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "PlayerProjectile",
+					"sid": 238002312411671
+				}
+			],
+			"sid": 971299876023465
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-any-animation-finished",
+					"objectClass": "PlayerProjectileHit",
+					"sid": 905816044700662
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "PlayerProjectileHit",
+					"sid": 521919417144868
+				}
+			],
+			"sid": 509599902136660
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 716181317675781,
+					"parameters": {
+						"object": "PlayerWeapon"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 851902076153783,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 199043208388628,
+							"parameters": {
+								"first-value": "cos(PlayerWeapon.Angle)",
+								"comparison": 2,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-flipped",
+							"objectClass": "PlayerWeapon",
+							"sid": 661759808446857,
+							"parameters": {
+								"state": "flipped"
+							}
+						}
+					],
+					"sid": 317437737233935
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 327133378449938,
+							"parameters": {
+								"first-value": "cos(PlayerWeapon.Angle)",
+								"comparison": 5,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-flipped",
+							"objectClass": "PlayerWeapon",
+							"sid": 667684428422045,
+							"parameters": {
+								"state": "not-flipped"
+							}
+						}
+					],
+					"sid": 675841163330088
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-message",
+					"objectClass": "Multiplayer",
+					"sid": 621072235307915,
+					"parameters": {
+						"tag": "\"projfire\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "SpawnProjectile",
+					"sid": 150541903749060,
+					"parameters": [
+						"int(tokenat(Multiplayer.Message, 0, \"|\"))",
+						"int(tokenat(Multiplayer.Message, 1, \"|\"))",
+						"tokenat(Multiplayer.Message, 2, \"|\")",
+						"float(tokenat(Multiplayer.Message, 3, \"|\"))",
+						"float(tokenat(Multiplayer.Message, 4, \"|\"))",
+						"float(tokenat(Multiplayer.Message, 5, \"|\"))"
+					]
+				},
+				{
+					"id": "play-by-name",
+					"objectClass": "Audio",
+					"sid": 518811947471289,
+					"parameters": {
+						"folder": "sounds",
+						"audio-file-name": "WeaponDB.Get(\"WeaponDB.\" & tokenat(Multiplayer.Message, 2, \"|\") & \".sfx\")",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"sfx\""
+					}
+				}
+			],
+			"sid": 823613788813510
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-message",
+					"objectClass": "Multiplayer",
+					"sid": 531997408141394,
+					"parameters": {
+						"tag": "\"projhit\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 669286862298025,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "PlayerProjectile",
+							"sid": 167999834038570,
+							"parameters": {
+								"instance-variable": "ProjUID",
+								"comparison": 0,
+								"value": "int(tokenat(Multiplayer.Message, 0, \"|\"))"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "SpawnProjectileHit",
+							"sid": 652838533877241,
+							"parameters": [
+								"PlayerProjectile.ItemID",
+								"float(tokenat(Multiplayer.Message, 1, \"|\"))",
+								"float(tokenat(Multiplayer.Message, 2, \"|\"))"
+							]
+						},
+						{
+							"id": "destroy",
+							"objectClass": "PlayerProjectile",
+							"sid": 475226529374567
+						}
+					],
+					"sid": 546926094103263
 				}
 			]
 		}

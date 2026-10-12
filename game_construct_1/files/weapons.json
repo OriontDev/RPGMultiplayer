@@ -7,6 +7,7 @@
     "subtype": "sword",
     "critrate": 30,
     "critdamage": 2,
+    "enemydetectradius": 150,
     "sfx": "Weapons/Swords/basic_sword",
     "animation": {
         "still": "basic_sword_still",
@@ -20,6 +21,7 @@
     "firerate": 0.5,
     "type": "melee",
     "subtype": "spear",
+    "enemydetectradius": 150,
     "sfx": "Weapons/Swords/basic_sword",
     "animation": {
         "still": "basic_sword_still",
@@ -32,10 +34,31 @@
     "firerate": 0.8,
     "type": "ranged",
     "subtype": "bow",
+    "enemydetectradius": 150,
     "sfx": "Weapons/Swords/basic_sword",
     "animation": {
         "still": "basic_bow_still",
         "attack": "basic_bow_attack"
+    }
+  },
+  "basic_pistol": {
+    "name": "Pistol",
+    "damage": 10,
+    "firerate": 0.2,
+    "type": "ranged",
+    "subtype": "pistols",
+    "critrate": 10,
+    "critdamage": 1.5,
+    "enemydetectradius": 300,
+    "sfx": "Weapons/Guns/basic_pistol",
+    "projectile": {
+      "speed": 600,
+      "range": 400
+    },
+    "animation": {
+      "still": "basic_pistol_still",
+      "projectile": "basic_pistol_projectile",
+      "hit": "basic_pistol_hit"
     }
   }
 }

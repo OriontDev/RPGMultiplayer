@@ -9,6 +9,20 @@
 			"desc": "",
 			"show": true,
 			"sid": 852689046304399
+		},
+		{
+			"name": "PickupUID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 361238319524701
+		},
+		{
+			"name": "Resolved",
+			"type": "number",
+			"desc": "0 - Not resolved. 1 - Resolved",
+			"show": true,
+			"sid": 669275373702109
 		}
 	],
 	"behaviorTypes": [],
