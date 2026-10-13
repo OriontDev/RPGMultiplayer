@@ -1003,20 +1003,13 @@
 											],
 											"actions": [
 												{
-													"id": "set-x",
-													"objectClass": "Enemies",
-													"sid": 747306878616294,
-													"parameters": {
-														"x": "Enemies.X +cos(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
-													}
-												},
-												{
-													"id": "set-y",
-													"objectClass": "Enemies",
-													"sid": 928674505892880,
-													"parameters": {
-														"y": "Enemies.Y + sin(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
-													}
+													"callFunction": "MoveEnemy",
+													"sid": 583944800801156,
+													"parameters": [
+														"Enemies.EnemyUID",
+														"cos(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt",
+														"sin(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
+													]
 												},
 												{
 													"id": "set-instvar-value",
@@ -1069,20 +1062,13 @@
 													}
 												},
 												{
-													"id": "set-x",
-													"objectClass": "Enemies",
-													"sid": 669038225421898,
-													"parameters": {
-														"x": "Enemies.X + cos(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
-													}
-												},
-												{
-													"id": "set-y",
-													"objectClass": "Enemies",
-													"sid": 537645614403646,
-													"parameters": {
-														"y": "Enemies.Y + sin(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
-													}
+													"callFunction": "MoveEnemy",
+													"sid": 751859297389499,
+													"parameters": [
+														"Enemies.EnemyUID",
+														"cos(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt",
+														"sin(angle(Enemies.X, Enemies.Y, Enemies.WanderTargetX, Enemies.WanderTargetY)) * Enemies.MoveSpeed * dt"
+													]
 												}
 											],
 											"sid": 121120297828144,
@@ -1343,20 +1329,13 @@
 															],
 															"actions": [
 																{
-																	"id": "set-x",
-																	"objectClass": "Enemies",
-																	"sid": 898614177005445,
-																	"parameters": {
-																		"x": "Enemies.X + cos(angle(Enemies.X, Enemies.Y, Player.X, Player.Y)) * Enemies.MoveSpeed * dt"
-																	}
-																},
-																{
-																	"id": "set-y",
-																	"objectClass": "Enemies",
-																	"sid": 580671402967197,
-																	"parameters": {
-																		"y": "Enemies.Y + sin(angle(Enemies.X, Enemies.Y, Player.X, Player.Y)) * Enemies.MoveSpeed * dt"
-																	}
+																	"callFunction": "MoveEnemy",
+																	"sid": 128442494428071,
+																	"parameters": [
+																		"Enemies.EnemyUID",
+																		"cos(angle(Enemies.X, Enemies.Y, Player.X, Player.Y)) * Enemies.MoveSpeed * dt",
+																		"sin(angle(Enemies.X, Enemies.Y, Player.X, Player.Y)) * Enemies.MoveSpeed * dt"
+																	]
 																}
 															],
 															"sid": 253207953334833,
@@ -2891,6 +2870,116 @@
 						}
 					],
 					"sid": 421719450548737
+				}
+			]
+		},
+		{
+			"functionName": "MoveEnemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "MoveUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 248435055674151
+				},
+				{
+					"name": "StepX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 280016221102299
+				},
+				{
+					"name": "StepY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 388881636598242
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 979410335289718,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 269966267168400,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"comparison": 0,
+								"value": "MoveUID"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 331405223406124,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-overlapping-at-offset",
+									"objectClass": "Enemies",
+									"sid": 187194720689384,
+									"parameters": {
+										"object": "Walls",
+										"offset-x": "StepX",
+										"offset-y": "0"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-x",
+									"objectClass": "Enemies",
+									"sid": 833130501618703,
+									"parameters": {
+										"x": "Enemies.X + StepX"
+									}
+								}
+							],
+							"sid": 156838884562594
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-overlapping-at-offset",
+									"objectClass": "Enemies",
+									"sid": 383172946094187,
+									"parameters": {
+										"object": "Walls",
+										"offset-x": "0",
+										"offset-y": "StepY"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-y",
+									"objectClass": "Enemies",
+									"sid": 738631702910593,
+									"parameters": {
+										"y": "Enemies.Y + StepY"
+									}
+								}
+							],
+							"sid": 314216260663689
+						}
+					]
 				}
 			]
 		}
