@@ -12,6 +12,16 @@
 			"sid": 317335842533247
 		},
 		{
+			"eventType": "variable",
+			"name": "CorpseDuration",
+			"type": "number",
+			"initialValue": "60",
+			"comment": "How long till enemy corpse despawn",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 225878178641727
+		},
+		{
 			"functionName": "SpawnEnemy",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -2430,6 +2440,457 @@
 							]
 						}
 					]
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Detect Death"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 808558341861642
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 919226570446388
+				}
+			],
+			"actions": [],
+			"sid": 610742878655984,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 717074178922277,
+							"parameters": {
+								"object": "Enemies"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 216320821538825,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemies",
+									"sid": 843186951315732,
+									"parameters": {
+										"instance-variable": "Type",
+										"comparison": 1,
+										"value": "3"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemies",
+									"sid": 156605818555909,
+									"parameters": {
+										"instance-variable": "State",
+										"comparison": 1,
+										"value": "4"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemies",
+									"sid": 803451482148258,
+									"parameters": {
+										"instance-variable": "Health",
+										"comparison": 3,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Enemies",
+									"sid": 356206433353716,
+									"parameters": {
+										"instance-variable": "State",
+										"value": "4"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Enemies",
+									"sid": 594562470322616,
+									"parameters": {
+										"instance-variable": "TargetNetID",
+										"value": "-1"
+									}
+								},
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "Enemies",
+									"sid": 733306557346995,
+									"parameters": {
+										"instance-variable": "IsInvincible",
+										"value": "true"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Enemies",
+									"sid": 771040488581474,
+									"parameters": {
+										"instance-variable": "DeathTimer",
+										"value": "CorpseDuration"
+									}
+								}
+							],
+							"sid": 853488008980739
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemies",
+									"sid": 806126956959087,
+									"parameters": {
+										"instance-variable": "State",
+										"comparison": 0,
+										"value": "4"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "subtract-from-instvar",
+									"objectClass": "Enemies",
+									"sid": 447418239999995,
+									"parameters": {
+										"instance-variable": "DeathTimer",
+										"value": "dt"
+									}
+								}
+							],
+							"sid": 762656991119242,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Enemies",
+											"sid": 714797389108380,
+											"parameters": {
+												"instance-variable": "DeathTimer",
+												"comparison": 3,
+												"value": "0"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "EnemyHealthDebugText",
+											"sid": 784793394183105,
+											"parameters": {
+												"instance-variable": "EnemyUID",
+												"comparison": 0,
+												"value": "Enemies.EnemyUID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "destroy",
+											"objectClass": "EnemyHealthDebugText",
+											"sid": 807834195203715
+										},
+										{
+											"id": "destroy",
+											"objectClass": "Enemies",
+											"sid": 692806945640095
+										}
+									],
+									"sid": 408070109137718
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 663217031962910,
+					"parameters": {
+						"interval-seconds": "1.0"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 571128441372479,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Sub event of 71"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "EnemyWeapon",
+							"sid": 631531914424470,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"comparison": 5,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 365636110366347,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Sub event of 72"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 449505122183296,
+									"parameters": {
+										"object": "EnemyWeapon"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 992815108777904,
+							"children": [
+								{
+									"eventType": "variable",
+									"name": "HasOwner",
+									"type": "boolean",
+									"initialValue": "false",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 270075945643731
+								},
+								{
+									"eventType": "comment",
+									"text": "Sub event of 73"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "EnemyWeapon",
+											"sid": 679208209021469,
+											"parameters": {
+												"instance-variable": "EnemyUID",
+												"comparison": 0,
+												"value": "EnemyWeapon.EnemyUID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 824193036948919,
+											"parameters": {
+												"variable": "HasOwner",
+												"value": "true"
+											}
+										}
+									],
+									"sid": 967458568042801
+								},
+								{
+									"eventType": "comment",
+									"text": "Sub event of 73"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 906924138667354,
+											"parameters": {
+												"variable": "HasOwner"
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "destroy",
+											"objectClass": "EnemyWeapon",
+											"sid": 367831624339272
+										}
+									],
+									"sid": 344647595590757
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemies",
+					"sid": 217493644397164,
+					"parameters": {
+						"instance-variable": "State",
+						"comparison": 0,
+						"value": "4"
+					}
+				},
+				{
+					"id": "is-animation-playing",
+					"objectClass": "Enemies",
+					"sid": 204279356824086,
+					"parameters": {
+						"animation": "\"Dead\""
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Enemies",
+					"sid": 579104040727029,
+					"parameters": {
+						"animation": "\"Dead\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 469656438236557
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 843444420095426,
+					"parameters": {
+						"object": "EnemyWeapon"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 441023891125847,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 572856374796153,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"comparison": 0,
+								"value": "EnemyWeapon.EnemyUID"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 765832003666953,
+							"parameters": {
+								"instance-variable": "State",
+								"comparison": 0,
+								"value": "4"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "EnemyWeapon",
+							"sid": 662151675184627,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 420945056857919
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 360161439393992,
+					"parameters": {
+						"object": "EnemyHealthDebugText"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 171500449622596,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 271859860109638,
+							"parameters": {
+								"instance-variable": "EnemyUID",
+								"comparison": 0,
+								"value": "EnemyHealthDebugText.EnemyUID"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 674590483356825,
+							"parameters": {
+								"instance-variable": "State",
+								"comparison": 0,
+								"value": "4"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "EnemyHealthDebugText",
+							"sid": 845227282033991,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 421719450548737
 				}
 			]
 		}

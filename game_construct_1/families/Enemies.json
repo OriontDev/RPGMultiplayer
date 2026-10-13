@@ -48,7 +48,7 @@
 		{
 			"name": "State",
 			"type": "number",
-			"desc": "(0=Idle, 1=Wander, 2=Chase, 3=Attack)",
+			"desc": "(0=Idle, 1=Wander, 2=Chase, 3=Attack, 4=DEATH)",
 			"show": true,
 			"sid": 301653212698131
 		},
@@ -149,6 +149,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 990180537559954
+		},
+		{
+			"name": "DeathTimer",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 222246640653973
 		}
 	],
 	"behaviorTypes": [

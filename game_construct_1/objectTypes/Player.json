@@ -116,6 +116,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 825373066376026
+		},
+		{
+			"name": "FirebaseUID",
+			"type": "string",
+			"desc": "used for Saved loadout, last position, achievements, friends, world records",
+			"show": true,
+			"sid": 620940267380625
 		}
 	],
 	"behaviorTypes": [

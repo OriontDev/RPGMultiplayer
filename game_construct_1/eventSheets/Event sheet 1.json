@@ -452,6 +452,15 @@
 					}
 				},
 				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 652144589422270,
+					"parameters": {
+						"instance-variable": "FirebaseUID",
+						"value": "MyFirebaseUID"
+					}
+				},
+				{
 					"id": "create-object",
 					"objectClass": "System",
 					"sid": 272041532849776,
@@ -678,6 +687,17 @@
 						"message": "\"\"",
 						"mode": "reliable-ordered"
 					}
+				},
+				{
+					"id": "send-message",
+					"objectClass": "Multiplayer",
+					"sid": 964732047275603,
+					"parameters": {
+						"peer-id": "Multiplayer.HostID",
+						"tag": "\"myuid\"",
+						"message": "MyFirebaseUID",
+						"mode": "reliable-ordered"
+					}
 				}
 			],
 			"sid": 375825776339091
@@ -774,6 +794,11 @@
 					"parameters": {
 						"text": "DebugStep"
 					}
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "PlayerWeapon",
+					"sid": 819689953479804
 				}
 			],
 			"sid": 585951562554233
@@ -1146,7 +1171,38 @@
 							}
 						}
 					],
-					"sid": 570894993863236
+					"sid": 570894993863236,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 279960402563886,
+									"parameters": {
+										"instance-variable": "FirebaseUID",
+										"comparison": 1,
+										"value": "\"\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "send-message",
+									"objectClass": "Multiplayer",
+									"sid": 841078461344746,
+									"parameters": {
+										"peer-id": "Multiplayer.PeerID",
+										"tag": "\"uidmap\"",
+										"message": "str(Player.NetID) & \"|\" & Player.FirebaseUID",
+										"mode": "reliable-ordered"
+									}
+								}
+							],
+							"sid": 319112411878307
+						}
+					]
 				}
 			]
 		},
@@ -3939,6 +3995,200 @@
 						}
 					],
 					"sid": 965026164219393
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-message",
+					"objectClass": "Multiplayer",
+					"sid": 957629948525058,
+					"parameters": {
+						"tag": "\"myuid\""
+					}
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 704854957641521
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 417432661709187,
+					"parameters": {
+						"first-value": "Multiplayer.Message",
+						"comparison": 1,
+						"second-value": "\"\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "send-message",
+					"objectClass": "Multiplayer",
+					"sid": 619880671469407,
+					"parameters": {
+						"peer-id": "Multiplayer.HostID",
+						"tag": "\"requestbackfill\"",
+						"message": "\"\"",
+						"mode": "reliable-ordered"
+					}
+				},
+				{
+					"id": "send-message",
+					"objectClass": "Multiplayer",
+					"sid": 139792469969383,
+					"parameters": {
+						"peer-id": "Multiplayer.HostID",
+						"tag": "\"myuid\"",
+						"message": "MyFirebaseUID",
+						"mode": "reliable-ordered"
+					}
+				}
+			],
+			"sid": 267091821445443,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 587004301162575,
+							"parameters": {
+								"instance-variable": "PeerID",
+								"comparison": 0,
+								"value": "Multiplayer.FromID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 523565656778813,
+							"parameters": {
+								"instance-variable": "FirebaseUID",
+								"value": "Multiplayer.Message"
+							}
+						}
+					],
+					"sid": 841062721585006,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "repeat",
+									"objectClass": "System",
+									"sid": 980160877893722,
+									"parameters": {
+										"count": "Multiplayer.PeerCount"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "send-message",
+									"objectClass": "Multiplayer",
+									"sid": 443927866557688,
+									"parameters": {
+										"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
+										"tag": "\"uidmap\"",
+										"message": "str(Player.NetID) & \"|\" & Multiplayer.Message",
+										"mode": "reliable-ordered"
+									}
+								}
+							],
+							"sid": 844008689595608
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-message",
+					"objectClass": "Multiplayer",
+					"sid": 613372236821607,
+					"parameters": {
+						"tag": "\"uidmap\""
+					}
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 685490291948731,
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "add-key",
+					"objectClass": "PendingUIDs",
+					"sid": 149749007037214,
+					"parameters": {
+						"key": "tokenat(Multiplayer.Message, 0, \"|\")",
+						"value": "tokenat(Multiplayer.Message, 1, \"|\")"
+					}
+				}
+			],
+			"sid": 638385499213542
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 274350730449196,
+					"parameters": {
+						"interval-seconds": "0.3"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 582163533158865,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 369497994641488,
+							"parameters": {
+								"instance-variable": "FirebaseUID",
+								"comparison": 0,
+								"value": "\"\""
+							}
+						},
+						{
+							"id": "has-key",
+							"objectClass": "PendingUIDs",
+							"sid": 625199367575540,
+							"parameters": {
+								"key": "str(Player.NetID)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 942629186793103,
+							"parameters": {
+								"instance-variable": "FirebaseUID",
+								"value": "PendingUIDs.Get(str(Player.NetID))"
+							}
+						}
+					],
+					"sid": 522969256112588
 				}
 			]
 		}

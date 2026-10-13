@@ -131,6 +131,26 @@
 								"comparison": 3,
 								"second-value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".enemydetectradius\"))"
 							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 632589842628907,
+							"parameters": {
+								"instance-variable": "State",
+								"comparison": 1,
+								"value": "4"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 200823059956060,
+							"parameters": {
+								"instance-variable": "Health",
+								"comparison": 4,
+								"value": "0"
+							}
 						}
 					],
 					"actions": [
@@ -414,6 +434,26 @@
 								"first-value": "distance(Player.X, Player.Y, Enemies.X, Enemies.Y)",
 								"comparison": 3,
 								"second-value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".enemydetectradius\"))"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 765320294543246,
+							"parameters": {
+								"instance-variable": "State",
+								"comparison": 1,
+								"value": "4"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemies",
+							"sid": 253283447352397,
+							"parameters": {
+								"instance-variable": "Health",
+								"comparison": 4,
+								"value": "0"
 							}
 						}
 					],
@@ -1760,7 +1800,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 47"
+					"text": "Sub-event of 49"
 				},
 				{
 					"eventType": "block",
@@ -1900,7 +1940,7 @@
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "Sub-event of 49"
+									"text": "Sub-event of 51"
 								},
 								{
 									"eventType": "block",
@@ -1960,7 +2000,7 @@
 								},
 								{
 									"eventType": "comment",
-									"text": "Sub-event of 49"
+									"text": "Sub-event of 51"
 								},
 								{
 									"eventType": "block",
@@ -1994,7 +2034,7 @@
 								},
 								{
 									"eventType": "comment",
-									"text": "Sub-event of 49"
+									"text": "Sub-event of 51"
 								},
 								{
 									"eventType": "variable",
@@ -2044,247 +2084,43 @@
 											"parameters": {
 												"object": "AttackEffect"
 											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Enemies",
+											"sid": 904821982735112,
+											"parameters": {
+												"instance-variable": "State",
+												"comparison": 1,
+												"value": "4"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Enemies",
+											"sid": 906894296868214,
+											"parameters": {
+												"instance-variable": "Health",
+												"comparison": 4,
+												"value": "0"
+											}
 										}
 									],
 									"actions": [
 										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 834033135356566,
-											"parameters": {
-												"variable": "HitDamage",
-												"value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\"))"
-											}
-										},
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 410659582215583,
-											"parameters": {
-												"variable": "TargetUID",
-												"value": "Enemies.EnemyUID"
-											}
+											"callFunction": "DealDamage",
+											"sid": 458941415465307,
+											"parameters": [
+												"Enemies.EnemyUID",
+												"Player.EquippedItemID"
+											]
 										}
 									],
-									"sid": 493276579202234,
-									"children": [
-										{
-											"eventType": "comment",
-											"text": "Sub-event of 52"
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-two-values",
-													"objectClass": "System",
-													"sid": 732345892039994,
-													"parameters": {
-														"first-value": "random(100)",
-														"comparison": 2,
-														"second-value": "float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".critrate\"))"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 861366362172943,
-													"parameters": {
-														"variable": "HitDamage",
-														"value": "HitDamage + (HitDamage * float(WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".critdamage\")))"
-													}
-												},
-												{
-													"id": "create-object",
-													"objectClass": "System",
-													"sid": 462091202119442,
-													"parameters": {
-														"object-to-create": "DamageNumber",
-														"layer": "2",
-														"x": "Enemies.X",
-														"y": "Enemies.Y",
-														"create-hierarchy": false,
-														"template-name": "\"\""
-													}
-												},
-												{
-													"id": "set-font-color",
-													"objectClass": "DamageNumber",
-													"sid": 412684794271638,
-													"parameters": {
-														"color": "rgbEx(255, 234, 0)"
-													}
-												},
-												{
-													"id": "set-angle-of-motion",
-													"objectClass": "DamageNumber",
-													"sid": 871716850679047,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"angle": "270"
-													}
-												},
-												{
-													"id": "set-text",
-													"objectClass": "DamageNumber",
-													"sid": 494042502274595,
-													"parameters": {
-														"text": "\"[bold][lineThickness=1][outline=black]\" & HitDamage & \"[/outline][/lineThickness][/bold]\""
-													}
-												},
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 670787778470648,
-													"parameters": {
-														"variable": "IsCrit",
-														"value": "1"
-													}
-												}
-											],
-											"sid": 314948446504145
-										},
-										{
-											"eventType": "comment",
-											"text": "Sub-event of 52"
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 338024560231484
-												}
-											],
-											"actions": [
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 109719525156264,
-													"parameters": {
-														"variable": "HitDamage",
-														"value": "WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\")"
-													}
-												},
-												{
-													"id": "create-object",
-													"objectClass": "System",
-													"sid": 642051273452704,
-													"parameters": {
-														"object-to-create": "DamageNumber",
-														"layer": "2",
-														"x": "Enemies.X",
-														"y": "Enemies.Y",
-														"create-hierarchy": false,
-														"template-name": "\"\""
-													}
-												},
-												{
-													"id": "set-angle-of-motion",
-													"objectClass": "DamageNumber",
-													"sid": 972349521105195,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"angle": "270"
-													}
-												},
-												{
-													"id": "set-text",
-													"objectClass": "DamageNumber",
-													"sid": 837681455149169,
-													"parameters": {
-														"text": "\"[bold][lineThickness=1][outline=black]\" & WeaponDB.Get(\"WeaponDB.\" & Player.EquippedItemID & \".damage\") & \"[/outline][/lineThickness][/bold]\""
-													}
-												},
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 903989468645896,
-													"parameters": {
-														"variable": "IsCrit",
-														"value": "0"
-													}
-												}
-											],
-											"sid": 197646186393512
-										},
-										{
-											"eventType": "comment",
-											"text": "Sub-event of 52"
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "is-boolean-instance-variable-set",
-													"objectClass": "Enemies",
-													"sid": 354947269145764,
-													"parameters": {
-														"instance-variable": "IsInvincible"
-													},
-													"isInverted": true
-												}
-											],
-											"actions": [
-												{
-													"id": "subtract-from-instvar",
-													"objectClass": "Enemies",
-													"sid": 272256806140017,
-													"parameters": {
-														"instance-variable": "Health",
-														"value": "HitDamage"
-													}
-												}
-											],
-											"sid": 651820556498276
-										},
-										{
-											"eventType": "comment",
-											"text": "Sub-event of 52"
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "repeat",
-													"objectClass": "System",
-													"sid": 308724929959317,
-													"parameters": {
-														"count": "Multiplayer.PeerCount"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "send-message",
-													"objectClass": "Multiplayer",
-													"sid": 875239166447742,
-													"parameters": {
-														"peer-id": "Multiplayer.PeerIDAt(LoopIndex)",
-														"tag": "\"damagenum\"",
-														"message": "str(TargetUID) & \"|\" & str(HitDamage) & \"|\" & str(IsCrit)",
-														"mode": "reliable-ordered"
-													}
-												},
-												{
-													"id": "set-text",
-													"objectClass": "DebugText2",
-													"sid": 224399538044468,
-													"parameters": {
-														"text": "\"sending, peercount=\" & Multiplayer.PeerCount"
-													}
-												}
-											],
-											"sid": 282403727239336
-										}
-									]
+									"sid": 493276579202234
 								},
 								{
 									"eventType": "comment",
-									"text": "Sub-event of 49"
+									"text": "Sub-event of 51"
 								},
 								{
 									"eventType": "block",
@@ -2319,7 +2155,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 47"
+					"text": "Sub-event of 49"
 				},
 				{
 					"eventType": "variable",
@@ -2380,7 +2216,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "Sub-event of 59"
+							"text": "Sub-event of 61"
 						},
 						{
 							"eventType": "block",
@@ -2492,7 +2328,7 @@
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "Sub-event of 60"
+									"text": "Sub-event of 62"
 								},
 								{
 									"eventType": "block",
@@ -3406,7 +3242,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 84"
+					"text": "Sub-event of 86"
 				},
 				{
 					"eventType": "variable",
@@ -3446,7 +3282,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 84"
+					"text": "Sub-event of 86"
 				},
 				{
 					"eventType": "block",
@@ -3486,7 +3322,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Sub-event of 84"
+					"text": "Sub-event of 86"
 				},
 				{
 					"eventType": "block",
@@ -3538,7 +3374,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "Sub-event of 88"
+							"text": "Sub-event of 89"
 						},
 						{
 							"eventType": "block",
@@ -3568,7 +3404,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "Sub-event of 88"
+							"text": "Sub-event of 89"
 						},
 						{
 							"eventType": "block",
@@ -3598,7 +3434,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "Sub-event of 88"
+							"text": "Sub-event of 89"
 						},
 						{
 							"eventType": "block",
@@ -3696,6 +3532,7 @@
 			]
 		},
 		{
+			"bookmark": true,
 			"eventType": "block",
 			"conditions": [
 				{
@@ -3729,6 +3566,26 @@
 						"y": "PlayerProjectile.Y",
 						"z": "0",
 						"pick-all-tied": false
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemies",
+					"sid": 107304537317141,
+					"parameters": {
+						"instance-variable": "State",
+						"comparison": 1,
+						"value": "4"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemies",
+					"sid": 310980104674036,
+					"parameters": {
+						"instance-variable": "Health",
+						"comparison": 4,
+						"value": "0"
 					}
 				}
 			],

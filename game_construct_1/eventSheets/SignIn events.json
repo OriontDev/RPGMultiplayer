@@ -3,10 +3,10 @@
 	"events": [
 		{
 			"eventType": "variable",
-			"name": "MyUserID",
+			"name": "MyFirebaseUID",
 			"type": "string",
 			"initialValue": "",
-			"comment": "",
+			"comment": "Formerly MyUserID",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 960414112440708
@@ -227,7 +227,7 @@
 								"locationlink": "\"usernames\"",
 								"key": "Candidate",
 								"separator": "\"\"",
-								"value": "MyUserID",
+								"value": "MyFirebaseUID",
 								"enforce-string": true,
 								"id": "\"\""
 							}
@@ -237,7 +237,7 @@
 							"objectClass": "FirebaseRDBasic",
 							"sid": 930908276331999,
 							"parameters": {
-								"locationlink": "\"users/\" & MyUserID",
+								"locationlink": "\"users/\" & MyFirebaseUID",
 								"key": "\"username\"",
 								"separator": "\"\"",
 								"value": "Candidate",
@@ -389,7 +389,7 @@
 							"objectClass": "System",
 							"sid": 335683450540198,
 							"parameters": {
-								"variable": "MyUserID",
+								"variable": "MyFirebaseUID",
 								"value": "FirebaseAuthBasic.userID"
 							}
 						}
@@ -411,7 +411,7 @@
 									"objectClass": "FirebaseRDBasic",
 									"sid": 185109492068805,
 									"parameters": {
-										"location-link": "\"users/\" & MyUserID & \"/username\"",
+										"location-link": "\"users/\" & MyFirebaseUID & \"/username\"",
 										"id": "\"getusername\"",
 										"sync": false,
 										"read-json": false,
