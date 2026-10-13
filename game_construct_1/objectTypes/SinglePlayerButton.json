@@ -1,0 +1,9 @@
+{
+	"name": "SinglePlayerButton",
+	"plugin-id": "Button",
+	"sid": 590752748327603,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": []
+}

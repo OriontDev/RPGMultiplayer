@@ -2,10 +2,6 @@
 	"name": "Login events",
 	"events": [
 		{
-			"eventType": "comment",
-			"text": "These global variables store the username and room name that we enter on the login screen. It's then read from the 'Chat' layout and used when logging in to the signalling server."
-		},
-		{
 			"eventType": "variable",
 			"name": "MyUsername",
 			"type": "string",
@@ -66,12 +62,14 @@
 			"sid": 175628459093353
 		},
 		{
-			"eventType": "comment",
-			"text": "When clicking 'Join' or pressing enter with a non-empty name, store the entered name in the global variable and go to the Chat layout which will then try to connect."
-		},
-		{
-			"eventType": "comment",
-			"text": "Make the 'Join' button disabled if the entered name is empty or if the room name is under 5 characters, ensuring they enter valid details before joining."
+			"eventType": "variable",
+			"name": "MultiplayerMode",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 264886075661045
 		},
 		{
 			"eventType": "block",
@@ -606,11 +604,11 @@
 						{
 							"id": "join-room",
 							"objectClass": "Multiplayer",
-							"sid": 998655356408737,
+							"sid": 844136829855815,
 							"parameters": {
 								"game": "\"OriontFedora-Ninimamar\"",
 								"instance": "\"default\"",
-								"room": "RoomNameTextBox.Text",
+								"room": "RoomName",
 								"max-peers": "0"
 							}
 						}
@@ -628,17 +626,110 @@
 					"sid": 779047660027799
 				}
 			],
-			"actions": [
+			"actions": [],
+			"sid": 476013257836457,
+			"children": [
 				{
-					"id": "go-to-layout",
-					"objectClass": "System",
-					"sid": 220370321057569,
-					"parameters": {
-						"layout": "Layout 1"
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 442962041609819,
+							"parameters": {
+								"variable": "RoomType",
+								"comparison": 0,
+								"value": "\"Solo\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 411417135034569,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-host",
+									"objectClass": "Multiplayer",
+									"sid": 384435049573160,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "leave-room",
+									"objectClass": "Multiplayer",
+									"sid": 477362683413440
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 529127019405712,
+									"parameters": {
+										"variable": "RoomName",
+										"value": "\"solo-\" & floor(random(1000000000)) & \"-\" & floor(random(1000000000))"
+									}
+								},
+								{
+									"id": "join-room",
+									"objectClass": "Multiplayer",
+									"sid": 936658122778653,
+									"parameters": {
+										"game": "\"OriontFedora-Ninimamar\"",
+										"instance": "\"default\"",
+										"room": "RoomName",
+										"max-peers": "0"
+									}
+								}
+							],
+							"sid": 450002527368902
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 537314363778125
+								}
+							],
+							"actions": [
+								{
+									"id": "go-to-layout",
+									"objectClass": "System",
+									"sid": 791303304551472,
+									"parameters": {
+										"layout": "Layout 1"
+									}
+								}
+							],
+							"sid": 785424429421003
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 420297554119657
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 610652713353572,
+							"parameters": {
+								"layout": "Layout 1"
+							}
+						}
+					],
+					"sid": 981240993890846
 				}
-			],
-			"sid": 476013257836457
+			]
 		},
 		{
 			"eventType": "block",
@@ -841,6 +932,102 @@
 				}
 			],
 			"sid": 216647140686842
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "SinglePlayerButton",
+					"sid": 602240064608155
+				},
+				{
+					"id": "is-connected",
+					"objectClass": "Multiplayer",
+					"sid": 999169395612273
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 283718476275442,
+					"parameters": {
+						"variable": "WeaponDBLoaded"
+					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 952413540228432,
+					"parameters": {
+						"variable": "EnemyDBLoaded"
+					}
+				},
+				{
+					"id": "compare-text",
+					"objectClass": "NameTextBox",
+					"sid": 686936057768841,
+					"parameters": {
+						"text": "\"\"",
+						"case": "case-insensitive"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "set-enabled",
+					"objectClass": "SinglePlayerButton",
+					"sid": 914159957096658,
+					"parameters": {
+						"mode": "disabled"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 891353544897343,
+					"parameters": {
+						"variable": "MyUsername",
+						"value": "NameTextBox.Text"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 733353388279069,
+					"parameters": {
+						"variable": "RoomType",
+						"value": "\"Solo\""
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 708529842422437,
+					"parameters": {
+						"variable": "RoomName",
+						"value": "\"solo-\" & floor(random(1000000000)) & \"-\" & floor(random(1000000000))"
+					}
+				},
+				{
+					"id": "log-in",
+					"objectClass": "Multiplayer",
+					"sid": 816617329092006,
+					"parameters": {
+						"alias": "NameTextBox.Text"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 609750781247807,
+					"parameters": {
+						"variable": "MultiplayerMode",
+						"value": "false"
+					}
+				}
+			],
+			"sid": 137042738420820
 		}
 	],
 	"sid": 518838076776327

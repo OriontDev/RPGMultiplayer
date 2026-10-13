@@ -251,7 +251,8 @@
 			"MenuLeaveButton",
 			"PlayerProjectile",
 			"PlayerProjectileHit",
-			"Walls"
+			"Walls",
+			"SinglePlayerButton"
 		],
 		"subfolders": []
 	},

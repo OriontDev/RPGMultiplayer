@@ -296,6 +296,41 @@
 							1
 						]
 					}
+				},
+				{
+					"type": "SinglePlayerButton",
+					"properties": {
+						"type": "button",
+						"text": "Single Praya",
+						"tooltip": "",
+						"initially-visible": true,
+						"enabled": true,
+						"auto-font-size": true,
+						"checked": false,
+						"id": "",
+						"class": ""
+					},
+					"uid": 63,
+					"sid": 688728178783974,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 510,
+						"y": 203,
+						"width": 111,
+						"height": 118,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						]
+					}
 				}
 			],
 			"sid": 947074143828454,
