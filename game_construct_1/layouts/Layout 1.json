@@ -808,7 +808,7 @@
 						"WanderTargetX": 0,
 						"WanderTargetY": 0,
 						"TargetNetID": -1,
-						"EnemyUID": -1,
+						"EnemyUID": 100,
 						"EquippedItemID": "",
 						"EnemyID": "knight",
 						"FacingLeft": 1,

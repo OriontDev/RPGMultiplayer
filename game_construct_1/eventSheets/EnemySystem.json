@@ -53,7 +53,17 @@
 			],
 			"eventType": "function-block",
 			"conditions": [],
-			"actions": [],
+			"actions": [
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 592296177782203,
+					"parameters": {
+						"type": "log",
+						"message": "\"SpawnEnemy Run : \" & SpawnX & \" - \" & SpawnY & \" - \" & SpawnEnemyID"
+					}
+				}
+			],
 			"sid": 631302907394285,
 			"children": [
 				{
@@ -90,226 +100,15 @@
 							}
 						},
 						{
-							"id": "set-instvar-value",
-							"objectClass": "KnightEnemy",
-							"sid": 860913921218457,
-							"parameters": {
-								"instance-variable": "EnemyUID",
-								"value": "NextEnemyUID"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "KnightEnemy",
-							"sid": 556393421980359,
-							"parameters": {
-								"instance-variable": "EnemyID",
-								"value": "SpawnEnemyID"
-							}
-						},
-						{
-							"id": "add-to-eventvar",
-							"objectClass": "System",
-							"sid": 470048382710381,
-							"parameters": {
-								"variable": "NextEnemyUID",
-								"value": "1"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "KnightEnemy",
-							"sid": 252312748700332,
-							"parameters": {
-								"instance-variable": "Name",
-								"value": "EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".name\")"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "KnightEnemy",
-							"sid": 804404427399857,
-							"parameters": {
-								"instance-variable": "Type",
-								"value": "int(EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".type\"))"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "KnightEnemy",
-							"sid": 476754619798632,
-							"parameters": {
-								"instance-variable": "MaxHealth",
-								"value": "int(EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".maxhealth\"))"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "KnightEnemy",
-							"sid": 914758633161553,
-							"parameters": {
-								"instance-variable": "Health",
-								"value": "KnightEnemy.MaxHealth"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "KnightEnemy",
-							"sid": 682521354324013,
-							"parameters": {
-								"instance-variable": "MoveSpeed",
-								"value": "int(EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".movespeed\"))"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "KnightEnemy",
-							"sid": 374297604404764,
-							"parameters": {
-								"instance-variable": "DetectionRange",
-								"value": "int(EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".detectionrange\"))"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "KnightEnemy",
-							"sid": 678086743490092,
-							"parameters": {
-								"instance-variable": "AttackRange",
-								"value": "int(EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".attackrange\"))"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "KnightEnemy",
-							"sid": 231779563916558,
-							"parameters": {
-								"instance-variable": "EquippedItemID",
-								"value": "EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".equipped_item\")"
-							}
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 805679251836564,
-							"parameters": {
-								"object-to-create": "EnemyWeapon",
-								"layer": "0",
-								"x": "KnightEnemy.X",
-								"y": "KnightEnemy.Y",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "EnemyWeapon",
-							"sid": 898556628118758,
-							"parameters": {
-								"instance-variable": "EnemyUID",
-								"value": "KnightEnemy.EnemyUID"
-							}
-						},
-						{
-							"id": "set-animation",
-							"objectClass": "EnemyWeapon",
-							"sid": 351488366275434,
-							"parameters": {
-								"animation": "WeaponDB.Get(\"WeaponDB.\" & KnightEnemy.EquippedItemID & \".animation.still\")",
-								"from": "beginning"
-							}
-						},
-						{
-							"id": "spawn-another-object",
-							"objectClass": "KnightEnemy",
-							"sid": 264269959708632,
-							"parameters": {
-								"object": "EnemyHealthDebugText",
-								"layer": "1",
-								"image-point": "2",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "KnightEnemy",
-							"sid": 905173562897984,
-							"parameters": {
-								"instance-variable": "EnemyKind",
-								"value": "0"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "EnemyHealthDebugText",
-							"sid": 170816654679866,
-							"parameters": {
-								"instance-variable": "EnemyUID",
-								"value": "KnightEnemy.EnemyUID"
-							}
+							"callFunction": "InitEnemyData",
+							"sid": 328653461794914,
+							"parameters": [
+								"SpawnEnemyID",
+								"KnightEnemy.UID"
+							]
 						}
 					],
-					"sid": 197426889214559,
-					"children": [
-						{
-							"eventType": "comment",
-							"text": "Sub of 2"
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 562830162950962,
-									"parameters": {
-										"first-value": "int(EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".isinvincible\"))",
-										"comparison": 0,
-										"second-value": "1"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-boolean-instvar",
-									"objectClass": "Enemies",
-									"sid": 163344198771115,
-									"parameters": {
-										"instance-variable": "IsInvincible",
-										"value": "true"
-									}
-								}
-							],
-							"sid": 817973333476477
-						},
-						{
-							"eventType": "comment",
-							"text": "Sub of 2"
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 925599443554679
-								}
-							],
-							"actions": [
-								{
-									"id": "set-boolean-instvar",
-									"objectClass": "Enemies",
-									"sid": 933316911480889,
-									"parameters": {
-										"instance-variable": "IsInvincible",
-										"value": "false"
-									}
-								}
-							],
-							"sid": 423412629361335
-						}
-					]
+					"sid": 197426889214559
 				},
 				{
 					"eventType": "comment",
@@ -345,27 +144,72 @@
 							}
 						},
 						{
+							"callFunction": "InitEnemyData",
+							"sid": 742422801120235,
+							"parameters": [
+								"SpawnEnemyID",
+								"PunchingBags.UID"
+							]
+						}
+					],
+					"sid": 122812081485997
+				}
+			]
+		},
+		{
+			"functionName": "InitEnemyData",
+			"functionDescription": "Assign enemies data from enemies.json after they were spawned",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "EnemyTypeID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 263439369107284
+				},
+				{
+					"name": "InstanceUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 760899987637579
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 419483836609593,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "Enemies",
+							"sid": 206349058523667,
+							"parameters": {
+								"unique-id": "InstanceUID"
+							}
+						}
+					],
+					"actions": [
+						{
 							"id": "set-instvar-value",
-							"objectClass": "PunchingBags",
-							"sid": 560267151365663,
+							"objectClass": "Enemies",
+							"sid": 297381048228805,
 							"parameters": {
 								"instance-variable": "EnemyUID",
 								"value": "NextEnemyUID"
 							}
 						},
 						{
-							"id": "set-instvar-value",
-							"objectClass": "PunchingBags",
-							"sid": 400148764727621,
-							"parameters": {
-								"instance-variable": "EnemyID",
-								"value": "SpawnEnemyID"
-							}
-						},
-						{
 							"id": "add-to-eventvar",
 							"objectClass": "System",
-							"sid": 490407202860343,
+							"sid": 991644677517748,
 							"parameters": {
 								"variable": "NextEnemyUID",
 								"value": "1"
@@ -373,80 +217,89 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PunchingBags",
-							"sid": 685223615931513,
+							"objectClass": "Enemies",
+							"sid": 525945493933880,
+							"parameters": {
+								"instance-variable": "EnemyID",
+								"value": "EnemyTypeID"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemies",
+							"sid": 709644700229904,
 							"parameters": {
 								"instance-variable": "Name",
-								"value": "EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".name\")"
+								"value": "EnemyDB.Get(\"EnemyDB.\" & EnemyTypeID & \".name\")"
 							}
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PunchingBags",
-							"sid": 579188110821826,
+							"objectClass": "Enemies",
+							"sid": 714376745734823,
 							"parameters": {
 								"instance-variable": "Type",
-								"value": "int(EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".type\"))"
+								"value": "int(EnemyDB.Get(\"EnemyDB.\" & EnemyTypeID & \".type\"))"
 							}
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PunchingBags",
-							"sid": 980580125658538,
+							"objectClass": "Enemies",
+							"sid": 671840507465635,
 							"parameters": {
 								"instance-variable": "MaxHealth",
-								"value": "int(EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".maxhealth\"))"
+								"value": "int(EnemyDB.Get(\"EnemyDB.\" & EnemyTypeID & \".maxhealth\"))"
 							}
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PunchingBags",
-							"sid": 119093502979930,
+							"objectClass": "Enemies",
+							"sid": 367073783844255,
 							"parameters": {
 								"instance-variable": "Health",
-								"value": "PunchingBags.MaxHealth"
+								"value": "Enemies.MaxHealth"
 							}
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PunchingBags",
-							"sid": 951220100251342,
+							"objectClass": "Enemies",
+							"sid": 998027787634366,
 							"parameters": {
 								"instance-variable": "MoveSpeed",
-								"value": "int(EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".movespeed\"))"
+								"value": "int(EnemyDB.Get(\"EnemyDB.\" & EnemyTypeID & \".movespeed\"))"
 							}
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PunchingBags",
-							"sid": 522750627811035,
+							"objectClass": "Enemies",
+							"sid": 957777122321485,
 							"parameters": {
 								"instance-variable": "DetectionRange",
-								"value": "int(EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".detectionrange\"))"
+								"value": "int(EnemyDB.Get(\"EnemyDB.\" & EnemyTypeID& \".detectionrange\"))"
 							}
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PunchingBags",
-							"sid": 764413653765783,
+							"objectClass": "Enemies",
+							"sid": 266114804701239,
 							"parameters": {
 								"instance-variable": "AttackRange",
-								"value": "int(EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".attackrange\"))"
+								"value": "int(EnemyDB.Get(\"EnemyDB.\" & EnemyTypeID& \".attackrange\"))"
 							}
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PunchingBags",
-							"sid": 404317191570317,
+							"objectClass": "Enemies",
+							"sid": 302231735436440,
 							"parameters": {
 								"instance-variable": "EquippedItemID",
-								"value": "EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".equipped_item\")"
+								"value": "EnemyDB.Get(\"EnemyDB.\" & EnemyTypeID & \".equipped_item\")"
 							}
 						},
 						{
 							"id": "spawn-another-object",
-							"objectClass": "PunchingBags",
-							"sid": 264269959708632,
+							"objectClass": "Enemies",
+							"sid": 851751368452087,
 							"parameters": {
 								"object": "EnemyHealthDebugText",
 								"layer": "1",
@@ -457,25 +310,74 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "PunchingBags",
-							"sid": 694368676887757,
+							"objectClass": "Enemies",
+							"sid": 793502371584984,
 							"parameters": {
 								"instance-variable": "EnemyKind",
-								"value": "1"
+								"value": "int(EnemyDB.Get(\"EnemyDB.\" & EnemyTypeID & \".id\"))"
 							}
 						},
 						{
 							"id": "set-instvar-value",
 							"objectClass": "EnemyHealthDebugText",
-							"sid": 166235470637809,
+							"sid": 942327726041734,
 							"parameters": {
 								"instance-variable": "EnemyUID",
-								"value": "PunchingBags.EnemyUID"
+								"value": "Enemies.EnemyUID"
 							}
 						}
 					],
-					"sid": 122812081485997,
+					"sid": 640786364224717,
 					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemies",
+									"sid": 818009018378913,
+									"parameters": {
+										"instance-variable": "EquippedItemID",
+										"comparison": 1,
+										"value": "\"\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 648124790503267,
+									"parameters": {
+										"object-to-create": "EnemyWeapon",
+										"layer": "0",
+										"x": "Enemies.X",
+										"y": "Enemies.Y",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "EnemyWeapon",
+									"sid": 251699000223181,
+									"parameters": {
+										"instance-variable": "EnemyUID",
+										"value": "Enemies.EnemyUID"
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "EnemyWeapon",
+									"sid": 276694307175789,
+									"parameters": {
+										"animation": "WeaponDB.Get(\"WeaponDB.\" & Enemies.EquippedItemID & \".animation.still\")",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 225854957852910
+						},
 						{
 							"eventType": "comment",
 							"text": "Sub of 5"
@@ -486,9 +388,9 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 728074785666188,
+									"sid": 341252526395358,
 									"parameters": {
-										"first-value": "int(EnemyDB.Get(\"EnemyDB.\" & SpawnEnemyID & \".isinvincible\"))",
+										"first-value": "int(EnemyDB.Get(\"EnemyDB.\" & EnemyTypeID & \".isinvincible\"))",
 										"comparison": 0,
 										"second-value": "1"
 									}
@@ -498,14 +400,14 @@
 								{
 									"id": "set-boolean-instvar",
 									"objectClass": "Enemies",
-									"sid": 884848370550271,
+									"sid": 499954188320074,
 									"parameters": {
 										"instance-variable": "IsInvincible",
 										"value": "true"
 									}
 								}
 							],
-							"sid": 355372037497895
+							"sid": 981587444718208
 						},
 						{
 							"eventType": "comment",
@@ -517,21 +419,21 @@
 								{
 									"id": "else",
 									"objectClass": "System",
-									"sid": 896580262567824
+									"sid": 416741783675679
 								}
 							],
 							"actions": [
 								{
 									"id": "set-boolean-instvar",
 									"objectClass": "Enemies",
-									"sid": 231135368787913,
+									"sid": 475507825174321,
 									"parameters": {
 										"instance-variable": "IsInvincible",
 										"value": "false"
 									}
 								}
 							],
-							"sid": 872997403910254
+							"sid": 455633661281849
 						}
 					]
 				}
@@ -655,7 +557,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Subevent of 8"
+					"text": "Subevent of 9"
 				},
 				{
 					"eventType": "block",
@@ -740,7 +642,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Subevent of 8"
+					"text": "Subevent of 9"
 				},
 				{
 					"eventType": "block",
@@ -765,7 +667,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Subevent of 8"
+					"text": "Subevent of 9"
 				},
 				{
 					"eventType": "block",
@@ -781,7 +683,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "Subevent of 12"
+							"text": "Subevent of 13"
 						},
 						{
 							"eventType": "block",
@@ -826,7 +728,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Subevent of 14"
+					"text": "Subevent of 15"
 				},
 				{
 					"eventType": "block",
@@ -842,7 +744,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "Subevent of 15"
+							"text": "Subevent of 16"
 						},
 						{
 							"eventType": "block",
@@ -873,7 +775,7 @@
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "Subevent of 16"
+									"text": "Subevent of 17"
 								},
 								{
 									"eventType": "block",
@@ -904,7 +806,7 @@
 									"children": [
 										{
 											"eventType": "comment",
-											"text": "Subevent of 20"
+											"text": "Subevent of 18"
 										},
 										{
 											"eventType": "block",
@@ -2373,11 +2275,11 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "Enemies",
-											"sid": 859297231696664,
+											"sid": 885726148718859,
 											"parameters": {
 												"instance-variable": "EquippedItemID",
 												"comparison": 1,
-												"value": "0"
+												"value": "\"\"\n"
 											}
 										}
 									],

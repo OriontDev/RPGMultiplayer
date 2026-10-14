@@ -1,5 +1,6 @@
 {
   "knight": {
+    "id": 0,
     "name": "Knight",
     "type": 0,
     "maxhealth": 150,
@@ -10,6 +11,7 @@
     "equipped_item": "basic_sword"
   },
   "punching_bag": {
+    "id": 1,
     "name": "Punching Bag",
     "type": 3,
     "maxhealth": 100,

@@ -1389,7 +1389,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "sub of 28"
+							"text": "sub of 29"
 						},
 						{
 							"eventType": "block",
@@ -1410,7 +1410,7 @@
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "sub of 29"
+									"text": "sub of 30"
 								},
 								{
 									"eventType": "block",
@@ -1479,7 +1479,7 @@
 								},
 								{
 									"eventType": "comment",
-									"text": "sub of 29"
+									"text": "sub of 30"
 								},
 								{
 									"eventType": "block",
@@ -1548,7 +1548,7 @@
 								},
 								{
 									"eventType": "comment",
-									"text": "sub of 29"
+									"text": "sub of 30"
 								},
 								{
 									"eventType": "block",
@@ -1588,7 +1588,7 @@
 								},
 								{
 									"eventType": "comment",
-									"text": "sub of 29"
+									"text": "sub of 30"
 								},
 								{
 									"eventType": "block",
@@ -1630,7 +1630,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "sub of 28"
+							"text": "sub of 29"
 						},
 						{
 							"eventType": "block",
@@ -1651,7 +1651,7 @@
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "sub of 36"
+									"text": "sub of 37"
 								},
 								{
 									"eventType": "block",
@@ -1720,7 +1720,7 @@
 								},
 								{
 									"eventType": "comment",
-									"text": "sub of 36"
+									"text": "sub of 37"
 								},
 								{
 									"eventType": "block",
@@ -1789,7 +1789,7 @@
 								},
 								{
 									"eventType": "comment",
-									"text": "sub of 36"
+									"text": "sub of 37"
 								},
 								{
 									"eventType": "block",
@@ -1820,7 +1820,7 @@
 								},
 								{
 									"eventType": "comment",
-									"text": "sub of 36"
+									"text": "sub of 37"
 								},
 								{
 									"eventType": "block",
@@ -1867,7 +1867,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "sub of 43"
+							"text": "sub of 44"
 						},
 						{
 							"eventType": "block",
@@ -1907,7 +1907,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "sub of 43"
+							"text": "sub of 44"
 						},
 						{
 							"eventType": "block",
@@ -1947,7 +1947,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "sub of 43"
+							"text": "sub of 44"
 						},
 						{
 							"eventType": "block",
@@ -1987,7 +1987,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "sub of 43"
+							"text": "sub of 44"
 						},
 						{
 							"eventType": "block",
@@ -2027,7 +2027,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "sub of 43"
+							"text": "sub of 44"
 						},
 						{
 							"eventType": "block",
@@ -2086,7 +2086,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "sub of 43"
+							"text": "sub of 44"
 						},
 						{
 							"eventType": "block",
@@ -2216,7 +2216,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "sub of 51"
+							"text": "sub of 52"
 						},
 						{
 							"eventType": "block",
@@ -2256,7 +2256,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "sub of 51"
+							"text": "sub of 52"
 						},
 						{
 							"eventType": "block",
@@ -2296,7 +2296,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "sub of 51"
+							"text": "sub of 52"
 						},
 						{
 							"eventType": "block",
@@ -2336,7 +2336,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "sub of 51"
+							"text": "sub of 52"
 						},
 						{
 							"eventType": "block",
@@ -2409,7 +2409,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "sub of 56"
+							"text": "sub of 57"
 						},
 						{
 							"eventType": "block",
@@ -2524,7 +2524,7 @@
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "sub of 58"
+									"text": "sub of 59"
 								},
 								{
 									"eventType": "block",
@@ -2698,6 +2698,142 @@
 						}
 					],
 					"sid": 453160240460927
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 300579788435611,
+							"parameters": {
+								"object": "Player"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 561537900069901,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 0,
+								"value": "MyNetID"
+							}
+						},
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 559785161895583,
+							"isInverted": true
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 150528992626265,
+							"parameters": {
+								"instance-variable": "ServerX",
+								"comparison": 1,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 499960074207463,
+							"parameters": {
+								"first-value": "distance(Player.X, Player.Y, Player.ServerX, Player.ServerY)",
+								"comparison": 4,
+								"second-value": "120"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-x",
+							"objectClass": "Player",
+							"sid": 809881430776605,
+							"parameters": {
+								"x": "lerp(Player.X, Player.ServerX, 0.15)\n"
+							}
+						},
+						{
+							"id": "set-y",
+							"objectClass": "Player",
+							"sid": 559919310540431,
+							"parameters": {
+								"y": "lerp(Player.Y, Player.ServerY, 0.15)"
+							}
+						}
+					],
+					"sid": 795551344967821
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 693516594364607,
+							"parameters": {
+								"object": "Player"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 916500321928596,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 0,
+								"value": "MyNetID"
+							}
+						},
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 746160698873915,
+							"isInverted": true
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 306803839695802,
+							"parameters": {
+								"instance-variable": "ServerX",
+								"comparison": 1,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 552635488657504,
+							"parameters": {
+								"first-value": "distance(Player.X, Player.Y, Player.ServerX, Player.ServerY)",
+								"comparison": 4,
+								"second-value": "500"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-x",
+							"objectClass": "Player",
+							"sid": 677431936088582,
+							"parameters": {
+								"x": "Player.ServerX"
+							}
+						},
+						{
+							"id": "set-y",
+							"objectClass": "Player",
+							"sid": 420042007039523,
+							"parameters": {
+								"y": "Player.ServerY"
+							}
+						}
+					],
+					"sid": 475745319614573
 				},
 				{
 					"eventType": "block",
@@ -3771,10 +3907,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 323936875268377,
+					"sid": 449840128115749,
 					"parameters": {
 						"variable": "NextEnemyUID",
-						"value": "-1"
+						"value": "0"
 					}
 				},
 				{
@@ -4191,6 +4327,34 @@
 					"sid": 522969256112588
 				}
 			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 280032961372871
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 411064938064798,
+					"parameters": {
+						"instance-variable": "NetID",
+						"comparison": 0,
+						"value": "-1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "Player",
+					"sid": 271487296765472
+				}
+			],
+			"sid": 348105290321182
 		}
 	],
 	"sid": 474297610386447
