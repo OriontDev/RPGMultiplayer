@@ -1,0 +1,934 @@
+{
+	"name": "DialogSystem",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "DialogActive",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "0 - false, 1 - true",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 252776137355183
+		},
+		{
+			"eventType": "variable",
+			"name": "CurrentDialogID",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 903020423771622
+		},
+		{
+			"eventType": "variable",
+			"name": "DialogLine",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 768673932900882
+		},
+		{
+			"eventType": "variable",
+			"name": "DialogIsTyping",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "0 - false, 1 - true",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 422147448332603
+		},
+		{
+			"eventType": "variable",
+			"name": "NearbyNPCUID",
+			"type": "number",
+			"initialValue": "-1",
+			"comment": "0 - false, 1 - true",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 696098703704659
+		},
+		{
+			"eventType": "variable",
+			"name": "DialogLineCount",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 466252784854426
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 209520623032565
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 163053055917459,
+					"parameters": {
+						"variable": "NearbyNPCUID",
+						"value": "-1"
+					}
+				}
+			],
+			"sid": 949982576741025,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 884113818928986,
+							"parameters": {
+								"instance-variable": "NetID",
+								"comparison": 0,
+								"value": "MyNetID"
+							}
+						},
+						{
+							"id": "pick-nearestfurthest",
+							"objectClass": "NPCs",
+							"sid": 873658031192825,
+							"parameters": {
+								"which": "nearest",
+								"x": "Player.X",
+								"y": "Player.Y",
+								"z": "0",
+								"pick-all-tied": false
+							}
+						}
+					],
+					"actions": [],
+					"sid": 813334532307320,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 640257721838302,
+									"parameters": {
+										"first-value": "distance(Player.X, Player.Y, NPCs.X, NPCs.Y)",
+										"comparison": 2,
+										"second-value": "NPCs.InteractRange"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 526535695832276,
+									"parameters": {
+										"variable": "DialogActive",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 622903968607185,
+									"parameters": {
+										"variable": "NearbyNPCUID",
+										"value": "NPCs.UID"
+									}
+								}
+							],
+							"sid": 539441241095651
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 205637261718563
+				}
+			],
+			"actions": [],
+			"sid": 744685225583646,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 306141237329161,
+							"parameters": {
+								"variable": "NearbyNPCUID",
+								"comparison": 1,
+								"value": "-1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 929861135712745,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "NPCs",
+									"sid": 216724946515557,
+									"parameters": {
+										"unique-id": "NearbyNPCUID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position",
+									"objectClass": "InteractPrompt",
+									"sid": 741031321992913,
+									"parameters": {
+										"x": "NPCs.X",
+										"y": "NPCs.Y - 40"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "InteractPrompt",
+									"sid": 387737589827381,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 650666985812952
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 507101148587911,
+							"parameters": {
+								"variable": "NearbyNPCUID",
+								"comparison": 0,
+								"value": "-1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "InteractPrompt",
+							"sid": 951137610454437,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 633388202871568
+				}
+			]
+		},
+		{
+			"eventType": "variable",
+			"name": "DialogPath",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 966893905064327
+		},
+		{
+			"functionName": "ShowDialogLine",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 519946607940151,
+					"parameters": {
+						"variable": "DialogPath",
+						"value": "\"DialogDB.\" & CurrentDialogID & \".lines.\" & DialogLine"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 317176875940258,
+					"parameters": {
+						"variable": "DialogIsTyping",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "DialogName",
+					"sid": 911844167172155,
+					"parameters": {
+						"text": "DialogDB.Get(DialogPath & \".speaker\")"
+					}
+				},
+				{
+					"id": "typewriter-text",
+					"objectClass": "DialogText",
+					"sid": 747846845979480,
+					"parameters": {
+						"text": "DialogDB.Get(DialogPath & \".text\")",
+						"duration": "max(0.05, DialogDB.Get(DialogPath & \".duration\"))"
+					}
+				}
+			],
+			"sid": 515453803429080,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 629683901000305,
+							"parameters": {
+								"first-value": "DialogDB.Get(DialogPath & \".speaker\")",
+								"comparison": 1,
+								"second-value": "\"\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "DialogName",
+							"sid": 105816505212846,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 947686256384414
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 294674681005005,
+							"parameters": {
+								"first-value": "DialogDB.Get(DialogPath & \".speaker\")",
+								"comparison": 0,
+								"second-value": "\"\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "DialogName",
+							"sid": 307206282735870,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 615609104695341
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 786039496002411,
+							"parameters": {
+								"first-value": "DialogDB.Get(DialogPath & \".portrait\")",
+								"comparison": 1,
+								"second-value": "\"\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "DialogPotrait",
+							"sid": 192208580206869,
+							"parameters": {
+								"animation": "DialogDB.Get(DialogPath & \".portrait\")",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "DialogPotrait",
+							"sid": 255212940698871,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 359116199713973
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 530730351638326,
+							"parameters": {
+								"first-value": "DialogDB.Get(DialogPath & \".portrait\")",
+								"comparison": 0,
+								"second-value": "\"\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "DialogPotrait",
+							"sid": 427578168155554,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 878154357283507
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 776348899969133,
+					"parameters": {
+						"key": 69
+					}
+				}
+			],
+			"actions": [],
+			"sid": 744080386801310,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "wasActive",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "0 false, 1 true",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 391183250755927
+				},
+				{
+					"eventType": "variable",
+					"name": "wasTyping",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "0 false, 1 true",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 462011126198701
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 247561394041605,
+							"parameters": {
+								"variable": "wasTyping",
+								"value": "DialogIsTyping"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 367058266543694,
+							"parameters": {
+								"variable": "wasActive",
+								"value": "DialogActive"
+							}
+						}
+					],
+					"sid": 183448974968424,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 732981477397407,
+									"parameters": {
+										"variable": "wasActive",
+										"comparison": 0,
+										"value": "1"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 476144425074398,
+									"parameters": {
+										"variable": "wasTyping",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "typewriter-finish",
+									"objectClass": "DialogText",
+									"sid": 112357494701526
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 257641503212534,
+									"parameters": {
+										"variable": "DialogIsTyping",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 923978153438121
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 242669480919057,
+									"parameters": {
+										"variable": "wasActive",
+										"comparison": 0,
+										"value": "1"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 577395515996206,
+									"parameters": {
+										"variable": "wasTyping",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "AdvanceDialog",
+									"sid": 561469042528190
+								}
+							],
+							"sid": 671999347685053
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 437681818258574,
+									"parameters": {
+										"variable": "wasActive",
+										"comparison": 0,
+										"value": "0"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 489382427747064,
+									"parameters": {
+										"variable": "NearbyNPCUID",
+										"comparison": 1,
+										"value": "-1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 101896880845954,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "NPCs",
+											"sid": 303593331970290,
+											"parameters": {
+												"unique-id": "NearbyNPCUID"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 698712264066683,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "NPCs",
+													"sid": 105765058362207,
+													"parameters": {
+														"instance-variable": "NPCType",
+														"comparison": 0,
+														"value": "\"dialog\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"callFunction": "StartDialog",
+													"sid": 940490532857919,
+													"parameters": [
+														"NPCs.DialogID"
+													]
+												}
+											],
+											"sid": 525668934490520
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "AdvanceDialog",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 550238029023015,
+					"parameters": {
+						"variable": "DialogLine",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 965610698668150,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 587760157503457,
+							"parameters": {
+								"first-value": "DialogLine",
+								"comparison": 2,
+								"second-value": "DialogLineCount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "ShowDialogLine",
+							"sid": 697152408979820
+						}
+					],
+					"sid": 949226660739046
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 530673700401701,
+							"parameters": {
+								"first-value": "DialogLine",
+								"comparison": 5,
+								"second-value": "DialogLineCount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "EndDialog",
+							"sid": 384802426686894
+						}
+					],
+					"sid": 234949038921181
+				}
+			]
+		},
+		{
+			"functionName": "EndDialog",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 825168559764415,
+					"parameters": {
+						"variable": "DialogActive",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 721100792966498,
+					"parameters": {
+						"variable": "DialogIsTyping",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "DialogBox",
+					"sid": 649627916828129,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "DialogPotrait",
+					"sid": 294462891476034,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "DialogName",
+					"sid": 689539036867009,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "DialogText",
+					"sid": 926618294632018,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 816355220789572
+		},
+		{
+			"functionName": "StartDialog",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "DialogID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 378682530315156
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 974934470297495,
+					"parameters": {
+						"variable": "CurrentDialogID",
+						"value": "DialogID"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 142732655150100,
+					"parameters": {
+						"variable": "DialogLineCount",
+						"value": "DialogDB.ArraySize(\"DialogDB.\" & CurrentDialogID & \".lines\")"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 994892128906353,
+					"parameters": {
+						"variable": "DialogLine",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 586373527687074,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 579826298510049,
+							"parameters": {
+								"variable": "DialogLineCount",
+								"comparison": 4,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 559900630599154,
+							"parameters": {
+								"variable": "DialogActive",
+								"value": "1"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "DialogBox",
+							"sid": 857895951154149,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "DialogText",
+							"sid": 973665655145539,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "InteractPrompt",
+							"sid": 176675477813293,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"callFunction": "ShowDialogLine",
+							"sid": 674508821951623
+						}
+					],
+					"sid": 731042465327826
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-running-typewriter-text",
+					"objectClass": "DialogText",
+					"sid": 301188303475919
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 108952067078232
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 973858847446689,
+					"parameters": {
+						"audio-file": {
+							"path": "Dialog"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"dialogsfx\""
+					}
+				}
+			],
+			"sid": 196303015928945
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-typewriter-text-finished",
+					"objectClass": "DialogText",
+					"sid": 156932935341238
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 633291307869320,
+					"parameters": {
+						"variable": "DialogIsTyping",
+						"value": "0"
+					}
+				},
+				{
+					"id": "stop",
+					"objectClass": "Audio",
+					"sid": 314525035511166,
+					"parameters": {
+						"tag": "\"dialogsfx\""
+					}
+				}
+			],
+			"sid": 774336583085868
+		}
+	],
+	"sid": 731175435444181
+}

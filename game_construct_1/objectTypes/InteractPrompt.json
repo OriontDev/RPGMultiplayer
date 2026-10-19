@@ -1,0 +1,94 @@
+{
+	"name": "InteractPrompt",
+	"plugin-id": "Sprite",
+	"sid": 624769190669657,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 64,
+						"height": 64,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8239584,
+						"collisionPoly": {
+							"points": [
+								0.078125,
+								0.234375,
+								0.921875,
+								0.234375,
+								0.96875,
+								0.28125,
+								0.96875,
+								0.5625,
+								0.546875,
+								0.984375,
+								0.453125,
+								0.984375,
+								0.03125,
+								0.5625,
+								0.03125,
+								0.28125
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 64,
+						"height": 64,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8853264,
+						"collisionPoly": {
+							"points": [
+								0.078125,
+								0.015625,
+								0.921875,
+								0.015625,
+								0.96875,
+								0.0625,
+								0.96875,
+								0.34375,
+								0.546875,
+								0.765625,
+								0.453125,
+								0.765625,
+								0.03125,
+								0.34375,
+								0.03125,
+								0.0625
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 358979845862533,
+				"name": "Animation 1",
+				"isLooping": true,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 2
+			}
+		],
+		"subfolders": []
+	}
+}

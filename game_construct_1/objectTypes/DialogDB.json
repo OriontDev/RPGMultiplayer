@@ -1,0 +1,8 @@
+{
+	"name": "DialogDB",
+	"plugin-id": "Json",
+	"sid": 810314539289455,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": []
+}

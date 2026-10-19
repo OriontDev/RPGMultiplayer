@@ -1,0 +1,10 @@
+{
+	"name": "DialogName",
+	"plugin-id": "Text",
+	"sid": 307730455671065,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

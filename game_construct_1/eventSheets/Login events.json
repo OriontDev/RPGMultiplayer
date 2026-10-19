@@ -53,6 +53,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "DialogDBLoaded",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 466288634702378
+		},
+		{
+			"eventType": "variable",
 			"name": "Device",
 			"type": "string",
 			"initialValue": "PC",
@@ -177,6 +187,34 @@
 						}
 					],
 					"sid": 733326197852203
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 176121266468690,
+							"parameters": {
+								"variable": "DialogDBLoaded"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "request-project-file",
+							"objectClass": "AJAX",
+							"sid": 554678964823054,
+							"parameters": {
+								"tag": "\"LoadDialogs\"",
+								"file": {
+									"path": "dialogs.json"
+								}
+							}
+						}
+					],
+					"sid": 257158697277374
 				}
 			]
 		},
@@ -247,6 +285,40 @@
 				}
 			],
 			"sid": 795336600943690
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-completed",
+					"objectClass": "AJAX",
+					"sid": 895836951339486,
+					"parameters": {
+						"tag": "\"LoadDialogs\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-json",
+					"objectClass": "DialogDB",
+					"sid": 396400877651285,
+					"parameters": {
+						"path": "\"DialogDB\"",
+						"json": "AJAX.LastData"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 676793428883868,
+					"parameters": {
+						"variable": "DialogDBLoaded",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 846398974069710
 		},
 		{
 			"eventType": "block",

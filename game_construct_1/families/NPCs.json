@@ -1,0 +1,33 @@
+{
+	"name": "NPCs",
+	"plugin-id": "Sprite",
+	"sid": 242365988484288,
+	"instanceVariables": [
+		{
+			"name": "NPCType",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 347482646615568
+		},
+		{
+			"name": "DialogID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 911345952627403
+		},
+		{
+			"name": "InteractRange",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 788722270706654
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"KnightNpc"
+	]
+}

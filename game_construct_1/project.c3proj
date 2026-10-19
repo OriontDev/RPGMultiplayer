@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 49502,
+	"savedWithRelease": 50602,
 	"name": "RPGMultiplayer",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -271,7 +271,14 @@
 			"MapUI",
 			"CoinsUI",
 			"SpriteFont",
-			"PendingUIDs"
+			"PendingUIDs",
+			"KnightNpc",
+			"DialogBox",
+			"DialogDB",
+			"DialogName",
+			"DialogText",
+			"DialogPotrait",
+			"InteractPrompt"
 		],
 		"subfolders": []
 	},
@@ -281,7 +288,8 @@
 	"families": {
 		"items": [
 			"Enemies",
-			"Pickups"
+			"Pickups",
+			"NPCs"
 		],
 		"subfolders": []
 	},
@@ -300,7 +308,8 @@
 			"SignIn events",
 			"PlayerCombat",
 			"EnemySystem",
-			"UI System"
+			"UI System",
+			"DialogSystem"
 		],
 		"subfolders": []
 	},
@@ -310,7 +319,16 @@
 			"subfolders": []
 		},
 		"sound": {
-			"items": [],
+			"items": [
+				{
+					"name": "Dialog.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 407069203759898,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": [
 				{
 					"items": [
@@ -456,6 +474,14 @@
 					"file-info": {
 						"purpose": "none"
 					}
+				},
+				{
+					"name": "dialogs.json",
+					"type": "application/json",
+					"sid": 516414396668058,
+					"file-info": {
+						"purpose": "none"
+					}
 				}
 			],
 			"subfolders": []
@@ -490,8 +516,8 @@
 		"authorEmail": "",
 		"authorWebsite": "",
 		"appId": "",
+		"saveLLMContextFile": true,
 		"pixelRounding": true,
-		"zAxisScale": "regular",
 		"fov": 0.7853981633974483,
 		"useLoaderLayout": false,
 		"fullscreenMode": "scale-outer",
@@ -532,6 +558,7 @@
 		"loaderStyle": "splash",
 		"preloadSounds": true,
 		"uidAllocationMode": "increment",
+		"zAxisScale": "regular",
 		"cordovaiOSScheme": "app",
 		"cordovaAndroidScheme": "https",
 		"exportFileStructure": "folders",

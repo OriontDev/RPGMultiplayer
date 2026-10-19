@@ -1,0 +1,27 @@
+{
+    "elder_greeting": {
+        "lines": [
+            { "speaker": "Bu Laras", "portrait": "Test", "duration": 2.5, "text": "Ah, another traveler. The road to this settlement is long, isn't it?" },
+            { "speaker": "Bu Laras", "portrait": "Test2",   "duration": 3.2, "text": "Adventurers from every corner of the archipelago gather here to rest before heading out." },
+            { "speaker": "Bu Laras", "portrait": "Test", "duration": 3.8, "text": "Be careful out there. The old seals are weakening, and things are stirring in the forgotten places." },
+            { "speaker": "Bu Laras", "portrait": "Test3",   "duration": 1.6, "text": "Come back and tell me what you find." }
+        ]
+    },
+
+    "narrator_intro": {
+        "lines": [
+            { "speaker": "", "portrait": "", "duration": 3.0, "text": "For generations, the human world and the supernatural world kept their distance." },
+            { "speaker": "", "portrait": "", "duration": 4.5, "text": "Ancient civilizations raised temples and fortresses across the archipelago, sealing powerful relics and forces within them." },
+            { "speaker": "", "portrait": "", "duration": 2.8, "text": "Now the old stories are forgotten, and the seals are beginning to weaken." }
+        ]
+    },
+
+    "mixed_test": {
+        "lines": [
+            { "speaker": "",       "portrait": "",               "duration": 3.0, "text": "A cloaked traveler leans against the old shrine gate, watching you approach." },
+            { "speaker": "Rangga", "portrait": "rangga_neutral", "duration": 1.8, "text": "You're not from around here either, are you?" },
+            { "speaker": "",       "portrait": "",               "duration": 2.0, "text": "He tilts his head toward the path leading into the forest." },
+            { "speaker": "Rangga", "portrait": "rangga_serious", "duration": 1.9, "text": "Take my advice: don't go in without a good blade." }
+        ]
+    }
+}
