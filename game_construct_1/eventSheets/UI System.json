@@ -2,6 +2,20 @@
 	"name": "UI System",
 	"events": [
 		{
+			"eventType": "include",
+			"includeSheet": "Inventory"
+		},
+		{
+			"eventType": "variable",
+			"name": "IsMenus",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Wether Menus (Menu, Inventory) is open or not ( 0 No, 1 yes)",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 191496665347906
+		},
+		{
 			"eventType": "variable",
 			"name": "IsMenu",
 			"type": "number",
@@ -12,6 +26,16 @@
 			"sid": 862390051242793
 		},
 		{
+			"eventType": "variable",
+			"name": "IsInventory",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Wether Inventory is open or not ( 0 No, 1 yes)",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 472524451435396
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -19,7 +43,15 @@
 					"objectClass": "Touch",
 					"sid": 419470701614024,
 					"parameters": {
-						"object": "MenuButton"
+						"object": "InventoryButton"
+					}
+				},
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 382301012995980,
+					"parameters": {
+						"key": 66
 					}
 				}
 			],
@@ -32,7 +64,17 @@
 						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 306798670697042,
+							"sid": 848565074167674,
+							"parameters": {
+								"variable": "IsInventory",
+								"comparison": 0,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 471367117534200,
 							"parameters": {
 								"variable": "IsMenu",
 								"comparison": 0,
@@ -44,11 +86,15 @@
 						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 388715967647606,
+							"sid": 896003679168395,
 							"parameters": {
-								"variable": "IsMenu",
+								"variable": "IsInventory",
 								"value": "1"
 							}
+						},
+						{
+							"callFunction": "RefreshInventoryUI",
+							"sid": 486567489890331
 						}
 					],
 					"sid": 377180491710293
@@ -66,14 +112,153 @@
 						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 113026252057249,
+							"sid": 558814971497351,
+							"parameters": {
+								"variable": "IsInventory",
+								"value": "0"
+							}
+						}
+					],
+					"sid": 628508962152656
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 858760400158949,
+					"parameters": {
+						"variable": "IsInventory",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 178367906665123,
+					"parameters": {
+						"layer": "7",
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 556514818985474
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 177284220081983,
+					"parameters": {
+						"variable": "IsInventory",
+						"comparison": 0,
+						"value": "1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 629227409652269,
+					"parameters": {
+						"layer": "7",
+						"visibility": "visible"
+					}
+				}
+			],
+			"sid": 424349550360058
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 179334699977930,
+					"parameters": {
+						"object": "MenuButton"
+					}
+				},
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 914387355088564,
+					"parameters": {
+						"key": 77
+					}
+				}
+			],
+			"actions": [],
+			"sid": 853598002300848,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 383657345166117,
+							"parameters": {
+								"variable": "IsMenu",
+								"comparison": 0,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 577394560265061,
+							"parameters": {
+								"variable": "IsInventory",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 782105291919780,
+							"parameters": {
+								"variable": "IsMenu",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 395550368619417
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 739588454780536
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 786972777845791,
 							"parameters": {
 								"variable": "IsMenu",
 								"value": "0"
 							}
 						}
 					],
-					"sid": 628508962152656
+					"sid": 878744015145433
 				}
 			],
 			"isOrBlock": true
@@ -96,9 +281,9 @@
 				{
 					"id": "set-layer-visible",
 					"objectClass": "System",
-					"sid": 213384916863167,
+					"sid": 507785463773814,
 					"parameters": {
-						"layer": "5",
+						"layer": "8",
 						"visibility": "invisible"
 					}
 				}
@@ -123,9 +308,9 @@
 				{
 					"id": "set-layer-visible",
 					"objectClass": "System",
-					"sid": 763786958047979,
+					"sid": 692830333357716,
 					"parameters": {
-						"layer": "5",
+						"layer": "8",
 						"visibility": "visible"
 					}
 				}
@@ -193,6 +378,118 @@
 				}
 			],
 			"sid": 622237622958529
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 344424193557007,
+					"parameters": {
+						"variable": "MultiplayerOpen",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 377267751831243,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 361673797776403,
+							"parameters": {
+								"variable": "IsMenu",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 113739281853411,
+							"parameters": {
+								"variable": "IsInventory",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 592471986058130,
+							"parameters": {
+								"variable": "IsMenus",
+								"value": "1"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Player",
+							"sid": 620031738253800,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"state": "disabled"
+							}
+						}
+					],
+					"sid": 753557981655792,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 580526412750985,
+							"parameters": {
+								"variable": "IsInventory",
+								"comparison": 0,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 659866908173672,
+							"parameters": {
+								"variable": "IsMenu",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 376606575120377,
+							"parameters": {
+								"variable": "IsMenus",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Player",
+							"sid": 327224700093500,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"state": "enabled"
+							}
+						}
+					],
+					"sid": 520495805891120
+				}
+			]
 		}
 	],
 	"sid": 665624822337457

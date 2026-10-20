@@ -1,6 +1,10 @@
 {
   "basic_sword": {
     "name": "Sword",
+    "icon": "basic_sword",
+    "description": "A plain but reliable blade.",
+    "rarity": "common",
+    "value": 25,
     "damage": 10,
     "firerate": 0.3,
     "type": "melee",
@@ -17,6 +21,10 @@
   },
   "basic_spear": {
     "name": "Spear",
+    "icon": "basic_sword",
+    "description": "A plain but reliable blade.",
+    "rarity": "common",
+    "value": 25,
     "damage": 10,
     "firerate": 0.5,
     "type": "melee",
@@ -30,6 +38,10 @@
   },
   "basic_bow": {
     "name": "Bow",
+    "icon": "basic_sword",
+    "description": "A plain but reliable blade.",
+    "rarity": "common",
+    "value": 25,
     "damage": 6,
     "firerate": 0.8,
     "type": "ranged",
@@ -43,6 +55,10 @@
   },
   "basic_pistol": {
     "name": "Pistol",
+    "icon": "basic_pistol",
+    "description": "A plain but reliable pistol.",
+    "rarity": "common",
+    "value": 25,
     "damage": 10,
     "firerate": 0.2,
     "type": "ranged",

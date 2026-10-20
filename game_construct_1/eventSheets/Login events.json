@@ -63,6 +63,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "ItemDBLoaded",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 290907827256128
+		},
+		{
+			"eventType": "variable",
 			"name": "Device",
 			"type": "string",
 			"initialValue": "PC",
@@ -215,6 +225,34 @@
 						}
 					],
 					"sid": 257158697277374
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 489383294523885,
+							"parameters": {
+								"variable": "ItemDBLoaded"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "request-project-file",
+							"objectClass": "AJAX",
+							"sid": 814778039019262,
+							"parameters": {
+								"tag": "\"LoadItems\"",
+								"file": {
+									"path": "items.json"
+								}
+							}
+						}
+					],
+					"sid": 667551070037827
 				}
 			]
 		},
@@ -319,6 +357,40 @@
 				}
 			],
 			"sid": 846398974069710
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-completed",
+					"objectClass": "AJAX",
+					"sid": 354979635427770,
+					"parameters": {
+						"tag": "\"LoadItems\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-json",
+					"objectClass": "ItemDB",
+					"sid": 352292593824160,
+					"parameters": {
+						"path": "\"ItemDB\"",
+						"json": "AJAX.LastData"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 438807180898798,
+					"parameters": {
+						"variable": "ItemDBLoaded",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 804692113937749
 		},
 		{
 			"eventType": "block",

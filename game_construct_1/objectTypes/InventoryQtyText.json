@@ -1,0 +1,18 @@
+{
+	"name": "InventoryQtyText",
+	"plugin-id": "Text",
+	"sid": 446616156217634,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "SlotIndex",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 923569621856057
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

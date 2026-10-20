@@ -1,0 +1,1322 @@
+{
+	"name": "Inventory",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "InvInitialized",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "0 - false, 1 - true",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 165162955331409
+		},
+		{
+			"eventType": "variable",
+			"name": "InvCols",
+			"type": "number",
+			"initialValue": "5",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 163383114043530
+		},
+		{
+			"eventType": "variable",
+			"name": "SlotSize",
+			"type": "number",
+			"initialValue": "40",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 573964533813791
+		},
+		{
+			"eventType": "variable",
+			"name": "InvPadX",
+			"type": "number",
+			"initialValue": "16",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 819411066170140
+		},
+		{
+			"eventType": "variable",
+			"name": "InvPadY",
+			"type": "number",
+			"initialValue": "16",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 855125165325534
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 904222288522673
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 327749128231023,
+					"parameters": {
+						"variable": "InvInitialized",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "parse",
+					"objectClass": "Inv",
+					"sid": 555781277161369,
+					"parameters": {
+						"data": "\"{}\""
+					}
+				},
+				{
+					"id": "set-value",
+					"objectClass": "Inv",
+					"sid": 148571792276559,
+					"parameters": {
+						"path": "\"capacity\"",
+						"value": "20"
+					}
+				},
+				{
+					"id": "set-object",
+					"objectClass": "Inv",
+					"sid": 606869538866184,
+					"parameters": {
+						"path": "\"slots\""
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 993710803435328,
+					"parameters": {
+						"variable": "InvInitialized",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 361597763143529
+		},
+		{
+			"functionName": "GetItemField",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "any",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ItemID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 290828382119193
+				},
+				{
+					"name": "Field",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 313190945657994
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 858377973015376,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "IsWeapon",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 338060276949445
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "has-key",
+							"objectClass": "WeaponDB",
+							"sid": 363175569300096,
+							"parameters": {
+								"path": "\"WeaponDB.\" & ItemID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 795408005872220,
+							"parameters": {
+								"variable": "IsWeapon",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 548668079227817
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 927743169606867,
+							"parameters": {
+								"variable": "IsWeapon",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 772322738232858,
+							"parameters": {
+								"variable": "Field",
+								"comparison": 0,
+								"value": "\"maxstack\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 637132606594609,
+							"parameters": {
+								"value": "1"
+							}
+						}
+					],
+					"sid": 231366032163645
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 996507537722215,
+							"parameters": {
+								"variable": "IsWeapon",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 438242088487148,
+							"parameters": {
+								"variable": "Field",
+								"comparison": 0,
+								"value": "\"category\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 567259222016773,
+							"parameters": {
+								"value": "\"weapon\""
+							}
+						}
+					],
+					"sid": 512013080438343
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 476513609494392,
+							"parameters": {
+								"variable": "IsWeapon",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 182523378596556,
+							"parameters": {
+								"variable": "Field",
+								"comparison": 1,
+								"value": "\"category\""
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 959507301061278,
+							"parameters": {
+								"variable": "Field",
+								"comparison": 1,
+								"value": "\"maxstack\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 962903772588337,
+							"parameters": {
+								"value": "WeaponDB.Get(\"WeaponDB.\" & ItemID & \".\" & Field)"
+							}
+						}
+					],
+					"sid": 776947312439885
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 991275726999521,
+							"parameters": {
+								"variable": "IsWeapon",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 205876443752707,
+							"parameters": {
+								"value": "ItemDB.Get(\"ItemDB.\" & ItemID & \".\" & Field)"
+							}
+						}
+					],
+					"sid": 385340828388193
+				}
+			]
+		},
+		{
+			"functionName": "CountItem",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ItemID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 784048246669461
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 216506774416515,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "Total",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 467184524487524
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 155401440383413,
+							"parameters": {
+								"count": "Inv.Get(\"capacity\")"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 159810578183509,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "has-key",
+									"objectClass": "Inv",
+									"sid": 272381117808213,
+									"parameters": {
+										"path": "\"slots.s\" & LoopIndex"
+									}
+								},
+								{
+									"id": "compare-value",
+									"objectClass": "Inv",
+									"sid": 429784023542942,
+									"parameters": {
+										"path": "\"slots.s\" & LoopIndex & \".id\"",
+										"cmp": 0,
+										"value": "ItemID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 568687158973683,
+									"parameters": {
+										"variable": "Total",
+										"value": "Inv.Get(\"slots.s\" & LoopIndex & \".qty\")"
+									}
+								}
+							],
+							"sid": 803772463673095
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 260875110385506,
+							"parameters": {
+								"value": "Total"
+							}
+						}
+					],
+					"sid": 171903513356436
+				}
+			]
+		},
+		{
+			"functionName": "AddItem",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ItemID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 918939102577325
+				},
+				{
+					"name": "Qty",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 947670361987253
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 796606039275789,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "Remaining",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 610836844982182
+				},
+				{
+					"eventType": "variable",
+					"name": "MaxStack",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 980756775674997
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 727041912178479,
+							"parameters": {
+								"variable": "Remaining",
+								"value": "Qty"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 517895091239525,
+							"parameters": {
+								"variable": "MaxStack",
+								"value": "Functions.GetItemField(ItemID, \"maxstack\")"
+							}
+						}
+					],
+					"sid": 665474891360904
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 451437620680247,
+							"parameters": {
+								"count": "Inv.Get(\"capacity\")"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 277630779315348,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "Space",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 519075049566605
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 920962558869936,
+									"parameters": {
+										"variable": "Remaining",
+										"comparison": 4,
+										"value": "0"
+									}
+								},
+								{
+									"id": "has-key",
+									"objectClass": "Inv",
+									"sid": 368294779924831,
+									"parameters": {
+										"path": "\"slots.s\" & LoopIndex"
+									}
+								},
+								{
+									"id": "compare-value",
+									"objectClass": "Inv",
+									"sid": 851487595674468,
+									"parameters": {
+										"path": "\"slots.s\" & LoopIndex & \".id\"",
+										"cmp": 0,
+										"value": "ItemID"
+									}
+								},
+								{
+									"id": "compare-value",
+									"objectClass": "Inv",
+									"sid": 915899754086891,
+									"parameters": {
+										"path": "\"slots.s\" & LoopIndex & \".qty\"",
+										"cmp": 2,
+										"value": "MaxStack"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 646622923808551,
+									"parameters": {
+										"variable": "Space",
+										"value": "MaxStack - Inv.Get(\"slots.s\" & LoopIndex & \".qty\")"
+									}
+								},
+								{
+									"id": "set-value",
+									"objectClass": "Inv",
+									"sid": 841018271436686,
+									"parameters": {
+										"path": "\"slots.s\" & LoopIndex & \".qty\"",
+										"value": "Inv.Get(\"slots.s\" & LoopIndex & \".qty\") + min(Remaining, Space)"
+									}
+								},
+								{
+									"id": "subtract-from-eventvar",
+									"objectClass": "System",
+									"sid": 970356877278583,
+									"parameters": {
+										"variable": "Remaining",
+										"value": "min(Remaining, Space)"
+									}
+								}
+							],
+							"sid": 784693979732306
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 149771286116057,
+							"parameters": {
+								"count": "Inv.Get(\"capacity\")"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 322361410882120,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "Occupied",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 883606297155026
+						},
+						{
+							"eventType": "variable",
+							"name": "Put",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 539634557278528
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "has-key",
+									"objectClass": "Inv",
+									"sid": 155308456615962,
+									"parameters": {
+										"path": "\"slots.s\" & LoopIndex"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 504251430958539,
+									"parameters": {
+										"variable": "Occupied",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 290835272825340
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 675751835082265,
+									"parameters": {
+										"variable": "Remaining",
+										"comparison": 4,
+										"value": "0"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 856428329342540,
+									"parameters": {
+										"variable": "Occupied",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 381607536300206,
+									"parameters": {
+										"variable": "Put",
+										"value": "min(Remaining, MaxStack)"
+									}
+								},
+								{
+									"id": "set-value",
+									"objectClass": "Inv",
+									"sid": 406392293265713,
+									"parameters": {
+										"path": "\"slots.s\" & LoopIndex & \".id\"",
+										"value": "ItemID"
+									}
+								},
+								{
+									"id": "set-value",
+									"objectClass": "Inv",
+									"sid": 995880332449648,
+									"parameters": {
+										"path": "\"slots.s\" & LoopIndex & \".qty\"",
+										"value": "Put"
+									}
+								},
+								{
+									"id": "subtract-from-eventvar",
+									"objectClass": "System",
+									"sid": 704670311514785,
+									"parameters": {
+										"variable": "Remaining",
+										"value": "Put"
+									}
+								}
+							],
+							"sid": 168180306152802
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 225826798620542,
+							"parameters": {
+								"variable": "IsInventory",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "RefreshInventoryUI",
+							"sid": 954485230290978
+						}
+					],
+					"sid": 574575499408295
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 198607288768577,
+							"parameters": {
+								"value": "Remaining"
+							}
+						}
+					],
+					"sid": 858971026193821
+				}
+			]
+		},
+		{
+			"functionName": "RemoveItem",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ItemID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 621786225170562
+				},
+				{
+					"name": "Qty",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 159574526112184
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 678428243623113,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "Remaining",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 887807588346684
+				},
+				{
+					"eventType": "variable",
+					"name": "Result",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 302210185819711
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 568232712714996,
+							"parameters": {
+								"variable": "Remaining",
+								"value": "Qty"
+							}
+						}
+					],
+					"sid": 950910174252673
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 284462834226602,
+							"parameters": {
+								"first-value": "Functions.CountItem(ItemID)",
+								"comparison": 5,
+								"second-value": "Qty"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 947926954209121,
+							"parameters": {
+								"variable": "Result",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 575841002035077
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 689737494367311,
+							"parameters": {
+								"count": "Inv.Get(\"capacity\")"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 547502899801443,
+							"parameters": {
+								"variable": "Result",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 678663529829112,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "Take",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 906376695572520
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 371915519685806,
+									"parameters": {
+										"variable": "Remaining",
+										"comparison": 4,
+										"value": "0"
+									}
+								},
+								{
+									"id": "has-key",
+									"objectClass": "Inv",
+									"sid": 999969807290292,
+									"parameters": {
+										"path": "\"slots.s\" & LoopIndex"
+									}
+								},
+								{
+									"id": "compare-value",
+									"objectClass": "Inv",
+									"sid": 616475165946426,
+									"parameters": {
+										"path": "\"slots.s\" & LoopIndex & \".id\"",
+										"cmp": 0,
+										"value": "ItemID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 930418795228789,
+									"parameters": {
+										"variable": "Take",
+										"value": "min(Remaining, Inv.Get(\"slots.s\" & LoopIndex & \".qty\"))"
+									}
+								}
+							],
+							"sid": 244345069034163,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 528402291548291,
+											"parameters": {
+												"first-value": "Take",
+												"comparison": 0,
+												"second-value": "Inv.Get(\"slots.s\" & LoopIndex & \".qty\")"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "delete-key",
+											"objectClass": "Inv",
+											"sid": 489755038344052,
+											"parameters": {
+												"path": "\"slots.s\" & LoopIndex"
+											}
+										},
+										{
+											"id": "subtract-from-eventvar",
+											"objectClass": "System",
+											"sid": 742106959526809,
+											"parameters": {
+												"variable": "Remaining",
+												"value": "Take"
+											}
+										}
+									],
+									"sid": 964577624634742
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 158742239033643,
+											"parameters": {
+												"first-value": "Take",
+												"comparison": 2,
+												"second-value": "Inv.Get(\"slots.s\" & LoopIndex & \".qty\")"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-value",
+											"objectClass": "Inv",
+											"sid": 186089538988236,
+											"parameters": {
+												"path": "\"slots.s\" & LoopIndex & \".qty\"",
+												"value": "Inv.Get(\"slots.s\" & LoopIndex & \".qty\") - Take"
+											}
+										},
+										{
+											"id": "subtract-from-eventvar",
+											"objectClass": "System",
+											"sid": 872848086985658,
+											"parameters": {
+												"variable": "Remaining",
+												"value": "Take"
+											}
+										}
+									],
+									"sid": 251788234156948
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 959792021966569,
+							"parameters": {
+								"variable": "IsInventory",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "RefreshInventoryUI",
+							"sid": 880202535578827
+						}
+					],
+					"sid": 396288266245974
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 530459093405319,
+							"parameters": {
+								"value": "Result"
+							}
+						}
+					],
+					"sid": 376420277581851
+				}
+			]
+		},
+		{
+			"functionName": "RefreshInventoryUI",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 264210832596587,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "InventoryItem",
+							"sid": 852902724508338
+						},
+						{
+							"id": "destroy",
+							"objectClass": "InventoryQtyText",
+							"sid": 231150460827581
+						}
+					],
+					"sid": 935163636372370
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 505942466585828,
+							"parameters": {
+								"count": "Inv.Get(\"capacity\")"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 445665192510206,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "PosX",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 278327032973153
+						},
+						{
+							"eventType": "variable",
+							"name": "PosY",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 461298987444574
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "has-key",
+									"objectClass": "Inv",
+									"sid": 956998759621244,
+									"parameters": {
+										"path": "\"slots.s\" & loopindex"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 180033045332315,
+									"parameters": {
+										"variable": "PosX",
+										"value": "InventoryBackground.BBoxLeft + InvPadX + (LoopIndex % InvCols) * SlotSize + SlotSize / 2"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 669141693289636,
+									"parameters": {
+										"variable": "PosY",
+										"value": "InventoryBackground.BBoxTop + InvPadY + floor(LoopIndex / InvCols) * SlotSize + SlotSize / 2"
+									}
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 983401828602718,
+									"parameters": {
+										"object-to-create": "InventoryItem",
+										"layer": "7",
+										"x": "PosX",
+										"y": "PosY",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "InventoryItem",
+									"sid": 963575459283207,
+									"parameters": {
+										"instance-variable": "ItemID",
+										"value": "Inv.Get(\"slots.s\" & LoopIndex & \".id\")"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "InventoryItem",
+									"sid": 812003005740888,
+									"parameters": {
+										"instance-variable": "Quantity",
+										"value": "Inv.Get(\"slots.s\" & LoopIndex & \".qty\")"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "InventoryItem",
+									"sid": 149871663857511,
+									"parameters": {
+										"instance-variable": "SlotIndex",
+										"value": "LoopIndex"
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "InventoryItem",
+									"sid": 856259612752701,
+									"parameters": {
+										"animation": "Functions.GetItemField(Inv.Get(\"slots.s\" & LoopIndex & \".id\"), \"icon\")",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 604812675270617,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-value",
+											"objectClass": "Inv",
+											"sid": 501266400022516,
+											"parameters": {
+												"path": "\"slots.s\" & LoopIndex & \".qty\"",
+												"cmp": 4,
+												"value": "1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 748897379918810,
+											"parameters": {
+												"object-to-create": "InventoryQtyText",
+												"layer": "7",
+												"x": "PosX + SlotSize / 2 - 4",
+												"y": "PosY + SlotSize / 2 - 4",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "InventoryQtyText",
+											"sid": 400686491010311,
+											"parameters": {
+												"text": "str(Inv.Get(\"slots.s\" & LoopIndex & \".qty\"))"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "InventoryQtyText",
+											"sid": 888776700802099,
+											"parameters": {
+												"instance-variable": "SlotIndex",
+												"value": "LoopIndex"
+											}
+										}
+									],
+									"sid": 656957505774098
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 719786506825615,
+					"parameters": {
+						"key": 51
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 309945759184427,
+					"parameters": {
+						"type": "log",
+						"message": "\"Added: \" & Functions.AddItem(\"jamu_kunyit\", 3)"
+					}
+				}
+			],
+			"sid": 194658503478773
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 986621165176436,
+					"parameters": {
+						"key": 52
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 691404167565563,
+					"parameters": {
+						"type": "log",
+						"message": "\"Added: \" & Functions.AddItem(\"bambu_kuning\", 50)"
+					}
+				}
+			],
+			"sid": 599393500196998
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 626040983056985,
+					"parameters": {
+						"key": 53
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 518139720676520,
+					"parameters": {
+						"type": "log",
+						"message": "\"Removed: \" & Functions.RemoveItem(\"jamu_kunyit\", 1)"
+					}
+				}
+			],
+			"sid": 363781446996300
+		}
+	],
+	"sid": 575312730885403
+}

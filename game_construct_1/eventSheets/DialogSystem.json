@@ -928,6 +928,80 @@
 				}
 			],
 			"sid": 774336583085868
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 323721610711961,
+					"parameters": {
+						"variable": "DialogActive",
+						"comparison": 0,
+						"value": "0"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 387316202592125,
+					"parameters": {
+						"instance-variable": "NetID",
+						"comparison": 0,
+						"value": "MyNetID"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-enabled",
+					"objectClass": "Player",
+					"sid": 956147119952882,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"state": "enabled"
+					}
+				}
+			],
+			"sid": 583990578240995
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 265532075525242,
+					"parameters": {
+						"variable": "DialogActive",
+						"comparison": 0,
+						"value": "1"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 869611406372011,
+					"parameters": {
+						"instance-variable": "NetID",
+						"comparison": 0,
+						"value": "MyNetID"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-enabled",
+					"objectClass": "Player",
+					"sid": 706642771507294,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"state": "disabled"
+					}
+				}
+			],
+			"sid": 843178053184125
 		}
 	],
 	"sid": 731175435444181

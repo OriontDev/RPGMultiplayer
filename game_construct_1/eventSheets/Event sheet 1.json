@@ -78,6 +78,16 @@
 			"sid": 856128980840218
 		},
 		{
+			"eventType": "variable",
+			"name": "MultiplayerOpen",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "0 - false, 1 - true",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 899498825841261
+		},
+		{
 			"eventType": "comment",
 			"text": "Start of Layout1 event sheet"
 		},
@@ -98,6 +108,14 @@
 					"parameters": {
 						"variable": "HostPeerID",
 						"value": "str(Multiplayer.HostID)"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "FirebaseUIDText",
+					"sid": 537531748120733,
+					"parameters": {
+						"text": "\"[lineThickness=1.5][outline=black]UID:\" & MyFirebaseUID  & \"[/outline][/lineThickness]\""
 					}
 				}
 			],

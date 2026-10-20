@@ -1,0 +1,21 @@
+{
+    "jamu_kunyit": {
+      "name": "Jamu Kunyit",
+      "category": "consumable",
+      "maxstack": 10,
+      "rarity": "common",
+      "icon": "default",
+      "description": "A turmeric tonic that restores health.",
+      "value": 15,
+      "effect": { "heal": 30 }
+    },
+    "bambu_kuning": {
+      "name": "Yellow Bamboo",
+      "category": "material",
+      "maxstack": 99,
+      "rarity": "common",
+      "icon": "default2",
+      "description": "Sturdy bamboo, used for crafting.",
+      "value": 2
+    }
+}

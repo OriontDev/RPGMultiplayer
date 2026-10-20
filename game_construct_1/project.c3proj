@@ -278,7 +278,14 @@
 			"DialogName",
 			"DialogText",
 			"DialogPotrait",
-			"InteractPrompt"
+			"InteractPrompt",
+			"FirebaseUIDText",
+			"InventoryButton",
+			"InventoryBackground",
+			"InventoryItem",
+			"ItemDB",
+			"Inv",
+			"InventoryQtyText"
 		],
 		"subfolders": []
 	},
@@ -309,7 +316,8 @@
 			"PlayerCombat",
 			"EnemySystem",
 			"UI System",
-			"DialogSystem"
+			"DialogSystem",
+			"Inventory"
 		],
 		"subfolders": []
 	},
@@ -479,6 +487,14 @@
 					"name": "dialogs.json",
 					"type": "application/json",
 					"sid": 516414396668058,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "items.json",
+					"type": "application/json",
+					"sid": 363526374576323,
 					"file-info": {
 						"purpose": "none"
 					}
